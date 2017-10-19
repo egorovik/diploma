@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.referral.student') + ':'
+  = @referral.student.ln + ' ' + @referral.student.fn + ' ' + @referral.student.sn
+%p
+  %b= t('activerecord.attributes.referral.referral_number') + ':'
+  = @referral.referral_number
+%p
+  %b= t('activerecord.attributes.referral.date') + ':'
+  = @referral.date
+%p
+  %b= t('activerecord.attributes.referral.speciality') + ':'
+  = @referral.speciality.speciality_code + ' ' + @referral.speciality.name
+%p
+  %b= t('activerecord.attributes.referral.payment') + ':'
+  = @referral.payment
+
+= link_to t('button.edit'), edit_referral_path(@referral), class: "btn btn-warning"
+\|
+= link_to t('button.back'), referrals_path, class: "btn btn-danger"

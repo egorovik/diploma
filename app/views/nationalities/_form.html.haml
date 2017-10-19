@@ -1,0 +1,13 @@
+= form_for @nationality do |f|
+  - if @nationality.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@nationality.errors.count, "error")} prohibited this nationality from being saved:"
+      %ul
+        - @nationality.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit t('button.save'), class: "btn btn-success"

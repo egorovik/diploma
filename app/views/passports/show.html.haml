@@ -1,0 +1,13 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.passport.serial') + ':'
+  = @passport.serial
+%p
+  %b= t('activerecord.attributes.passport.number') + ':'
+  = @passport.number
+
+= link_to t('button.edit'), edit_passport_path(@passport), class: "btn btn-warning"
+\|
+= link_to t('button.back'), passports_path, class: "btn btn-danger"

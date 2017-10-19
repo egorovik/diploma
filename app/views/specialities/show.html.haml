@@ -1,0 +1,37 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.speciality.section_number') + ':'
+  = @speciality.section_number
+%p
+  %b= t('activerecord.attributes.speciality.section_name') + ':'
+  = @speciality.section_name
+%p
+  %b= t('activerecord.attributes.speciality.group_number') + ':'
+  = @speciality.group_number
+%p
+  %b= t('activerecord.attributes.speciality.group_name') + ':'
+  = @speciality.group_name
+%p
+  %b= t('activerecord.attributes.speciality.subgroup_number') + ':'
+  = @speciality.subgroup_number
+%p
+  %b= t('activerecord.attributes.speciality.subgroup_name') + ':'
+  = @speciality.subgroup_name
+%p
+  %b= t('activerecord.attributes.speciality.speciality_code') + ':'
+  = @speciality.speciality_code
+%p
+  %b= t('activerecord.attributes.speciality.name') + ':'
+  = @speciality.name
+%p
+  %b= t('activerecord.attributes.speciality.edu_prog_code') + ':'
+  = @speciality.edu_prog_code
+%p
+  %b= t('activerecord.attributes.speciality.edu_area_code') + ':'
+  = @speciality.edu_area_code
+
+= link_to t('button.edit'), edit_speciality_path(@speciality), class: "btn btn-warning"
+\|
+= link_to t('button.back'), specialities_path, class: "btn btn-danger"

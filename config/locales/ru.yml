@@ -1,0 +1,201 @@
+ru:
+  title:
+    welcome: Главная
+    countries: Страны
+    specialities: Специальности
+    nationalities: Национальности
+    religions: Религии
+    students: Студенты
+    referrals: Направления на обучение
+    groups: Учебные группы
+    rooms: Комнаты
+    floors: Этажи
+    hostels: Общежития
+    passports: Паспорта
+    national_holidays: Национальные праздники
+    religion_holidays: Религиозные праздники
+    documents: Документы
+  controller:
+    countries:
+      new: Добавить страну
+      edit: Редактирование страны
+      show: Страна
+      index: Страны
+    specialities:
+      new: Добавить специальность
+      edit: Редактирование специальности
+      show: Специальность
+      index: Специальности
+    nationalities:
+      new: Добавить национальность
+      edit: Редактирование национальности
+      show: Национальность
+      index: Национальности
+    religions:
+      new: Добавить религию
+      edit: Редактирование религии
+      show: Религия
+      index: Религии
+    passports:
+      new: Добавить паспорт
+      edit: Редактирование паспорта
+      show: Паспорт
+      index: Паспорта
+    national_holidays:
+      new: Добавление национального праздника
+      edit: Редактирование национального праздника
+      show: Национальный праздник
+      index: Национальные праздники
+    religion_holidays:
+      new: Добавление религиозного праздника
+      edit: Редактирование религиозного праздника
+      show: Религиозный праздник
+      index: Религиозные праздники
+    groups:
+      new: Добавление учебной группы
+      edit: Редактирование учебной группы
+      show: Учебная группа
+      index: Учебные группы
+    hostels:
+      new: Добавление общежития
+      edit: Редактирование общежития
+      show: Общежитие
+      index: Общежития
+    floors:
+      new: Добавление этажа
+      edit: Редактирование этажа
+      show: Этаж
+      index: Этажи
+    rooms:
+      new: Добавление комнаты
+      edit: Редактирование комнаты
+      show: Комната
+      index: Комнаты
+    students:
+      new: Добавление студента
+      edit: Редактирование студента
+      show: Студент
+      index: Студенты
+    referrals:
+      new: Добавление направления на обучение
+      edit: Редактирвание направления на обучение
+      show: Направление на обучение
+      index: Направления на обучение
+    documents:
+      new: Добавление документа
+      edit: Редактирование документа
+      show: Документ
+      index: Документы
+    welcome:
+      index: Главная
+  activerecord:
+    models:
+      country: Страна
+      speciality: Специальность
+      nationality: Национальность
+      religion: Религия
+      passport: Паспорт
+      national_holiday: Национальный праздник
+      religion_holiday: Религиозный празник
+      group: Учебная группа
+      hostel: Общежитие
+      floor: Этаж
+      room: Комната
+      student: Студент
+      referral: Напрвление на обучение
+      document: Документ
+    attributes:
+      country:
+        short_name: Короткое название
+        long_name: Длинное название
+        alpha2: Двухбуквенный код
+        alpha3: Трехбуквенный код
+        country_code: Код страны
+      speciality:
+        section_number: Номер раздела
+        section_name: Название раздела
+        group_number: Номер группы
+        group_name: Название группы
+        subgroup_number: Номер подгруппы
+        subgroup_name: Название подгруппы
+        speciality_code: Код специальности
+        name: Название специальности
+        edu_prog_code: Код образовательной программы
+        edu_area_code: Код образовательной области
+      nationality:
+        name: Название
+      religion:
+        name: Название
+      passport:
+        serial: Серия
+        number: Номер
+      national_holiday:
+        name: Название
+        date: Дата
+        nationality: Национальность
+      religion_holiday:
+        name: Название
+        date: Дата
+        religion: Религия
+      group:
+        name: Название
+        speciality: Специальность
+      hostel:
+        name: Название
+        address: Адрес
+        floors_count: Количество этажей
+      floor:
+        hostel: Общежитие
+        floor_number: Номер этажа
+        rooms_count: Количество комнат
+      room:
+        room_number: Номер комнаты
+        place_count: Количество мест
+        floor: Этаж
+      student:
+        passport: Пасспорт
+        ln: Фамилия
+        fn: Имя
+        sn: Отчество
+        sex: Пол
+        bday: Дата рождения
+        country: Страна
+        nationality: Национальность
+        religion: Религия
+        start_date: Начало периода пребывания в РФ
+        finish_date: Конец периода пребывания в РФ
+        group: Учебная группа
+        room: Комната
+      referral:
+        student: Студент
+        referral_number: Номер направления
+        date: Дата
+        speciality: Специальность
+        payment: Оплата
+      document:
+        student: Студент
+        doc_type: Тип документа
+        doc_number: Номер документа
+        exp_date: Окончание срока действия
+  button:
+    show: Показать
+    edit: Редактировать
+    destroy: Удалить
+    back: Назад
+    save: Сохранить
+    back: Назад
+    new:
+      country: Добавить страну
+      speciality: Добавить специальность
+      nationality: Добавить национальность
+      religion: Добавить религию
+      passport: Добавить паспорт
+      national_holiday: Добавить национальный праздник
+      religion_holiday: Добавить религиозный праздник
+      group: Добавить учебную группу
+      hostel: Добавить общежитие
+      floor: Добавить этаж
+      room: Добавить комнату
+      student: Добавить студента
+      referral: Добавить направление на обучение
+      document: Добавить документ

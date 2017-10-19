@@ -1,0 +1,21 @@
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+= link_to t('button.new.floor'), new_floor_path, class: "btn btn-success"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t('activerecord.attributes.floor.hostel')
+      %th= t('activerecord.attributes.floor.floor_number')
+      %th= t('activerecord.attributes.floor.rooms_count')
+      %th
+      %th
+      %th
+
+  %tbody
+    - @floors.each do |floor|
+      %tr
+        %td= floor.hostel.name
+        %td= floor.floor_number
+        %td= floor.rooms_count
+        %td= link_to t('button.show'), floor, class: "btn btn-info"
+        %td= link_to t('button.edit'), edit_floor_path(floor), class: "btn btn-warning"
+        %td= link_to t('button.destroy'), floor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

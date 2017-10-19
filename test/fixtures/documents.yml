@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 
+  doc_type: MyString
+  doc_number: MyString
+  exp_date: 2017-10-13
+
+two:
+  student_id: 
+  doc_type: MyString
+  doc_number: MyString
+  exp_date: 2017-10-13

@@ -1,0 +1,16 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.room.room_number') + ':'
+  = @room.room_number
+%p
+  %b= t('activerecord.attributes.room.place_count') + ':'
+  = @room.place_count
+%p
+  %b= t('activerecord.attributes.room.floor') + ':'
+  = @room.floor.hostel.name + ". Этаж " + @room.floor.floor_number.to_s
+
+= link_to t('button.edit'), edit_room_path(@room), class: "btn btn-warning"
+\|
+= link_to t('button.back'), rooms_path, class: "btn btn-danger"

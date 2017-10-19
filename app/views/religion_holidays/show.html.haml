@@ -1,0 +1,16 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.religion_holiday.name') + ':'
+  = @religion_holiday.name
+%p
+  %b= t('activerecord.attributes.religion_holiday.date') + ':'
+  = @religion_holiday.date
+%p
+  %b= t('activerecord.attributes.religion_holiday.religion') + ':'
+  = @religion_holiday.religion.name
+
+= link_to t('button.edit'), edit_religion_holiday_path(@religion_holiday), class: "btn btn-warning"
+\|
+= link_to t('button.back'), religion_holidays_path, class: "btn btn-danger"

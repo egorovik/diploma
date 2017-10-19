@@ -1,0 +1,46 @@
+%h1 Домашняя страница
+%p
+  = link_to t('title.countries'), countries_path, class: "btn btn-primary"
+  = "Количество записей: #{Country.all.count}"
+%p
+  = link_to t('title.specialities'), specialities_path, class: "btn btn-primary"
+  = "Количество записей: #{Speciality.all.count}"
+%p
+  = link_to t('title.nationalities'), nationalities_path, class: "btn btn-primary"
+  = "Количество записей: #{Nationality.all.count}"
+%p
+  = link_to t('title.religions'), religions_path, class: "btn btn-primary"
+  = "Количество записей: #{Religion.all.count}"
+%p
+  = link_to t('title.passports'), passports_path, class: "btn btn-primary"
+  = "Количество записей: #{Passport.all.count}"
+%p
+  = link_to t('title.national_holidays'), national_holidays_path, class: "btn btn-primary"
+  = "Количество записей: #{NationalHoliday.all.count}"
+%p
+  = link_to t('title.religion_holidays'), religion_holidays_path, class: "btn btn-primary"
+  = "Количество записей: #{ReligionHoliday.all.count}"
+%p
+  = link_to t('title.groups'), groups_path, class: "btn btn-primary"
+  = "Количество записей: #{Group.all.count}"
+%p
+  = link_to t('title.hostels'), hostels_path, class: "btn btn-primary"
+  = "Количество записей: #{Hostel.all.count}"
+%p
+  = link_to t('title.floors'), floors_path, class: "btn btn-primary"
+  = "Количество записей: #{Floor.all.count}"
+%p
+  = link_to t('title.rooms'), rooms_path, class: "btn btn-primary"
+  = "Количество записей: #{Room.all.count}"
+%p
+  = link_to t('title.students'), students_path, class: "btn btn-primary"
+  = "Количество записей: #{Student.all.count}"
+%p
+  = link_to t('title.referrals'), referrals_path, class: "btn btn-primary"
+  = "Количество записей: #{Referral.all.count}"
+%p
+  = link_to t('title.documents'), documents_path, class: "btn btn-primary"
+  = "Количество записей: #{Document.all.count}"
+
+
+

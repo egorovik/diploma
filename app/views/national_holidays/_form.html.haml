@@ -1,0 +1,19 @@
+= form_for @national_holiday do |f|
+  - if @national_holiday.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@national_holiday.errors.count, "error")} prohibited this national_holiday from being saved:"
+      %ul
+        - @national_holiday.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = f.label :nationality
+    = f.text_field :nationality
+  .actions
+    = f.submit t('button.save'), class: "btn btn-success"

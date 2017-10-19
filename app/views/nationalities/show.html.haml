@@ -1,0 +1,10 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.nationality.name') + ':'
+  = @nationality.name
+
+= link_to t('button.edit'), edit_nationality_path(@nationality), class: "btn btn-warning"
+\|
+= link_to t('button.back'), nationalities_path, class: "btn btn-danger"

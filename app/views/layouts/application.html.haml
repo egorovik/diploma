@@ -1,0 +1,15 @@
+!!!
+%html{lang: 'ru'}
+  %head
+  %title= t("controller.#{params['controller']}.#{params['action']}")
+  %meta{charset: 'utf-8'}
+  %meta{name: 'viewport', content: "width=device-width, initial-scale=1.0"}
+  %meta{'http-equiv'=>"X-UA-Compatible", 'content'=>"IE=edge"}
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  %body
+    - if params['controller'] != 'welcome'
+      %p
+        = link_to 'На главную', welcome_index_path, class: "btn btn-primary"
+    = yield

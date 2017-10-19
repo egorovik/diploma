@@ -1,0 +1,199 @@
+# encoding: UTF-8
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 20171013204204) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "short_name",   null: false
+    t.string   "long_name",    null: false
+    t.string   "alpha2",       null: false
+    t.string   "alpha3",       null: false
+    t.string   "country_code", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.integer  "student_id", null: false
+    t.string   "doc_type",   null: false
+    t.string   "doc_number", null: false
+    t.date     "exp_date",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "documents", ["doc_number", "exp_date"], name: "index_documents_on_doc_number_and_exp_date", unique: true, using: :btree
+  add_index "documents", ["student_id"], name: "index_documents_on_student_id", using: :btree
+
+  create_table "floors", force: :cascade do |t|
+    t.integer  "hostel_id",    null: false
+    t.integer  "floor_number", null: false
+    t.integer  "rooms_count",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "floors", ["hostel_id", "floor_number"], name: "index_floors_on_hostel_id_and_floor_number", unique: true, using: :btree
+  add_index "floors", ["hostel_id"], name: "index_floors_on_hostel_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",          null: false
+    t.integer  "speciality_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "groups", ["name"], name: "index_groups_on_name", unique: true, using: :btree
+  add_index "groups", ["speciality_id"], name: "index_groups_on_speciality_id", using: :btree
+
+  create_table "hostels", force: :cascade do |t|
+    t.string   "name",         null: false
+    t.string   "address",      null: false
+    t.integer  "floors_count", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "hostels", ["name", "address"], name: "index_hostels_on_name_and_address", unique: true, using: :btree
+
+  create_table "national_holidays", force: :cascade do |t|
+    t.string   "name",           null: false
+    t.date     "date",           null: false
+    t.integer  "nationality_id", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "national_holidays", ["name", "date"], name: "index_national_holidays_on_name_and_date", unique: true, using: :btree
+  add_index "national_holidays", ["nationality_id"], name: "index_national_holidays_on_nationality_id", using: :btree
+
+  create_table "nationalities", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "nationalities", ["name"], name: "index_nationalities_on_name", unique: true, using: :btree
+
+  create_table "passports", force: :cascade do |t|
+    t.string   "serial",     null: false
+    t.string   "number",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "passports", ["serial", "number"], name: "index_passports_on_serial_and_number", unique: true, using: :btree
+
+  create_table "referrals", force: :cascade do |t|
+    t.integer  "student_id",      null: false
+    t.string   "referral_number", null: false
+    t.date     "date",            null: false
+    t.integer  "speciality_id",   null: false
+    t.integer  "payment",         null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "referrals", ["referral_number", "date", "speciality_id"], name: "index_referrals_on_referral_number_and_date_and_speciality_id", unique: true, using: :btree
+  add_index "referrals", ["speciality_id"], name: "index_referrals_on_speciality_id", using: :btree
+  add_index "referrals", ["student_id"], name: "index_referrals_on_student_id", using: :btree
+
+  create_table "religion_holidays", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.date     "date",        null: false
+    t.integer  "religion_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "religion_holidays", ["name", "date"], name: "index_religion_holidays_on_name_and_date", unique: true, using: :btree
+  add_index "religion_holidays", ["religion_id"], name: "index_religion_holidays_on_religion_id", using: :btree
+
+  create_table "religions", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "religions", ["name"], name: "index_religions_on_name", unique: true, using: :btree
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "room_number", null: false
+    t.integer  "place_count", null: false
+    t.integer  "floor_id",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "rooms", ["floor_id"], name: "index_rooms_on_floor_id", using: :btree
+  add_index "rooms", ["room_number", "floor_id"], name: "index_rooms_on_room_number_and_floor_id", unique: true, using: :btree
+
+  create_table "specialities", force: :cascade do |t|
+    t.integer  "section_number",  null: false
+    t.string   "section_name",    null: false
+    t.integer  "group_number",    null: false
+    t.string   "group_name",      null: false
+    t.string   "subgroup_number", null: false
+    t.string   "subgroup_name",   null: false
+    t.string   "speciality_code", null: false
+    t.string   "name",            null: false
+    t.string   "edu_prog_code",   null: false
+    t.string   "edu_area_code",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.integer  "passport_id",    null: false
+    t.string   "ln",             null: false
+    t.string   "fn",             null: false
+    t.string   "sn"
+    t.string   "sex",            null: false
+    t.date     "bday",           null: false
+    t.integer  "country_id",     null: false
+    t.integer  "nationality_id"
+    t.integer  "religion_id"
+    t.date     "start_date"
+    t.date     "finish_date"
+    t.integer  "group_id"
+    t.integer  "room_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "students", ["country_id"], name: "index_students_on_country_id", using: :btree
+  add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
+  add_index "students", ["ln", "fn", "sn", "sex", "bday"], name: "index_students_on_ln_and_fn_and_sn_and_sex_and_bday", unique: true, using: :btree
+  add_index "students", ["nationality_id"], name: "index_students_on_nationality_id", using: :btree
+  add_index "students", ["passport_id"], name: "index_students_on_passport_id", using: :btree
+  add_index "students", ["religion_id"], name: "index_students_on_religion_id", using: :btree
+  add_index "students", ["room_id"], name: "index_students_on_room_id", using: :btree
+
+  add_foreign_key "documents", "students"
+  add_foreign_key "floors", "hostels"
+  add_foreign_key "groups", "specialities"
+  add_foreign_key "national_holidays", "nationalities"
+  add_foreign_key "referrals", "specialities"
+  add_foreign_key "referrals", "students"
+  add_foreign_key "religion_holidays", "religions"
+  add_foreign_key "rooms", "floors"
+  add_foreign_key "students", "countries"
+  add_foreign_key "students", "groups"
+  add_foreign_key "students", "nationalities"
+  add_foreign_key "students", "passports"
+  add_foreign_key "students", "religions"
+  add_foreign_key "students", "rooms"
+end

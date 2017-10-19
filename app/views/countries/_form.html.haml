@@ -1,0 +1,25 @@
+= form_for @country do |f|
+  - if @country.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@country.errors.count, "error")} prohibited this country from being saved:"
+      %ul
+        - @country.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :short_name
+    = f.text_field :short_name
+  .field
+    = f.label :long_name
+    = f.text_field :long_name
+  .field
+    = f.label :alpha2
+    = f.text_field :alpha2
+  .field
+    = f.label :alpha3
+    = f.text_field :alpha3
+  .field
+    = f.label :country_code
+    = f.text_field :country_code
+  .actions
+    = f.submit t('button.save'), class: "btn btn-success"

@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  passport_id: 
+  ln: MyString
+  fn: MyString
+  sn: MyString
+  sex: MyString
+  start_date: 2017-10-13
+  country_id: 
+  nationality_id: 
+  religion_id: 
+  start_date: 2017-10-13
+  finish_date: 2017-10-13
+  group_id: 
+  room_id: 
+
+two:
+  passport_id: 
+  ln: MyString
+  fn: MyString
+  sn: MyString
+  sex: MyString
+  start_date: 2017-10-13
+  country_id: 
+  nationality_id: 
+  religion_id: 
+  start_date: 2017-10-13
+  finish_date: 2017-10-13
+  group_id: 
+  room_id: 

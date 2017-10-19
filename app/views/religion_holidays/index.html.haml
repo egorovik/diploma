@@ -1,0 +1,21 @@
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+= link_to t('button.new.religion_holiday'), new_religion_holiday_path, class: "btn btn-success"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t('activerecord.attributes.religion_holiday.name')
+      %th= t('activerecord.attributes.religion_holiday.date')
+      %th= t('activerecord.attributes.religion_holiday.religion')
+      %th
+      %th
+      %th
+
+  %tbody
+    - @religion_holidays.each do |religion_holiday|
+      %tr
+        %td= religion_holiday.name
+        %td= religion_holiday.date
+        %td= religion_holiday.religion.name
+        %td= link_to t('button.show'), religion_holiday, class: "btn btn-info"
+        %td= link_to t('button.edit'), edit_religion_holiday_path(religion_holiday), class: "btn btn-warning"
+        %td= link_to t('button.destroy'), religion_holiday, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

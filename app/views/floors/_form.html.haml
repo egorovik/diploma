@@ -1,0 +1,19 @@
+= form_for @floor do |f|
+  - if @floor.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@floor.errors.count, "error")} prohibited this floor from being saved:"
+      %ul
+        - @floor.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :hostel
+    = f.text_field :hostel
+  .field
+    = f.label :floor_number
+    = f.number_field :floor_number
+  .field
+    = f.label :rooms_count
+    = f.number_field :rooms_count
+  .actions
+    = f.submit t('button.save'), class: "btn btn-success"

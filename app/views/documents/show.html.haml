@@ -1,0 +1,19 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.document.student') + ':'
+  = @document.student.ln + ' ' + @document.student.fn + ' ' + @document.student.sn
+%p
+  %b= t('activerecord.attributes.document.doc_type') + ':'
+  = @document.doc_type
+%p
+  %b= t('activerecord.attributes.document.doc_number') + ':'
+  = @document.doc_number
+%p
+  %b= t('activerecord.attributes.document.exp_date') + ':'
+  = @document.exp_date
+
+= link_to t('button.edit'), edit_document_path(@document), class: "btn btn-warning"
+\|
+= link_to t('button.back'), documents_path, class: "btn btn-danger"

@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t("activerecord.attributes.country.short_name") + ':'
+  = @country.short_name
+%p
+  %b= t("activerecord.attributes.country.long_name") + ':'
+  = @country.long_name
+%p
+  %b= t("activerecord.attributes.country.alpha2") + ':'
+  = @country.alpha2
+%p
+  %b= t("activerecord.attributes.country.alpha3") + ':'
+  = @country.alpha3
+%p
+  %b= t("activerecord.attributes.country.country_code") + ':'
+  = @country.country_code
+
+= link_to t('button.edit'), edit_country_path(@country), class: "btn btn-warning"
+\|
+= link_to t('button.back'), countries_path, class: "btn btn-danger"

@@ -1,0 +1,25 @@
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+= link_to t('button.new.referral'), new_referral_path, class: "btn btn-success"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t('activerecord.attributes.referral.student')
+      %th= t('activerecord.attributes.referral.referral_number')
+      %th= t('activerecord.attributes.referral.date')
+      %th= t('activerecord.attributes.referral.speciality')
+      %th= t('activerecord.attributes.referral.payment')
+      %th
+      %th
+      %th
+
+  %tbody
+    - @referrals.each do |referral|
+      %tr
+        %td= referral.student.ln + ' ' + referral.student.fn + ' ' + referral.student.sn
+        %td= referral.referral_number
+        %td= referral.date
+        %td= referral.speciality.speciality_code + ' ' + referral.speciality.name
+        %td= referral.payment
+        %td= link_to t('button.show'), referral, class: "btn btn-info"
+        %td= link_to t('button.edit'), edit_referral_path(referral), class: "btn btn-warning"
+        %td= link_to t('button.destroy'), referral, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

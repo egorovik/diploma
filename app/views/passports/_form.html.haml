@@ -1,0 +1,16 @@
+= form_for @passport do |f|
+  - if @passport.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@passport.errors.count, "error")} prohibited this passport from being saved:"
+      %ul
+        - @passport.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :serial
+    = f.text_field :serial
+  .field
+    = f.label :number
+    = f.text_field :number
+  .actions
+    = f.submit t('button.save'), class: "btn btn-success"

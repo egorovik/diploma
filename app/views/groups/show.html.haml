@@ -1,0 +1,13 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.group.name') + ':'
+  = @group.name
+%p
+  %b= t('activerecord.attributes.group.speciality') + ':'
+  = @group.speciality.speciality_code + " " + @group.speciality.name
+
+= link_to t('button.edit'), edit_group_path(@group), class: "btn btn-warning"
+\|
+= link_to t('button.back'), groups_path, class: "btn btn-danger"

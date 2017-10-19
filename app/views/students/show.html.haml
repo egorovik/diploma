@@ -1,0 +1,46 @@
+%p#notice= notice
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.student.passport') + ':'
+  = @student.passport.serial + ' ' + @student.passport.number
+%p
+  %b= t('activerecord.attributes.student.ln') + ':'
+  = @student.ln
+%p
+  %b= t('activerecord.attributes.student.fn') + ':'
+  = @student.fn
+%p
+  %b= t('activerecord.attributes.student.sn') + ':'
+  = @student.sn
+%p
+  %b= t('activerecord.attributes.student.sex') + ':'
+  = @student.sex
+%p
+  %b= t('activerecord.attributes.student.bday') + ':'
+  = @student.bday
+%p
+  %b= t('activerecord.attributes.student.country') + ':'
+  = @student.country.short_name
+%p
+  %b= t('activerecord.attributes.student.nationality') + ':'
+  = @student.nationality.name
+%p
+  %b= t('activerecord.attributes.student.religion') + ':'
+  = @student.religion.name
+%p
+  %b= t('activerecord.attributes.student.start_date') + ':'
+  = @student.start_date
+%p
+  %b= t('activerecord.attributes.student.finish_date') + ':'
+  = @student.finish_date
+%p
+  %b= t('activerecord.attributes.student.group') + ':'
+  = @student.group.name
+%p
+  %b= t('activerecord.attributes.student.room') + ':'
+  = @student.room.room_number
+
+= link_to t('button.edit'), edit_student_path(@student), class: "btn btn-warning"
+\|
+= link_to t('button.back'), students_path, class: "btn btn-danger"

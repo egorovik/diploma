@@ -1,0 +1,34 @@
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+= link_to t('button.new.speciality'), new_speciality_path, class: "btn btn-success"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t('activerecord.attributes.speciality.section_number')
+      %th= t('activerecord.attributes.speciality.section_name')
+      %th= t('activerecord.attributes.speciality.group_number')
+      %th= t('activerecord.attributes.speciality.group_name')
+      %th= t('activerecord.attributes.speciality.subgroup_number')
+      %th= t('activerecord.attributes.speciality.subgroup_name')
+      %th= t('activerecord.attributes.speciality.speciality_code')
+      %th= t('activerecord.attributes.speciality.name')
+      %th= t('activerecord.attributes.speciality.edu_prog_code')
+      %th= t('activerecord.attributes.speciality.edu_area_code')
+      %th
+
+  %tbody
+    - @specialities.each do |speciality|
+      %tr
+        %td= speciality.section_number
+        %td= speciality.section_name
+        %td= speciality.group_number
+        %td= speciality.group_name
+        %td= speciality.subgroup_number
+        %td= speciality.subgroup_name
+        %td= speciality.speciality_code
+        %td= speciality.name
+        %td= speciality.edu_prog_code
+        %td= speciality.edu_area_code
+        %td
+          %p= link_to t('button.show'), speciality, class: "btn btn-info"
+          %p= link_to t('button.edit'), edit_speciality_path(speciality), class: "btn btn-warning"
+          %p= link_to t('button.destroy'), speciality, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

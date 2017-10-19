@@ -1,0 +1,7 @@
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+= render 'form'
+
+= link_to t('button.show'), @document, class: "btn btn-info"
+\|
+= link_to t('button.back'), documents_path, class: "btn btn-danger"

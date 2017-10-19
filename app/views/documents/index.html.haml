@@ -1,0 +1,23 @@
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+= link_to t('button.new.document'), new_document_path, class: "btn btn-success"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t('activerecord.attributes.document.student')
+      %th= t('activerecord.attributes.document.doc_type')
+      %th= t('activerecord.attributes.document.doc_number')
+      %th= t('activerecord.attributes.document.exp_date')
+      %th
+      %th
+      %th
+
+  %tbody
+    - @documents.each do |document|
+      %tr
+        %td= document.student.ln + ' ' + document.student.fn + ' ' + document.student.sn
+        %td= document.doc_type
+        %td= document.doc_number
+        %td= document.exp_date
+        %td= link_to t('button.show'), document, class: "btn btn-info"
+        %td= link_to t('button.edit'), edit_document_path(document), class: "btn btn-warning"
+        %td= link_to t('button.destroy'), document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
