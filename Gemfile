@@ -51,4 +51,4 @@ gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'paperclip'
 gem 'puma'
-
+gem 'devise'
