@@ -1,0 +1,22 @@
+= form_for @education do |f|
+  - if @education.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@education.errors.count, "error")} prohibited this education from being saved:"
+      %ul
+        - @education.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :student
+    = f.text_field :student
+  .field
+    = f.label :edu_level
+    = f.text_field :edu_level
+  .field
+    = f.label :language
+    = f.text_field :language
+  .field
+    = f.label :translation
+    = f.text_area :translation
+  .actions
+    = f.submit t('button.save'), class: "btn btn-success"

@@ -6,18 +6,24 @@ def rand_date
 end
 
 def seed_rest_db
-  countries_size = 251
-  specialities_size = 1231
-  print "Seeding remain db..."
+  countries_size = Country.all.count
+  specialities_size = Speciality.all.count
+  print "Добавление национальностей..."
   for i in 0...10
     Nationality.create!(name: "Национальность #{i+1}")
   end
+  puts " готово (#{Nationality.all.count})"
+  print "Добавление религий..."
   for i in 0...10
     Religion.create!(name: "Религия #{i+1}")
   end
+  puts " готово (#{Religion.all.count})"
+  print "Добавление удостоверений личности..."
   10.times do
     Passport.create!(serial: (rand(100)+1).to_s, number: (rand(1000000)+1000).to_s)
   end
+  puts " готово (#{Passport.all.count})"
+  print "Добавление национальных праздников..."
   for i in 0...10
     NationalHoliday.create!(
       name: "Национальный праздник #{i+1}",
@@ -25,6 +31,8 @@ def seed_rest_db
       nationality_id: i+1
     )
   end
+  puts " готово (#{NationalHoliday.all.count})"
+  print "Добавление религиозных праздников..."
   for i in 0...10
     ReligionHoliday.create!(
       name: "Религиозный праздник #{i+1}",
@@ -32,12 +40,16 @@ def seed_rest_db
       religion_id: i+1
     )
   end
+  puts " готово (#{ReligionHoliday.all.count})"
+  print "Добавление учебных групп..."
   for i in 0...10
     Group.create!(
       name: "Учебная группа #{i+1}",
       speciality_id: rand(specialities_size) + 1
     )
   end
+  puts " готово (#{Group.all.count})"
+  print "Добавление общежитий..."
   for i in 0...10
     Hostel.create!(
       name: "Общежитие #{i+1}",
@@ -45,6 +57,8 @@ def seed_rest_db
       floors_count: rand(5)+1
     )
   end
+  puts " готово (#{Hostel.all.count})"
+  print "Добавление этажей..."
   for i in 0...10
     for j in 0...Hostel.where(id: i+1).first.floors_count
       Floor.create!(
@@ -54,6 +68,8 @@ def seed_rest_db
       )
     end
   end
+  puts " готово (#{Floor.all.count})"
+  print "Добавление комнат..."
   for i in 1..Floor.all.count
     for j in 1..Floor.where(id: i).first.rooms_count
       Room.create!(
@@ -63,6 +79,8 @@ def seed_rest_db
       )
     end
   end
+  puts " готово (#{Room.all.count})"
+  print "Добавление студентов..."
   for i in 0...10
     Student.create!(
       passport_id: i+1,
@@ -80,6 +98,8 @@ def seed_rest_db
       room_id: rand(Room.all.count) + 1
     )
   end
+  puts " готово (#{Student.all.count})"
+  print "Добавление направлений на обучение..."
   for i in 0...10
     Referral.create!(
       student_id: i+1,
@@ -89,6 +109,8 @@ def seed_rest_db
       payment: rand(1000)+500
     )
   end
+  puts " готово (#{Referral.all.count})"
+  print "Добавление документов..."
   for i in 0...10
     Document.create!(
       student_id: i+1,
@@ -97,10 +119,21 @@ def seed_rest_db
       exp_date: rand_date
     )
   end
-  puts " done"
+  puts " готово (#{Document.all.count})"
+  print "Добавление документов об образовании..."
+  for i in 0...10
+    Education.create!(
+      student_id: i+1,
+      edu_level: "Уровень образования #{i+1}",
+      language: "Язык #{i+1}",
+      translation: "Перевод #{i+1}"
+    )
+  end
+  puts " готово (#{Education.all.count})"
 end
+
 file = File.open("oksm", "r")
-print "Adding countries... "
+print "Добавление стран по классификатору... "
 while true
   arr = []
   begin
@@ -112,11 +145,11 @@ while true
     break
   end
 end
-puts "done"
+puts "готово (#{Country.all.count})"
 file.close
 
 file = File.open("okso", "r")
-print "Adding specialities... "
+print "Добавление специальностей по классификатору... "
 section = ""
 section_number = 0
 group = ""
@@ -161,7 +194,7 @@ while true
     break
   end
 end
-puts "done"
+puts "готово (#{Speciality.all.count})"
 file.close
 
 seed_rest_db

@@ -1,0 +1,18 @@
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+
+%p
+  %b= t('activerecord.attributes.education.student') + ':'
+  = "#{@education.student.ln} #{@education.student.fn} #{@education.student.sn}"
+%p
+  %b= t('activerecord.attributes.education.edu_level') + ':'
+  = @education.edu_level
+%p
+  %b= t('activerecord.attributes.education.language') + ':'
+  = @education.language
+%p
+  %b= t('activerecord.attributes.education.translation') + ':'
+  = @education.translation
+
+= link_to t('button.edit'), edit_education_path(@education), class: "btn btn-warning"
+\|
+= link_to t('button.back'), educations_path, class: "btn btn-danger"

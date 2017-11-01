@@ -71,6 +71,11 @@
         = link_to t('title.documents'), documents_path, class: "btn btn-primary wide"
       %td.home-td
         = "Количество записей: #{Document.all.count}"
+    %tr.home-tr
+      %td
+        = link_to t('title.educations'), educations_path, class: "btn btn-primary wide"
+      %td.home-td
+        = "Количество записей: #{Education.all.count}"
 
 
 

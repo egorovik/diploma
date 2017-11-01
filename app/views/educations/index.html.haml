@@ -1,0 +1,23 @@
+%h1= t("controller.#{params['controller']}.#{params["action"]}")
+= link_to t('button.new.education'), new_education_path, class: "btn btn-success"
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th= t('activerecord.attributes.education.student')
+      %th= t('activerecord.attributes.education.edu_level')
+      %th= t('activerecord.attributes.education.language')
+      %th= t('activerecord.attributes.education.translation')
+      %th
+      %th
+      %th
+
+  %tbody
+    - @educations.each do |education|
+      %tr
+        %td= "#{education.student.ln} #{education.student.fn} #{education.student.sn}"
+        %td= education.edu_level
+        %td= education.language
+        %td= education.translation
+        %td= link_to t('button.show'), education, class: "btn btn-info"
+        %td= link_to t('button.edit'), edit_education_path(education), class: "btn btn-warning"
+        %td= link_to t('button.destroy'), education, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

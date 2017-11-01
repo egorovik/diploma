@@ -11,10 +11,11 @@ ru:
     rooms: Комнаты
     floors: Этажи
     hostels: Общежития
-    passports: Паспорта
+    passports: Удостоверения личности
     national_holidays: Национальные праздники
     religion_holidays: Религиозные праздники
     documents: Документы
+    educations: Документы об образовании
     devise/sessions: Войти в систему
     log_in: Вход в систему
     sign_up: Регистрация в системе
@@ -42,10 +43,10 @@ ru:
       show: Религия
       index: Религии
     passports:
-      new: Добавить паспорт
-      edit: Редактирование паспорта
-      show: Паспорт
-      index: Паспорта
+      new: Добавить удостоверение личности
+      edit: Редактирование удостоверения личности
+      show: Удостоверение личности
+      index: Удостоверения личности
     national_holidays:
       new: Добавление национального праздника
       edit: Редактирование национального праздника
@@ -91,6 +92,11 @@ ru:
       edit: Редактирование документа
       show: Документ
       index: Документы
+    educations:
+      new: Добавление документа об образовании
+      edit: Редактирование документа об образовании
+      show: Документ об образовании
+      index: Документы об образовании
     welcome:
       index: Главная
     devise/sessions:
@@ -112,7 +118,7 @@ ru:
       speciality: Специальность
       nationality: Национальность
       religion: Религия
-      passport: Паспорт
+      passport: Удостоверение личности
       national_holiday: Национальный праздник
       religion_holiday: Религиозный празник
       group: Учебная группа
@@ -122,6 +128,7 @@ ru:
       student: Студент
       referral: Напрвление на обучение
       document: Документ
+      education: Документ об образовании
       user: Пользователь
     attributes:
       country:
@@ -172,7 +179,7 @@ ru:
         place_count: Количество мест
         floor: Этаж
       student:
-        passport: Паспорт
+        passport: Удостоверение личности
         ln: Фамилия
         fn: Имя
         sn: Отчество
@@ -196,6 +203,11 @@ ru:
         doc_type: Тип документа
         doc_number: Номер документа
         exp_date: Окончание срока действия
+      education:
+        student: Студент
+        edu_level: Тип документа
+        language: Язык
+        translation: Перевод
       user:
         email: Электронный адрес
         password: Пароль
@@ -222,7 +234,7 @@ ru:
       speciality: Добавить специальность
       nationality: Добавить национальность
       religion: Добавить религию
-      passport: Добавить паспорт
+      passport: Добавить удостоверение личности
       national_holiday: Добавить национальный праздник
       religion_holiday: Добавить религиозный праздник
       group: Добавить учебную группу
@@ -232,6 +244,7 @@ ru:
       student: Добавить студента
       referral: Добавить направление на обучение
       document: Добавить документ
+      education: Добавить документ об образовании
   devise:
     passwords:
       user:

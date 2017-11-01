@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020083237) do
+ActiveRecord::Schema.define(version: 20171031062700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20171020083237) do
 
   add_index "documents", ["doc_number", "exp_date"], name: "index_documents_on_doc_number_and_exp_date", unique: true, using: :btree
   add_index "documents", ["student_id"], name: "index_documents_on_student_id", using: :btree
+
+  create_table "educations", force: :cascade do |t|
+    t.integer  "student_id",  null: false
+    t.string   "edu_level",   null: false
+    t.string   "language",    null: false
+    t.text     "translation", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "educations", ["student_id"], name: "index_educations_on_student_id", using: :btree
 
   create_table "floors", force: :cascade do |t|
     t.integer  "hostel_id",    null: false
@@ -201,6 +212,7 @@ ActiveRecord::Schema.define(version: 20171020083237) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "documents", "students"
+  add_foreign_key "educations", "students"
   add_foreign_key "floors", "hostels"
   add_foreign_key "groups", "specialities"
   add_foreign_key "national_holidays", "nationalities"

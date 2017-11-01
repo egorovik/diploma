@@ -7,6 +7,7 @@ class Student < ActiveRecord::Base
   belongs_to :room
   belongs_to :referral
   has_many :documents
+  has_many :educations
   
   validates :ln, presence: true
   validates :fn, presence: true
