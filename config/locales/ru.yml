@@ -155,55 +155,74 @@ ru:
       passport:
         serial: Серия
         number: Номер
+        passport_type: Тип
+        translation: Перевод
+        language: Язык
       national_holiday:
         name: Название
         date: Дата
         nationality: Национальность
+        nationality_id: Национальность
       religion_holiday:
         name: Название
         date: Дата
         religion: Религия
+        religion_id: Религия
       group:
         name: Название
         speciality: Специальность
+        speciality_id: Специальность
       hostel:
         name: Название
         address: Адрес
         floors_count: Количество этажей
       floor:
         hostel: Общежитие
+        hostel_id: Общежитие
         floor_number: Номер этажа
         rooms_count: Количество комнат
       room:
         room_number: Номер комнаты
         place_count: Количество мест
         floor: Этаж
+        floor_id: Этаж
       student:
         passport: Удостоверение личности
+        passport_id: Удостоверение личности
         ln: Фамилия
         fn: Имя
         sn: Отчество
         sex: Пол
         bday: Дата рождения
         country: Страна
+        country_id: Страна
         nationality: Национальность
+        nationality_id: Национальность
         religion: Религия
+        religion_id: Религия
         start_date: Начало периода пребывания в РФ
         finish_date: Конец периода пребывания в РФ
         group: Учебная группа
+        group_id: Учебная группа
         room: Комната
+        room_id: Комната
       referral:
         student: Студент
+        student_id: Студент
         referral_number: Номер направления
         date: Дата
         speciality: Специальность
         payment: Оплата
       document:
         student: Студент
+        student_id: Студент
         doc_type: Тип документа
         doc_number: Номер документа
         exp_date: Окончание срока действия
+        translation: Перевод
+        language: Язык
       education:
+        student_id: Студент
         student: Студент
         edu_level: Тип документа
         language: Язык

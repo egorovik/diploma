@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031062700) do
+ActiveRecord::Schema.define(version: 20171102093642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,14 @@ ActiveRecord::Schema.define(version: 20171031062700) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.integer  "student_id", null: false
-    t.string   "doc_type",   null: false
-    t.string   "doc_number", null: false
-    t.date     "exp_date",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "student_id",  null: false
+    t.string   "doc_type",    null: false
+    t.string   "doc_number",  null: false
+    t.date     "exp_date",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "translation"
+    t.string   "language",    null: false
   end
 
   add_index "documents", ["doc_number", "exp_date"], name: "index_documents_on_doc_number_and_exp_date", unique: true, using: :btree
@@ -42,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171031062700) do
     t.integer  "student_id",  null: false
     t.string   "edu_level",   null: false
     t.string   "language",    null: false
-    t.text     "translation", null: false
+    t.text     "translation"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -100,10 +102,13 @@ ActiveRecord::Schema.define(version: 20171031062700) do
   add_index "nationalities", ["name"], name: "index_nationalities_on_name", unique: true, using: :btree
 
   create_table "passports", force: :cascade do |t|
-    t.string   "serial",     null: false
-    t.string   "number",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "serial",        null: false
+    t.string   "number",        null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "passport_type", null: false
+    t.text     "translation"
+    t.string   "language",      null: false
   end
 
   add_index "passports", ["serial", "number"], name: "index_passports_on_serial_and_number", unique: true, using: :btree
@@ -113,7 +118,7 @@ ActiveRecord::Schema.define(version: 20171031062700) do
     t.string   "referral_number", null: false
     t.date     "date",            null: false
     t.integer  "speciality_id",   null: false
-    t.integer  "payment",         null: false
+    t.float    "payment",         null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

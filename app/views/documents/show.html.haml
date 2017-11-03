@@ -12,6 +12,12 @@
 %p
   %b= t('activerecord.attributes.document.exp_date') + ':'
   = @document.exp_date
+%p
+  %b= t('activerecord.attributes.document.language') + ':'
+  = @document.language
+%p
+  %b= t('activerecord.attributes.document.translation') + ':'
+  = @document.translation
 
 = link_to t('button.edit'), edit_document_path(@document), class: "btn btn-warning"
 \|

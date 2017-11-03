@@ -3,7 +3,9 @@ class CreatePassports < ActiveRecord::Migration
     create_table :passports do |t|
       t.string :serial, null: false
       t.string :number, null: false
-      #type
+      #passport_type
+      #translation
+      #language
       
       t.index [:serial, :number], unique: true
       t.timestamps null: false

@@ -7,6 +7,8 @@
       %th= t('activerecord.attributes.document.doc_type')
       %th= t('activerecord.attributes.document.doc_number')
       %th= t('activerecord.attributes.document.exp_date')
+      %th= t('activerecord.attributes.document.language')
+      %th= t('activerecord.attributes.document.translation')
       %th
       %th
       %th
@@ -18,6 +20,8 @@
         %td= document.doc_type
         %td= document.doc_number
         %td= document.exp_date
+        %td= document.translation
+        %td= document.language
         %td= link_to t('button.show'), document, class: "btn btn-info"
         %td= link_to t('button.edit'), edit_document_path(document), class: "btn btn-warning"
         %td= link_to t('button.destroy'), document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

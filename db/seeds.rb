@@ -19,8 +19,14 @@ def seed_rest_db
   end
   puts " готово (#{Religion.all.count})"
   print "Добавление удостоверений личности..."
-  10.times do
-    Passport.create!(serial: (rand(100)+1).to_s, number: (rand(1000000)+1000).to_s)
+  for i in 0...10
+    Passport.create!(
+      serial: (rand(100)+1).to_s,
+      number: (rand(1000000)+1000).to_s,
+      passport_type: "Тип #{i+1}",
+      translation: "Перевод #{i+1}",
+      language: "Язык #{i+1}"
+    )
   end
   puts " готово (#{Passport.all.count})"
   print "Добавление национальных праздников..."
@@ -116,7 +122,9 @@ def seed_rest_db
       student_id: i+1,
       doc_type: "Тип #{i+1}",
       doc_number: "Номер #{i+1}",
-      exp_date: rand_date
+      exp_date: rand_date,
+      translation: "Перевод #{i+1}",
+      language: "Язык #{i+1}"
     )
   end
   puts " готово (#{Document.all.count})"

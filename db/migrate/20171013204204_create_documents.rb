@@ -5,6 +5,8 @@ class CreateDocuments < ActiveRecord::Migration
       t.string :doc_type, null: false
       t.string :doc_number, null: false
       t.date :exp_date, null: false
+      #translation
+      #language
       
       t.index [:doc_number, :exp_date], unique: true
 

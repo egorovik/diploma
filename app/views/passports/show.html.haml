@@ -6,6 +6,15 @@
 %p
   %b= t('activerecord.attributes.passport.number') + ':'
   = @passport.number
+%p
+  %b= t('activerecord.attributes.passport.passport_type') + ':'
+  = @passport.passport_type
+%p
+  %b= t('activerecord.attributes.passport.language') + ':'
+  = @passport.language
+%p
+  %b= t('activerecord.attributes.passport.translation') + ':'
+  = @passport.translation
 
 = link_to t('button.edit'), edit_passport_path(@passport), class: "btn btn-warning"
 \|

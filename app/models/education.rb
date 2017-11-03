@@ -4,5 +4,4 @@ class Education < ActiveRecord::Base
   validates :student, presence: true
   validates :edu_level, presence: true
   validates :language, presence: true
-  validates :translation, presence: true
 end

@@ -3,4 +3,5 @@ class Passport < ActiveRecord::Base
   
   validates :serial, presence: true
   validates :number, presence: true, uniqueness: {scope: :serial}
+  validates :language, presence: true
 end

@@ -5,7 +5,8 @@ class CreateReferrals < ActiveRecord::Migration
       t.string :referral_number, null: false
       t.date :date, null: false
       t.references :speciality, index: true, foreign_key: true, null: false
-      t.integer :payment, null: false
+      t.float :payment, null: false, scale: 2
+      
       
       t.index [:referral_number, :date, :speciality_id], unique: true
 
