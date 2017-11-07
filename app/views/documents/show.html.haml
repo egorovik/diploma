@@ -1,24 +1,20 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+%h1= "#{@document.doc_type} #{@document.doc_number}"
 
-%p
-  %b= t('activerecord.attributes.document.student') + ':'
-  = @document.student.ln + ' ' + @document.student.fn + ' ' + @document.student.sn
-%p
-  %b= t('activerecord.attributes.document.doc_type') + ':'
-  = @document.doc_type
-%p
-  %b= t('activerecord.attributes.document.doc_number') + ':'
-  = @document.doc_number
-%p
-  %b= t('activerecord.attributes.document.exp_date') + ':'
-  = @document.exp_date
-%p
-  %b= t('activerecord.attributes.document.language') + ':'
-  = @document.language
-%p
-  %b= t('activerecord.attributes.document.translation') + ':'
-  = @document.translation
-
-= link_to t('button.edit'), edit_document_path(@document), class: "btn btn-warning"
-\|
-= link_to t('button.back'), documents_path, class: "btn btn-danger"
+%table.show-table.table-bordered
+  %tr
+    %td.head= t('activerecord.attributes.document.student')
+    %td= link_to "#{@document.student.ln} #{@document.student.fn} #{@document.student.sn}", @document.student
+  %tr
+    %td.head= t('activerecord.attributes.document.exp_date')
+    %td= @document.exp_date
+  %tr
+    %td.head= t('activerecord.attributes.document.language')
+    %td= @document.language
+  %tr
+    %td.head= t('activerecord.attributes.document.translation')
+    %td= @document.translation
+  
+.buttons
+  .item= link_to t('button.edit'), edit_document_path(@document), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), documents_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

@@ -1,12 +1,21 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+- a = @group.students
+%h1= @group.name
 
-%p
-  %b= t('activerecord.attributes.group.name') + ':'
-  = @group.name
-%p
-  %b= t('activerecord.attributes.group.speciality') + ':'
-  = @group.speciality.speciality_code + " " + @group.speciality.name
+%table.show-table.table-bordered
+  %tr
+    %td.head= t('activerecord.attributes.group.speciality')
+    %td= link_to @group.speciality.speciality_code + " " + @group.speciality.name, @group.speciality
 
-= link_to t('button.edit'), edit_group_path(@group), class: "btn btn-warning"
-\|
-= link_to t('button.back'), groups_path, class: "btn btn-danger"
+%div{"style" => "margin-top: 5px", "class" => "list-group block"}
+  %ul.list-group
+    %li.list-group-item.active
+      Студенты
+      %span.badge
+        = a.count
+    - a.each do |s|
+      %li.list-group-item= link_to "#{s.ln} #{s.fn} #{s.sn}", s
+
+.buttons
+  .item= link_to t('button.edit'), edit_group_path(@group), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), groups_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

@@ -1,6 +1,6 @@
 %h1= t("controller.#{params['controller']}.#{params["action"]}")
 = link_to t('button.new.student'), new_student_path, class: "btn btn-success"
-%table.table.table-striped
+%table.table.table-striped.table-condensed.my-table-hover
   %thead
     %tr
       %th= t('activerecord.attributes.student.passport')
@@ -17,12 +17,10 @@
       %th= t('activerecord.attributes.student.group')
       %th= t('activerecord.attributes.student.room')
       %th
-      %th
-      %th
 
   %tbody
     - @students.each do |student|
-      %tr
+      %tr{"onclick" => "location.href='#{params['controller']}/#{student.id}'"}
         %td= student.passport.serial + ' ' + student.passport.number
         %td= student.ln
         %td= student.fn
@@ -36,7 +34,5 @@
         %td= student.finish_date
         %td= student.group.name
         %td= student.room.room_number
-        %td= link_to t('button.show'), student, class: "btn btn-info"
-        %td= link_to t('button.edit'), edit_student_path(student), class: "btn btn-warning"
         %td= link_to t('button.destroy'), student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 

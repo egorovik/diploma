@@ -6,14 +6,14 @@
         - @floor.errors.full_messages.each do |message|
           %li= message
 
-  .field
+  .form-group.half-wide
     = f.label :hostel_id
-    = f.text_field :hostel_id
-  .field
+    = f.text_field :hostel_id, class: "form-control"
+  .form-group.half-wide
     = f.label :floor_number
-    = f.number_field :floor_number
-  .field
+    = f.number_field :floor_number, class: "form-control"
+  .form-group.half-wide
     = f.label :rooms_count
-    = f.number_field :rooms_count
-  .actions
+    = f.number_field :rooms_count, class: "form-control"
+  .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

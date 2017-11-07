@@ -2,4 +2,6 @@
 
 = render 'form'
 
-= link_to t('button.back'), hostels_path, class: "btn btn-danger-my-outline"
+.buttons
+  .item= link_to t("button.to.#{params['controller']}"), hostels_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

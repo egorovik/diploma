@@ -6,17 +6,17 @@
         - @education.errors.full_messages.each do |message|
           %li= message
 
-  .field
+  .form-group.half-wide
     = f.label :student_id
-    = f.text_field :student_id
-  .field
+    = f.text_field :student_id, class: "form-control"
+  .form-group.half-wide
     = f.label :edu_level
-    = f.text_field :edu_level
-  .field
+    = f.text_field :edu_level, class: "form-control"
+  .form-group.half-wide
     = f.label :language
-    = f.text_field :language
-  .field
+    = f.text_field :language, class: "form-control"
+  .form-group.half-wide
     = f.label :translation
-    = f.text_area :translation
-  .actions
+    = f.text_area :translation, class: "form-control"
+  .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

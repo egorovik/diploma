@@ -6,8 +6,8 @@
         - @religion.errors.full_messages.each do |message|
           %li= message
 
-  .field
+  .form-group.half-wide
     = f.label :name
-    = f.text_field :name
-  .actions
+    = f.text_field :name, class: "form-control"
+  .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

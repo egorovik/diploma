@@ -1,45 +1,48 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+- a = @student.documents
+%h1= "#{@student.ln} #{@student.fn} #{@student.sn}"
 
-%p
-  %b= t('activerecord.attributes.student.passport') + ':'
-  = @student.passport.serial + ' ' + @student.passport.number
-%p
-  %b= t('activerecord.attributes.student.ln') + ':'
-  = @student.ln
-%p
-  %b= t('activerecord.attributes.student.fn') + ':'
-  = @student.fn
-%p
-  %b= t('activerecord.attributes.student.sn') + ':'
-  = @student.sn
-%p
-  %b= t('activerecord.attributes.student.sex') + ':'
-  = @student.sex
-%p
-  %b= t('activerecord.attributes.student.bday') + ':'
-  = @student.bday
-%p
-  %b= t('activerecord.attributes.student.country') + ':'
-  = @student.country.short_name
-%p
-  %b= t('activerecord.attributes.student.nationality') + ':'
-  = @student.nationality.name
-%p
-  %b= t('activerecord.attributes.student.religion') + ':'
-  = @student.religion.name
-%p
-  %b= t('activerecord.attributes.student.start_date') + ':'
-  = @student.start_date
-%p
-  %b= t('activerecord.attributes.student.finish_date') + ':'
-  = @student.finish_date
-%p
-  %b= t('activerecord.attributes.student.group') + ':'
-  = @student.group.name
-%p
-  %b= t('activerecord.attributes.student.room') + ':'
-  = @student.room.room_number
+%table.show-table.table-bordered
+  %tr
+    %td.head= t('activerecord.attributes.student.passport')
+    %td= link_to "#{@student.passport.serial} #{@student.passport.number}", @student.passport
+  %tr
+    %td.head= t('activerecord.attributes.student.sex')
+    %td= @student.sex
+  %tr
+    %td.head= t('activerecord.attributes.student.bday')
+    %td= @student.bday
+  %tr
+    %td.head= t('activerecord.attributes.student.country')
+    %td= link_to @student.country.short_name, @student.country
+  %tr
+    %td.head= t('activerecord.attributes.student.nationality')
+    %td= link_to @student.nationality.name, @student.nationality
+  %tr
+    %td.head= t('activerecord.attributes.student.religion')
+    %td= link_to @student.religion.name, @student.religion
+  %tr
+    %td.head= t('activerecord.attributes.student.start_date')
+    %td= @student.start_date
+  %tr
+    %td.head= t('activerecord.attributes.student.finish_date')
+    %td= @student.finish_date
+  %tr
+    %td.head= t('activerecord.attributes.student.group')
+    %td= link_to @student.group.name, @student.group
+  %tr
+    %td.head= t('activerecord.attributes.student.room')
+    %td= link_to @student.room.room_number, @student.room
 
-= link_to t('button.edit'), edit_student_path(@student), class: "btn btn-warning"
-\|
-= link_to t('button.back'), students_path, class: "btn btn-danger"
+%div{"style" => "margin-top: 5px", "class" => "list-group block"}
+  %ul.list-group
+    %li.list-group-item.active
+      Документы
+      %span.badge
+        = a.count
+    - a.each do |s|
+      %li.list-group-item= link_to "#{s.doc_type} #{s.doc_number}", s
+
+.buttons
+  .item= link_to t('button.edit'), edit_student_path(@student), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), students_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

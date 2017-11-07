@@ -1,15 +1,21 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+- a = @floor.rooms
+%h1= "#{@floor.hostel.name}. Этаж #{@floor.floor_number}"
 
-%p
-  %b= t('activerecord.attributes.floor.hostel') + ':'
-  = @floor.hostel.name
-%p
-  %b= t('activerecord.attributes.floor.floor_number') + ':'
-  = @floor.floor_number
-%p
-  %b= t('activerecord.attributes.floor.rooms_count') + ':'
-  = @floor.rooms_count
+%table.show-table.table-bordered
+  %tr
+    %td.head= t("activerecord.attributes.floor.rooms_count")
+    %td= @floor.rooms_count
 
-= link_to t('button.edit'), edit_floor_path(@floor), class: "btn btn-warning"
-\|
-= link_to t('button.back'), floors_path, class: "btn btn-danger"
+%div{"style" => "margin-top: 5px", "class" => "list-group block"}
+  %ul.list-group
+    %li.list-group-item.active
+      Комнаты
+      %span.badge
+        = a.count
+    - a.each do |s|
+      %li.list-group-item= link_to "#{s.room_number}", s
+
+.buttons
+  .item= link_to t('button.edit'), edit_floor_path(@floor), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), floors_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

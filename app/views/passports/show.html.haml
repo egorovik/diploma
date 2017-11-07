@@ -1,21 +1,20 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+%h1= @passport.passport_type
 
-%p
-  %b= t('activerecord.attributes.passport.serial') + ':'
-  = @passport.serial
-%p
-  %b= t('activerecord.attributes.passport.number') + ':'
-  = @passport.number
-%p
-  %b= t('activerecord.attributes.passport.passport_type') + ':'
-  = @passport.passport_type
-%p
-  %b= t('activerecord.attributes.passport.language') + ':'
-  = @passport.language
-%p
-  %b= t('activerecord.attributes.passport.translation') + ':'
-  = @passport.translation
+%table.show-table.table-bordered
+  %tr
+    %td.head= t("activerecord.attributes.passport.serial")
+    %td= @passport.serial
+  %tr
+    %td.head= t("activerecord.attributes.passport.number")
+    %td= @passport.number
+  %tr
+    %td.head= t("activerecord.attributes.passport.language")
+    %td= @passport.language
+  %tr
+    %td.head= t("activerecord.attributes.passport.translation")
+    %td= @passport.translation
 
-= link_to t('button.edit'), edit_passport_path(@passport), class: "btn btn-warning"
-\|
-= link_to t('button.back'), passports_path, class: "btn btn-danger"
+.buttons
+  .item= link_to t('button.edit'), edit_passport_path(@passport), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), passports_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

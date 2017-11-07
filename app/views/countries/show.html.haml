@@ -1,21 +1,16 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+%h1= @country.short_name
 
-%p
-  %b= t("activerecord.attributes.country.short_name") + ':'
-  = @country.short_name
-%p
-  %b= t("activerecord.attributes.country.long_name") + ':'
-  = @country.long_name
-%p
-  %b= t("activerecord.attributes.country.alpha2") + ':'
-  = @country.alpha2
-%p
-  %b= t("activerecord.attributes.country.alpha3") + ':'
-  = @country.alpha3
-%p
-  %b= t("activerecord.attributes.country.country_code") + ':'
-  = @country.country_code
+%table.show-table.table-bordered
+  - @country.attributes.each do |a|
+    - next if a[0] == "id"
+    - next if a[0] == "created_at"
+    - next if a[0] == "updated_at"
+    - next if a[0] == "short_name"
+    %tr
+      %td.head= t("activerecord.attributes.country.#{a[0]}")
+      %td= a[1]
 
-= link_to t('button.edit'), edit_country_path(@country), class: "btn btn-warning"
-\|
-= link_to t('button.back'), countries_path, class: "btn btn-danger"
+.buttons
+  .item= link_to t('button.edit'), edit_country_path(@country), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), countries_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

@@ -1,6 +1,6 @@
 %h1= t("controller.#{params['controller']}.#{params["action"]}")
 = link_to t('button.new.speciality'), new_speciality_path, class: "btn btn-success"
-%table.table.table-striped
+%table.table.table-striped.table-condensed.my-table-hover
   %thead
     %tr
       %th= t('activerecord.attributes.speciality.section_number')
@@ -17,7 +17,7 @@
 
   %tbody
     - @specialities.each do |speciality|
-      %tr
+      %tr{"onclick" => "location.href='#{params['controller']}/#{speciality.id}'"}
         %td= speciality.section_number
         %td= speciality.section_name
         %td= speciality.group_number
@@ -29,6 +29,4 @@
         %td= speciality.edu_prog_code
         %td= speciality.edu_area_code
         %td
-          %p= link_to t('button.show'), speciality, class: "btn btn-info"
-          %p= link_to t('button.edit'), edit_speciality_path(speciality), class: "btn btn-warning"
           %p= link_to t('button.destroy'), speciality, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

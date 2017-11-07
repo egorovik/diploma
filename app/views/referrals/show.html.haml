@@ -1,21 +1,20 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+%h1= t("controller.#{params['controller']}.#{params["action"]}") + " " + @referral.referral_number
 
-%p
-  %b= t('activerecord.attributes.referral.student') + ':'
-  = @referral.student.ln + ' ' + @referral.student.fn + ' ' + @referral.student.sn
-%p
-  %b= t('activerecord.attributes.referral.referral_number') + ':'
-  = @referral.referral_number
-%p
-  %b= t('activerecord.attributes.referral.date') + ':'
-  = @referral.date
-%p
-  %b= t('activerecord.attributes.referral.speciality') + ':'
-  = @referral.speciality.speciality_code + ' ' + @referral.speciality.name
-%p
-  %b= t('activerecord.attributes.referral.payment') + ':'
-  = @referral.payment
-
-= link_to t('button.edit'), edit_referral_path(@referral), class: "btn btn-warning"
-\|
-= link_to t('button.back'), referrals_path, class: "btn btn-danger"
+%table.show-table.table-bordered
+  %tr
+    %td.head= t('activerecord.attributes.referral.student')
+    %td= link_to "#{@referral.student.ln} #{@referral.student.fn} #{@referral.student.sn}", @referral.student
+  %tr
+    %td.head= t('activerecord.attributes.referral.date')
+    %td= @referral.date
+  %tr
+    %td.head= t('activerecord.attributes.referral.speciality')
+    %td= link_to @referral.speciality.speciality_code + ' ' + @referral.speciality.name, @referral.speciality
+  %tr
+    %td.head= t('activerecord.attributes.referral.payment')
+    %td= @referral.payment
+  
+.buttons
+  .item= link_to t('button.edit'), edit_referral_path(@referral), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), referrals_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

@@ -6,14 +6,14 @@
         - @religion_holiday.errors.full_messages.each do |message|
           %li= message
 
-  .field
+  .form-group.half-wide
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: "form-control"
+  .form-group.half-wide
     = f.label :date
-    = f.date_select :date
-  .field
+    = f.date_select :date, class: "form-control"
+  .form-group.half-wide
     = f.label :religion_id
-    = f.text_field :religion_id
-  .actions
+    = f.text_field :religion_id, class: "form-control"
+  .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

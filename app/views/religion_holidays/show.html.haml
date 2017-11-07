@@ -1,15 +1,14 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+%h1= @religion_holiday.name
 
-%p
-  %b= t('activerecord.attributes.religion_holiday.name') + ':'
-  = @religion_holiday.name
-%p
-  %b= t('activerecord.attributes.religion_holiday.date') + ':'
-  = @religion_holiday.date
-%p
-  %b= t('activerecord.attributes.religion_holiday.religion') + ':'
-  = @religion_holiday.religion.name
+%table.show-table.table-bordered
+  %tr
+    %td.head= t("activerecord.attributes..religion_holiday.date")
+    %td= @religion_holiday.date
+  %tr
+    %td.head= t("activerecord.attributes..religion_holiday.religion")
+    %td= link_to @religion_holiday.religion.name, @religion_holiday.religion
 
-= link_to t('button.edit'), edit_religion_holiday_path(@religion_holiday), class: "btn btn-warning"
-\|
-= link_to t('button.back'), religion_holidays_path, class: "btn btn-danger"
+.buttons
+  .item= link_to t('button.edit'), edit_religion_holiday_path(@religion_holiday), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), religion_holidays_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

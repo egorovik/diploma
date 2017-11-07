@@ -6,35 +6,35 @@
         - @speciality.errors.full_messages.each do |message|
           %li= message
 
-  .field
+  .form-group.half-wide
     = f.label :section_number
-    = f.number_field :section_number
-  .field
+    = f.number_field :section_number, class: "form-control"
+  .form-group.half-wide
     = f.label :section_name
-    = f.text_field :section_name
-  .field
+    = f.text_field :section_name, class: "form-control"
+  .form-group.half-wide
     = f.label :group_number
-    = f.number_field :group_number
-  .field
+    = f.number_field :group_number, class: "form-control"
+  .form-group.half-wide
     = f.label :group_name
-    = f.text_field :group_name
-  .field
+    = f.text_field :group_name, class: "form-control"
+  .form-group.half-wide
     = f.label :subgroup_number
-    = f.text_field :subgroup_number
-  .field
+    = f.text_field :subgroup_number, class: "form-control"
+  .form-group.half-wide
     = f.label :subgroup_name
-    = f.text_field :subgroup_name
-  .field
+    = f.text_field :subgroup_name, class: "form-control"
+  .form-group.half-wide
     = f.label :speciality_code
-    = f.text_field :speciality_code
-  .field
+    = f.text_field :speciality_code, class: "form-control"
+  .form-group.half-wide
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: "form-control"
+  .form-group.half-wide
     = f.label :edu_prog_code
-    = f.text_field :edu_prog_code
-  .field
+    = f.text_field :edu_prog_code, class: "form-control"
+  .form-group.half-wide
     = f.label :edu_area_code
-    = f.text_field :edu_area_code
-  .actions
+    = f.text_field :edu_area_code, class: "form-control"
+  .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

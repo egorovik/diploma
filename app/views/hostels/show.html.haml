@@ -1,15 +1,24 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+- a = @hostel.floors
+%h1= @hostel.name
 
-%p
-  %b= t('activerecord.attributes.hostel.name') + ':'
-  = @hostel.name
-%p
-  %b= t('activerecord.attributes.hostel.address') + ':'
-  = @hostel.address
-%p
-  %b= t('activerecord.attributes.hostel.floors_count') + ':'
-  = @hostel.floors_count
+%table.show-table.table-bordered
+  %tr
+    %td.head= t("activerecord.attributes.hostel.address")
+    %td= @hostel.address
+  %tr
+    %td.head= t("activerecord.attributes.hostel.floors_count")
+    %td= @hostel.floors_count
 
-= link_to t('button.edit'), edit_hostel_path(@hostel), class: "btn btn-warning"
-\|
-= link_to t('button.back'), hostels_path, class: "btn btn-danger"
+%div{"style" => "margin-top: 5px", "class" => "list-group block"}
+  %ul.list-group
+    %li.list-group-item.active
+      Этажи
+      %span.badge
+        = a.count
+    - a.each do |s|
+      %li.list-group-item= link_to "#{s.floor_number}", s
+
+.buttons
+  .item= link_to t('button.edit'), edit_hostel_path(@hostel), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), hostels_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

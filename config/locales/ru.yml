@@ -264,6 +264,22 @@ ru:
       referral: Добавить направление на обучение
       document: Добавить документ
       education: Добавить документ об образовании
+    to:
+      countries: Список стран
+      specialities: Список специальностей
+      nationalities: Список национальностей
+      religions: Список религий
+      passports: Список удостоверений личности
+      national_holidays: Список национальных праздников
+      religion_holidays: Список религиозных праздников
+      groups: Список учебных групп
+      hostels: Список общежитий
+      floors: Список этажей
+      rooms: Список комнат
+      students: Список студентов
+      referrals: Список направлений на обучение
+      documents: Список документов
+      educations: Список документов об образовании
   devise:
     passwords:
       user:

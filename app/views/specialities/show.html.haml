@@ -1,36 +1,27 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+- a = @speciality.groups
+%h1= "#{@speciality.speciality_code} #{@speciality.name}"
 
-%p
-  %b= t('activerecord.attributes.speciality.section_number') + ':'
-  = @speciality.section_number
-%p
-  %b= t('activerecord.attributes.speciality.section_name') + ':'
-  = @speciality.section_name
-%p
-  %b= t('activerecord.attributes.speciality.group_number') + ':'
-  = @speciality.group_number
-%p
-  %b= t('activerecord.attributes.speciality.group_name') + ':'
-  = @speciality.group_name
-%p
-  %b= t('activerecord.attributes.speciality.subgroup_number') + ':'
-  = @speciality.subgroup_number
-%p
-  %b= t('activerecord.attributes.speciality.subgroup_name') + ':'
-  = @speciality.subgroup_name
-%p
-  %b= t('activerecord.attributes.speciality.speciality_code') + ':'
-  = @speciality.speciality_code
-%p
-  %b= t('activerecord.attributes.speciality.name') + ':'
-  = @speciality.name
-%p
-  %b= t('activerecord.attributes.speciality.edu_prog_code') + ':'
-  = @speciality.edu_prog_code
-%p
-  %b= t('activerecord.attributes.speciality.edu_area_code') + ':'
-  = @speciality.edu_area_code
+%table.show-table.table-bordered
+  - @speciality.attributes.each do |a|
+    - next if a[0] == "id"
+    - next if a[0] == "created_at"
+    - next if a[0] == "updated_at"
+    - next if a[0] == "name"
+    - next if a[0] == "speciality_code"
+    %tr
+      %td.head= t("activerecord.attributes.speciality.#{a[0]}")
+      %td= a[1]
 
-= link_to t('button.edit'), edit_speciality_path(@speciality), class: "btn btn-warning"
-\|
-= link_to t('button.back'), specialities_path, class: "btn btn-danger"
+%div{"style" => "margin-top: 5px", "class" => "list-group block"}
+  %ul.list-group
+    %li.list-group-item.active
+      Учебные группы
+      %span.badge
+        = a.count
+    - a.each do |s|
+      %li.list-group-item= link_to "#{s.name}", s
+
+.buttons
+  .item= link_to t('button.edit'), edit_speciality_path(@speciality), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), specialities_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

@@ -6,11 +6,11 @@
         - @group.errors.full_messages.each do |message|
           %li= message
 
-  .field
+  .form-group.half-wide
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: "form-control"
+  .form-group.half-wide
     = f.label :speciality_id
-    = f.text_field :speciality_id
-  .actions
+    = f.text_field :speciality_id, class: "form-control"
+  .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

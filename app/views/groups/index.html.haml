@@ -1,19 +1,15 @@
 %h1= t("controller.#{params['controller']}.#{params["action"]}")
 = link_to t('button.new.group'), new_group_path, class: "btn btn-success"
-%table.table.table-striped
+%table.my-table.table-striped.my-table-hover
   %thead
     %tr
       %th= t('activerecord.attributes.group.name')
       %th= t('activerecord.attributes.group.speciality')
       %th
-      %th
-      %th
 
   %tbody
     - @groups.each do |group|
-      %tr
+      %tr{onclick:"location.href='#{params['controller']}/#{group.id}'"}
         %td= group.name
         %td= group.speciality.speciality_code + " " + group.speciality.name
-        %td= link_to t('button.show'), group, class: "btn btn-info"
-        %td= link_to t('button.edit'), edit_group_path(group), class: "btn btn-warning"
         %td= link_to t('button.destroy'), group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

@@ -1,9 +1,16 @@
-%h1= t("controller.#{params['controller']}.#{params["action"]}")
+- a = NationalHoliday.where(nationality_id: @nationality.id).all
+%h1= @nationality.name
 
-%p
-  %b= t('activerecord.attributes.nationality.name') + ':'
-  = @nationality.name
+.list-group.block
+  %ul.list-group
+    %li.list-group-item.active
+      Праздники
+      %span.badge
+        = a.count
+    - a.each do |s|
+      %li.list-group-item= link_to "#{s.date} - #{s.name}", s
 
-= link_to t('button.edit'), edit_nationality_path(@nationality), class: "btn btn-warning"
-\|
-= link_to t('button.back'), nationalities_path, class: "btn btn-danger"
+.buttons
+  .item= link_to t('button.edit'), edit_nationality_path(@nationality), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), nationalities_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

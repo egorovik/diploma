@@ -1,6 +1,6 @@
 %h1= t("controller.#{params['controller']}.#{params["action"]}")
 = link_to t('button.new.passport'), new_passport_path, class: "btn btn-success"
-%table.table.table-striped
+%table.my-table.table-striped.my-table-hover
   %thead
     %tr
       %th= t('activerecord.attributes.passport.serial')
@@ -9,19 +9,14 @@
       %th= t('activerecord.attributes.passport.language')
       %th= t('activerecord.attributes.passport.translation')
       %th
-      %th
-      %th
-
   %tbody
     - @passports.each do |passport|
-      %tr
+      %tr{"onclick" => "location.href='#{params['controller']}/#{passport.id}'"}
         %td= passport.serial
         %td= passport.number
         %td= passport.passport_type
         %td= passport.language
         %td= passport.translation
-        %td= link_to t('button.show'), passport, class: "btn btn-info"
-        %td= link_to t('button.edit'), edit_passport_path(passport), class: "btn btn-warning"
         %td= link_to t('button.destroy'), passport, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 
 

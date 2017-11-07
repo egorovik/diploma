@@ -6,20 +6,20 @@
         - @passport.errors.full_messages.each do |message|
           %li= message
 
-  .field
+  .form-group.half-wide
     = f.label :serial
-    = f.text_field :serial
-  .field
+    = f.text_field :serial, class: "form-control"
+  .form-group.half-wide
     = f.label :number
-    = f.text_field :number
-  .field
+    = f.text_field :number, class: "form-control"
+  .form-group.half-wide
     = f.label :passport_type
-    = f.text_field :passport_type
-  .field
+    = f.text_field :passport_type, class: "form-control"
+  .form-group.half-wide
     = f.label :language
-    = f.text_field :language
-  .field
+    = f.text_field :language, class: "form-control"
+  .form-group.half-wide
     = f.label :translation
-    = f.text_field :translation
-  .actions
+    = f.text_field :translation, class: "form-control"
+  .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

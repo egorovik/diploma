@@ -111,7 +111,7 @@ def seed_rest_db
       student_id: i+1,
       referral_number: "Номер #{i+1}",
       date: rand_date,
-      speciality_id: rand(specialities_size) + 1,
+      speciality_id: Student.find(i+1).group.speciality.id,
       payment: rand(1000)+500
     )
   end

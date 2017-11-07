@@ -1,6 +1,6 @@
 %h1= t("controller.#{params['controller']}.#{params["action"]}")
 = link_to t('button.new.country'), new_country_path, class: "btn btn-success"
-%table.table.table-striped.table-hover
+%table.table.table-striped.table-condensed.my-table-hover
   %thead
     %tr
       %th= t('activerecord.attributes.country.short_name')
@@ -9,17 +9,13 @@
       %th= t('activerecord.attributes.country.alpha3')
       %th= t('activerecord.attributes.country.country_code')
       %th
-      %th
-      %th
 
   %tbody
     - @countries.each do |country|
-      %tr
+      %tr{"onclick" => "location.href='#{params['controller']}/#{country.id}'"}
         %td= country.short_name
         %td= country.long_name
         %td= country.alpha2
         %td= country.alpha3
         %td= country.country_code
-        %td= link_to t('button.show'), country, class: "btn btn-info"
-        %td= link_to t('button.edit'), edit_country_path(country), class: "btn btn-warning"
         %td= link_to t('button.destroy'), country, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

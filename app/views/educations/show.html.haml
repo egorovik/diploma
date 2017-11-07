@@ -1,18 +1,20 @@
 %h1= t("controller.#{params['controller']}.#{params["action"]}")
 
-%p
-  %b= t('activerecord.attributes.education.student') + ':'
-  = "#{@education.student.ln} #{@education.student.fn} #{@education.student.sn}"
-%p
-  %b= t('activerecord.attributes.education.edu_level') + ':'
-  = @education.edu_level
-%p
-  %b= t('activerecord.attributes.education.language') + ':'
-  = @education.language
-%p
-  %b= t('activerecord.attributes.education.translation') + ':'
-  = @education.translation
+%table.show-table.table-bordered
+  %tr
+    %td.head= t('activerecord.attributes.education.student')
+    %td= link_to "#{@education.student.ln} #{@education.student.fn} #{@education.student.sn}", @education.student
+  %tr
+    %td.head= t('activerecord.attributes.education.edu_level')
+    %td= @education.edu_level
+  %tr
+    %td.head= t('activerecord.attributes.education.language')
+    %td= @education.language
+  %tr
+    %td.head= t('activerecord.attributes.education.translation')
+    %td= @education.translation
 
-= link_to t('button.edit'), edit_education_path(@education), class: "btn btn-warning"
-\|
-= link_to t('button.back'), educations_path, class: "btn btn-danger"
+.buttons
+  .item= link_to t('button.edit'), edit_education_path(@education), class: "btn btn-warning"
+  .item= link_to t("button.to.#{params['controller']}"), educations_path, class: "btn btn-danger"
+  .item= link_to t('button.back'), :back, class: "btn btn-danger-my-outline"

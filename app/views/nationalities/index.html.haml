@@ -1,18 +1,14 @@
 %h1= t("controller.#{params['controller']}.#{params["action"]}")
 = link_to t('button.new.nationality'), new_nationality_path, class: "btn btn-success"
-%table.table.table-striped
+%table.my-table.table-striped.table-condensed.my-table-hover
   %thead
     %tr
       %th= t('activerecord.attributes.nationality.name')
       %th
-      %th
-      %th
 
   %tbody
     - @nationalities.each do |nationality|
-      %tr
+      %tr{"onclick" => "location.href='#{params['controller']}/#{nationality.id}'"}
         %td= nationality.name
-        %td= link_to t('button.show'), nationality, class: "btn btn-info"
-        %td= link_to t('button.edit'), edit_nationality_path(nationality), class: "btn btn-warning"
         %td= link_to t('button.destroy'), nationality, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 
