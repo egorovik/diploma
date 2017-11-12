@@ -3,6 +3,9 @@
 
 %table.show-table.table-bordered
   %tr
+    %td.head Общежитие
+    %td= link_to @floor.hostel.name, @floor.hostel
+  %tr
     %td.head= t("activerecord.attributes.floor.rooms_count")
     %td= @floor.rooms_count
 

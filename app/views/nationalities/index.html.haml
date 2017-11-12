@@ -8,7 +8,7 @@
 
   %tbody
     - @nationalities.each do |nationality|
-      %tr{"onclick" => "location.href='#{params['controller']}/#{nationality.id}'"}
-        %td= nationality.name
+      %tr
+        %td.nationality_name{'data' => {'info' => ["#{params['controller']}", "#{nationality.id}"]}}= nationality.name
         %td= link_to t('button.destroy'), nationality, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 

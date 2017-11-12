@@ -12,7 +12,7 @@
     %td= @education.language
   %tr
     %td.head= t('activerecord.attributes.education.translation')
-    %td= @education.translation
+    %td= field(@education.translation)
 
 .buttons
   .item= link_to t('button.edit'), edit_education_path(@education), class: "btn btn-warning"

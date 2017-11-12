@@ -12,7 +12,7 @@
     %td= @passport.language
   %tr
     %td.head= t("activerecord.attributes.passport.translation")
-    %td= @passport.translation
+    %td= field(@passport.translation)
 
 .buttons
   .item= link_to t('button.edit'), edit_passport_path(@passport), class: "btn btn-warning"

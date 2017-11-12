@@ -12,10 +12,10 @@
 
   %tbody
     - @countries.each do |country|
-      %tr{"onclick" => "location.href='#{params['controller']}/#{country.id}'"}
-        %td= country.short_name
-        %td= country.long_name
-        %td= country.alpha2
-        %td= country.alpha3
-        %td= country.country_code
+      %tr
+        %td.country_name{'data' => {'info' => ["#{params['controller']}", "#{country.id}"]}}= country.short_name
+        %td.country_name{'data' => {'info' => ["#{params['controller']}", "#{country.id}"]}}= country.long_name
+        %td.country_name{'data' => {'info' => ["#{params['controller']}", "#{country.id}"]}}= country.alpha2
+        %td.country_name{'data' => {'info' => ["#{params['controller']}", "#{country.id}"]}}= country.alpha3
+        %td.country_name{'data' => {'info' => ["#{params['controller']}", "#{country.id}"]}}= country.country_code
         %td= link_to t('button.destroy'), country, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

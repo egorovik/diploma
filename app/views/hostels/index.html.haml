@@ -10,8 +10,8 @@
 
   %tbody
     - @hostels.each do |hostel|
-      %tr{"onclick" => "location.href='#{params['controller']}/#{hostel.id}'"}
-        %td= hostel.name
-        %td= hostel.address
-        %td= hostel.floors_count
+      %tr
+        %td.hostel_name{'data' => {'info' => ["#{params['controller']}", "#{hostel.id}"]}}= hostel.name
+        %td.hostel_name{'data' => {'info' => ["#{params['controller']}", "#{hostel.id}"]}}= hostel.address
+        %td.hostel_name{'data' => {'info' => ["#{params['controller']}", "#{hostel.id}"]}}= hostel.floors_count
         %td= link_to t('button.destroy'), hostel, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

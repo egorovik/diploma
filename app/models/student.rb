@@ -14,4 +14,5 @@ class Student < ActiveRecord::Base
   validates :bday, presence: true, uniqueness: {scope: [:ln, :fn, :sn, :sex]}
   validates :sex, presence: true, inclusion: {in: [?м, ?ж]}
   validates :country, presence: true
+  
 end

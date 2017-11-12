@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to @student, notice: {content: 'Student was successfully created.', type: "success"} }
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to @student, notice: {content: 'Student was successfully updated.', type: "success"} }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
@@ -54,10 +54,17 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
-    @student.destroy
-    respond_to do |format|
-      format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
-      format.json { head :no_content }
+    begin
+      @student.destroy
+      respond_to do |format|
+        format.html { redirect_to students_url, notice: {content: 'Student was successfully destroyed.', type: "success"} }
+        format.json { head :no_content }
+      end
+    rescue ActiveRecord::InvalidForeignKey
+      respond_to do |format|
+        format.html { redirect_to students_url, notice: {content: 'На эту запись ссылаются другие таблицы', type: "danger"} }
+        format.json { head :no_content }
+      end
     end
   end
 

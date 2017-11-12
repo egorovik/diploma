@@ -11,9 +11,9 @@
 
   %tbody
     - @educations.each do |education|
-      %tr{onclick:"location.href='#{params['controller']}/#{education.id}'"}
-        %td= "#{education.student.ln} #{education.student.fn} #{education.student.sn}"
-        %td= education.edu_level
-        %td= education.language
-        %td= education.translation
+      %tr
+        %td.education_name{'data' => {'info' => ["#{params['controller']}", "#{education.id}"]}}= sname_full(education.student)
+        %td.education_name{'data' => {'info' => ["#{params['controller']}", "#{education.id}"]}}= education.edu_level
+        %td.education_name{'data' => {'info' => ["#{params['controller']}", "#{education.id}"]}}= education.language
+        %td.education_name{'data' => {'info' => ["#{params['controller']}", "#{education.id}"]}}= field(education.translation)
         %td= link_to t('button.destroy'), education, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

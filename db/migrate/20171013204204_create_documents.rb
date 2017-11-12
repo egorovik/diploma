@@ -8,7 +8,7 @@ class CreateDocuments < ActiveRecord::Migration
       #translation
       #language
       
-      t.index [:doc_number, :exp_date], unique: true
+      t.index [:doc_number, :doc_type], unique: true
 
       t.timestamps null: false
     end

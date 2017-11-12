@@ -5,56 +5,20 @@ def rand_date
   return d
 end
 
+def rand_bday
+  t = Time.now
+  d = Date.new(t.year, 1, 1)
+  d += rand(360) + 1
+  d -= (rand(25) + 1)*365
+  return d
+end
+
 def seed_rest_db
   countries_size = Country.all.count
   specialities_size = Speciality.all.count
-  print "Добавление национальностей..."
-  for i in 0...10
-    Nationality.create!(name: "Национальность #{i+1}")
-  end
-  puts " готово (#{Nationality.all.count})"
-  print "Добавление религий..."
-  for i in 0...10
-    Religion.create!(name: "Религия #{i+1}")
-  end
-  puts " готово (#{Religion.all.count})"
-  print "Добавление удостоверений личности..."
-  for i in 0...10
-    Passport.create!(
-      serial: (rand(100)+1).to_s,
-      number: (rand(1000000)+1000).to_s,
-      passport_type: "Тип #{i+1}",
-      translation: "Перевод #{i+1}",
-      language: "Язык #{i+1}"
-    )
-  end
-  puts " готово (#{Passport.all.count})"
-  print "Добавление национальных праздников..."
-  for i in 0...10
-    NationalHoliday.create!(
-      name: "Национальный праздник #{i+1}",
-      date: rand_date,
-      nationality_id: i+1
-    )
-  end
-  puts " готово (#{NationalHoliday.all.count})"
-  print "Добавление религиозных праздников..."
-  for i in 0...10
-    ReligionHoliday.create!(
-      name: "Религиозный праздник #{i+1}",
-      date: rand_date,
-      religion_id: i+1
-    )
-  end
-  puts " готово (#{ReligionHoliday.all.count})"
-  print "Добавление учебных групп..."
-  for i in 0...10
-    Group.create!(
-      name: "Учебная группа #{i+1}",
-      speciality_id: rand(specialities_size) + 1
-    )
-  end
-  puts " готово (#{Group.all.count})"
+  
+  ##################################
+  
   print "Добавление общежитий..."
   for i in 0...10
     Hostel.create!(
@@ -75,61 +39,129 @@ def seed_rest_db
     end
   end
   puts " готово (#{Floor.all.count})"
+  
+  free_places = 0
+  
   print "Добавление комнат..."
   for i in 1..Floor.all.count
     for j in 1..Floor.where(id: i).first.rooms_count
       Room.create!(
         floor_id: i,
-        place_count: 5,
+        place_count: f = rand(5) + 1,
         room_number: "Комната #{Floor.where(id: i).first.hostel.id}.#{Floor.where(id: i).first.floor_number}.#{j}"
       )
+      free_places += f
     end
   end
-  puts " готово (#{Room.all.count})"
-  print "Добавление студентов..."
+  puts " готово (#{Room.all.count}) (#{free_places})"
+  
+  ##################################
+  
+  print "Добавление учебных групп..."
+  for i in 0...(free_places/(rand(20)+10))
+    Group.create!(
+      name: "Учебная группа #{i+1}",
+      speciality_id: rand(specialities_size) + 1
+    )
+  end
+  puts " готово (#{Group.all.count})"
+  
+  ##################################
+  
+  print "Добавление национальностей..."
   for i in 0...10
+    Nationality.create!(name: "Национальность #{i+1}")
+  end
+  puts " готово (#{Nationality.all.count})"
+  print "Добавление религий..."
+  for i in 0...10
+    Religion.create!(name: "Религия #{i+1}")
+  end
+  puts " готово (#{Religion.all.count})"
+  
+  print "Добавление национальных праздников..."
+  for i in 0...(Nationality.all.count * 10)
+    NationalHoliday.create!(
+      name: "Национальный праздник #{i+1}",
+      date: rand_date,
+      nationality_id: rand(Nationality.all.count) + 1
+    )
+  end
+  puts " готово (#{NationalHoliday.all.count})"
+  print "Добавление религиозных праздников..."
+  for i in 0...(Religion.all.count * 10)
+    ReligionHoliday.create!(
+      name: "Религиозный праздник #{i+1}",
+      date: rand_date,
+      religion_id: rand(Religion.all.count) + 1
+    )
+  end
+  puts " готово (#{ReligionHoliday.all.count})"
+  
+  ##################################
+  
+  print "Добавление удостоверений личности..."
+  passport_types = ["Загранпаспорт","Свидетельство о рождении","Удостоверение беженца","Временное удостоверение личности"]
+  for i in 0...free_places
+    Passport.create!(
+      serial: (rand(100)+1).to_s,
+      number: (rand(1000000)+1000).to_s,
+      passport_type: passport_types[rand(passport_types.size)],
+      translation: "Перевод #{i+1}",
+      language: "Язык #{i+1}"
+    )
+  end
+  puts " готово (#{Passport.all.count})"
+  
+  rooms = Room.ids
+  
+  print "Добавление студентов..."
+  for i in 0...free_places
+    while true
+      choosen_room = rooms[rand(rooms.size)]
+      r = Room.find(choosen_room)
+      if r.place_count == r.students.count
+        rooms.delete(choosen_room)
+      else
+        break
+      end
+    end
     Student.create!(
       passport_id: i+1,
       ln: "Фамилия #{i+1}",
       fn: "Имя #{i+1}",
       sn: "Отчество #{i+1}",
       sex: [?м,?ж].shuffle.first,
-      bday: rand_date,
+      bday: rand_bday,
       country_id: rand(countries_size) + 1,
-      nationality_id: i+1,
-      religion_id: i+1,
+      nationality_id: rand(Nationality.all.count) + 1,
+      religion_id: rand(Religion.all.count) + 1,
       start_date: d1 = rand_date,
       finish_date: d1 + 10,
-      group_id: i+1,
-      room_id: rand(Room.all.count) + 1
+      group_id: Group.ids.shuffle.first,
+      room_id: choosen_room
     )
   end
   puts " готово (#{Student.all.count})"
-  print "Добавление направлений на обучение..."
-  for i in 0...10
-    Referral.create!(
-      student_id: i+1,
-      referral_number: "Номер #{i+1}",
-      date: rand_date,
-      speciality_id: Student.find(i+1).group.speciality.id,
-      payment: rand(1000)+500
-    )
-  end
-  puts " готово (#{Referral.all.count})"
+  doc = ["Виза","Разрешение на проживание","Разрешение на работу","Медицинская справка","Вид на жительство","Временная регистрация","СНИЛС"]
   print "Добавление документов..."
-  for i in 0...10
-    Document.create!(
-      student_id: i+1,
-      doc_type: "Тип #{i+1}",
-      doc_number: "Номер #{i+1}",
-      exp_date: rand_date,
-      translation: "Перевод #{i+1}",
-      language: "Язык #{i+1}"
-    )
+  counter = 1
+  for i in 0...free_places
+    for j in 0...(rand(doc.size)+1)
+      Document.create!(
+        student_id: i+1,
+        doc_type: doc[rand(doc.size)],
+        doc_number: (rand(1000000)+1000).to_s,
+        exp_date: rand_date,
+        translation: "Перевод #{counter}",
+        language: "Язык #{counter}"
+      )
+      counter += 1
+    end
   end
   puts " готово (#{Document.all.count})"
   print "Добавление документов об образовании..."
-  for i in 0...10
+  for i in 0...free_places
     Education.create!(
       student_id: i+1,
       edu_level: "Уровень образования #{i+1}",
@@ -138,6 +170,17 @@ def seed_rest_db
     )
   end
   puts " готово (#{Education.all.count})"
+  print "Добавление направлений на обучение..."
+  for i in 0...free_places
+    Referral.create!(
+      student_id: i+1,
+      referral_number: (rand(1000000)+1000).to_s,
+      date: rand_date,
+      speciality_id: Student.find(i+1).group.speciality.id,
+      payment: rand(1000)+500
+    )
+  end
+  puts " готово (#{Referral.all.count})"
 end
 
 file = File.open("oksm", "r")

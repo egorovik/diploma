@@ -8,7 +8,7 @@ class CreateReferrals < ActiveRecord::Migration
       t.float :payment, null: false, scale: 2
       
       
-      t.index [:referral_number, :date, :speciality_id], unique: true
+      t.index [:referral_number], unique: true
 
       t.timestamps null: false
     end

@@ -2,7 +2,7 @@ body
   background: $background
 
 .content
-  z-index: 1
+  z-index: 10
   margin-left: 5px
   margin-right: 5px
   margin-bottom: 5px
@@ -26,8 +26,8 @@ body
 .home-td
   border-left: 1px solid $background
   
-.my-notice-default
-  z-index: 3
+.my-notice-color
+  z-index: 30
   color: $main-color-dark
   border: solid
   border-width: 1px
@@ -40,9 +40,17 @@ body
   right: 0
   padding: 5px
   margin: 5px
+  
+.my-notice-default
+  z-index: 30
+  width: 400px
+  font-size: 16px
+  position: fixed
+  right: 0
+  margin: 5px
 
 #top-bar
-  z-index: 2
+  z-index: 20
   position: fixed
   background: $main-color
   width: 100%
@@ -158,4 +166,3 @@ body
     th, td
       padding: 10px
       margin: 10px
-      

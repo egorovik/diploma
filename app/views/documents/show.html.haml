@@ -12,7 +12,7 @@
     %td= @document.language
   %tr
     %td.head= t('activerecord.attributes.document.translation')
-    %td= @document.translation
+    %td= field(@document.translation)
   
 .buttons
   .item= link_to t('button.edit'), edit_document_path(@document), class: "btn btn-warning"

@@ -17,16 +17,16 @@
 
   %tbody
     - @specialities.each do |speciality|
-      %tr{"onclick" => "location.href='#{params['controller']}/#{speciality.id}'"}
-        %td= speciality.section_number
-        %td= speciality.section_name
-        %td= speciality.group_number
-        %td= speciality.group_name
-        %td= speciality.subgroup_number
-        %td= speciality.subgroup_name
-        %td= speciality.speciality_code
-        %td= speciality.name
-        %td= speciality.edu_prog_code
-        %td= speciality.edu_area_code
+      %tr
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.section_number
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.section_name
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.group_number
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.group_name
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.subgroup_number
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.subgroup_name
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.speciality_code
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.name
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.edu_prog_code
+        %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.edu_area_code
         %td
           %p= link_to t('button.destroy'), speciality, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

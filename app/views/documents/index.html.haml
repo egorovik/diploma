@@ -13,11 +13,11 @@
 
   %tbody
     - @documents.each do |document|
-      %tr{onclick:"location.href='#{params['controller']}/#{document.id}'"}
-        %td= document.student.ln + ' ' + document.student.fn + ' ' + document.student.sn
-        %td= document.doc_type
-        %td= document.doc_number
-        %td= document.exp_date
-        %td= document.translation
-        %td= document.language
+      %tr
+        %td.document_name{'data' => {'info' => ["#{params['controller']}", "#{document.id}"]}}= sname_full(document.student)
+        %td.document_name{'data' => {'info' => ["#{params['controller']}", "#{document.id}"]}}= document.doc_type
+        %td.document_name{'data' => {'info' => ["#{params['controller']}", "#{document.id}"]}}= document.doc_number
+        %td.document_name{'data' => {'info' => ["#{params['controller']}", "#{document.id}"]}}= document.exp_date
+        %td.document_name{'data' => {'info' => ["#{params['controller']}", "#{document.id}"]}}= document.language
+        %td.document_name{'data' => {'info' => ["#{params['controller']}", "#{document.id}"]}}= field(document.translation)
         %td= link_to t('button.destroy'), document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

@@ -24,10 +24,24 @@
             = link_to t('title.devise/sessions'), new_user_session_path, class: "btn btn-success"
           
     - if notice
-      %div.notice.my-notice-default= "#{notice} (#{notice.class})"
+      - if notice.class == Hash
+        - case notice['type']
+        - when 'success'
+          .panel.panel-success.panel-success
+            .panel-heading
+              = "#{notice['content']}"
+        - when 'danger'
+          .panel.my-notice-default.panel-danger
+            .panel-heading
+              = "#{notice['content']}"
+        - when 'warning'
+          .panel.my-notice-default.panel-warning
+            .panel-heading
+              = "#{notice['content']}"
     - elsif alert
       %div.alert.my-notice-default= "#{alert} (#{alert.class})"
     
     -#%div.notice= notice
     .content
-      = yield
+      -#%p= params
+      %p= yield

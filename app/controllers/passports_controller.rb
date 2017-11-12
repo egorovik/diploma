@@ -69,6 +69,6 @@ class PassportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def passport_params
-      params.require(:passport).permit(:serial, :number)
+      params.require(:passport).permit(:serial, :number, :passport_type, :language, :translation)
     end
 end

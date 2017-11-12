@@ -1,46 +1,134 @@
 - a = @student.documents
-%h1= "#{@student.ln} #{@student.fn} #{@student.sn}"
+- b = @student.room.students if @student.room
+%h1= sname_full(@student)
 
-%table.show-table.table-bordered
-  %tr
-    %td.head= t('activerecord.attributes.student.passport')
-    %td= link_to "#{@student.passport.serial} #{@student.passport.number}", @student.passport
-  %tr
-    %td.head= t('activerecord.attributes.student.sex')
-    %td= @student.sex
-  %tr
-    %td.head= t('activerecord.attributes.student.bday')
-    %td= @student.bday
-  %tr
-    %td.head= t('activerecord.attributes.student.country')
-    %td= link_to @student.country.short_name, @student.country
-  %tr
-    %td.head= t('activerecord.attributes.student.nationality')
-    %td= link_to @student.nationality.name, @student.nationality
-  %tr
-    %td.head= t('activerecord.attributes.student.religion')
-    %td= link_to @student.religion.name, @student.religion
-  %tr
-    %td.head= t('activerecord.attributes.student.start_date')
-    %td= @student.start_date
-  %tr
-    %td.head= t('activerecord.attributes.student.finish_date')
-    %td= @student.finish_date
-  %tr
-    %td.head= t('activerecord.attributes.student.group')
-    %td= link_to @student.group.name, @student.group
-  %tr
-    %td.head= t('activerecord.attributes.student.room')
-    %td= link_to @student.room.room_number, @student.room
+%div.half-wide
+  %ul{'class'=>"nav nav-pills", 'role'=>"tablist"}
+    %li{'role'=>"presentation", 'class'=>"active"}
+      %a{'href'=>"#base", 'aria-controls'=>"base", "role"=>"tab", "data-toggle"=>"tab"}Базовая информация
+    %li{'role'=>"presentation"}
+      %a{'href'=>"#docs", 'aria-controls'=>"docs", "role"=>"tab", "data-toggle"=>"tab"}Документы
+    %li{'role'=>"presentation"}
+      %a{'href'=>"#study-info", 'aria-controls'=>"study-info", "role"=>"tab", 'data-toggle'=>"tab"}Учебная информация
+    %li{'role'=>"presentation"}
+      %a{'href'=>"#living-info", 'aria-controls'=>"living-info", "role"=>"tab", 'data-toggle'=>"tab"}Информация о проживании
 
-%div{"style" => "margin-top: 5px", "class" => "list-group block"}
-  %ul.list-group
-    %li.list-group-item.active
-      Документы
-      %span.badge
-        = a.count
-    - a.each do |s|
-      %li.list-group-item= link_to "#{s.doc_type} #{s.doc_number}", s
+  %div{'class'=>"tab-content"}
+    %div{'role'=>"tabpanel", 'class'=>"tab-pane active", 'id'=>"base"}
+    
+      %table.show-table.table-bordered
+        %tr
+          %td.head= t('activerecord.attributes.student.ln')
+          %td= @student.ln
+        %tr
+          %td.head= t('activerecord.attributes.student.fn')
+          %td= @student.fn
+        %tr
+          %td.head= t('activerecord.attributes.student.sn')
+          %td= @student.sn
+        %tr
+          %td.head= t('activerecord.attributes.student.sex')
+          %td= @student.sex
+        %tr
+          %td.head= t('activerecord.attributes.student.bday')
+          %td= @student.bday
+        %tr
+          %td.head Возраст
+          %td= curr_age(@student.bday)
+        %tr
+          %td.head= t('activerecord.attributes.student.country')
+          %td= link_to @student.country.short_name, @student.country
+        %tr
+          %td.head= t('activerecord.attributes.student.nationality')
+          - if @student.nationality
+            %td= link_to @student.nationality.name, @student.nationality
+          - else
+            %td не задано
+        %tr
+          %td.head= t('activerecord.attributes.student.religion')
+          - if @student.religion
+            %td= link_to @student.religion.name, @student.religion
+          - else
+            %td не задано
+          
+    %div{'role'=>"tabpanel", 'class'=>"tab-pane", 'id'=>"docs"}
+    
+      %table.show-table.table-bordered
+        %tr
+          %td.head= t('activerecord.attributes.student.start_date')
+          %td= field(@student.start_date)
+        %tr
+          %td.head= t('activerecord.attributes.student.finish_date')
+          %td= field(@student.finish_date)
+        %tr
+          %td.head= t('activerecord.attributes.student.passport')
+          %td= link_to "#{@student.passport.serial} #{@student.passport.number}", @student.passport
+          
+      %div{"style" => "margin-top: 5px", "class" => "list-group block"}
+        %ul.list-group
+          %li.list-group-item.active
+            Другие документы
+            %span.badge
+              = a.count
+          - a.each do |s|
+            %li.list-group-item= link_to "#{s.doc_type} #{s.doc_number}", s
+            
+    %div{'role'=>"tabpanel", 'class'=>"tab-pane", 'id'=>"study-info"}
+      %table.show-table.table-bordered
+        %tr
+          %td.head Направление на обучение
+          - if Referral.where(student_id: @student.id).first
+            %td= link_to Referral.where(student_id: @student.id).first.referral_number, Referral.where(student_id: @student.id).first
+          - else
+            %td не задано
+        %tr
+          %td.head= t('activerecord.attributes.student.group')
+          - if @student.group
+            %td= link_to @student.group.name, @student.group
+          - else
+            %td не задано
+      
+    %div{'role'=>"tabpanel", 'class'=>"tab-pane", 'id'=>"living-info"}
+      %table.show-table.table-bordered
+        %tr
+          %td.head Общежитие
+          - if @student.room
+            %td= link_to "#{@student.room.floor.hostel.name}", @student.room.floor.hostel
+          - else
+            %td не задано
+            
+        %tr
+          %td.head Адрес общежития
+          - if @student.room
+            %td= @student.room.floor.hostel.address
+          - else
+            %td не задано
+        %tr
+          %td.head Этаж
+          - if @student.room
+            %td= link_to "#{@student.room.floor.floor_number}", @student.room.floor
+          - else
+            %td не задано
+        %tr
+          %td.head Комната
+          - if @student.room
+            %td= link_to "#{@student.room.room_number}", @student.room
+          - else
+            %td не задано
+      
+      %div{"style" => "margin-top: 5px", "class" => "list-group block"}
+        %ul.list-group
+          %li.list-group-item.active
+            Соседи
+            %span.badge
+              - if @student.room
+                = b.count - 1
+              - else
+                - b = []
+                = 0
+          - b.each do |s|
+            - next if s.id == @student.id
+            %li.list-group-item= link_to sname(s), s
 
 .buttons
   .item= link_to t('button.edit'), edit_student_path(@student), class: "btn btn-warning"

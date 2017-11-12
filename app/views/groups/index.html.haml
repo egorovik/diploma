@@ -5,11 +5,13 @@
     %tr
       %th= t('activerecord.attributes.group.name')
       %th= t('activerecord.attributes.group.speciality')
+      %th Количество студентов
       %th
 
   %tbody
     - @groups.each do |group|
-      %tr{onclick:"location.href='#{params['controller']}/#{group.id}'"}
-        %td= group.name
-        %td= group.speciality.speciality_code + " " + group.speciality.name
+      %tr
+        %td.group_name{'data' => {'info' => ["#{params['controller']}", "#{group.id}"]}}= group.name
+        %td.group_name{'data' => {'info' => ["#{params['controller']}", "#{group.id}"]}}= group.speciality.speciality_code + " " + group.speciality.name
+        %td.group_name{'data' => {'info' => ["#{params['controller']}", "#{group.id}"]}}= group.students.count
         %td= link_to t('button.destroy'), group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20171102093642) do
     t.string   "language",    null: false
   end
 
-  add_index "documents", ["doc_number", "exp_date"], name: "index_documents_on_doc_number_and_exp_date", unique: true, using: :btree
+  add_index "documents", ["doc_number", "doc_type"], name: "index_documents_on_doc_number_and_doc_type", unique: true, using: :btree
   add_index "documents", ["student_id"], name: "index_documents_on_student_id", using: :btree
 
   create_table "educations", force: :cascade do |t|
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 20171102093642) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "referrals", ["referral_number", "date", "speciality_id"], name: "index_referrals_on_referral_number_and_date_and_speciality_id", unique: true, using: :btree
+  add_index "referrals", ["referral_number"], name: "index_referrals_on_referral_number", unique: true, using: :btree
   add_index "referrals", ["speciality_id"], name: "index_referrals_on_speciality_id", using: :btree
   add_index "referrals", ["student_id"], name: "index_referrals_on_student_id", using: :btree
 

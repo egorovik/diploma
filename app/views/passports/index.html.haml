@@ -11,12 +11,12 @@
       %th
   %tbody
     - @passports.each do |passport|
-      %tr{"onclick" => "location.href='#{params['controller']}/#{passport.id}'"}
-        %td= passport.serial
-        %td= passport.number
-        %td= passport.passport_type
-        %td= passport.language
-        %td= passport.translation
+      %tr
+        %td.passport_name{'data' => {'info' => ["#{params['controller']}", "#{passport.id}"]}}= passport.serial
+        %td.passport_name{'data' => {'info' => ["#{params['controller']}", "#{passport.id}"]}}= passport.number
+        %td.passport_name{'data' => {'info' => ["#{params['controller']}", "#{passport.id}"]}}= passport.passport_type
+        %td.passport_name{'data' => {'info' => ["#{params['controller']}", "#{passport.id}"]}}= passport.language
+        %td.passport_name{'data' => {'info' => ["#{params['controller']}", "#{passport.id}"]}}= field(passport.translation)
         %td= link_to t('button.destroy'), passport, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 
 

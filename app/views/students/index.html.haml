@@ -20,19 +20,19 @@
 
   %tbody
     - @students.each do |student|
-      %tr{"onclick" => "location.href='#{params['controller']}/#{student.id}'"}
-        %td= student.passport.serial + ' ' + student.passport.number
-        %td= student.ln
-        %td= student.fn
-        %td= student.sn
-        %td= student.sex
-        %td= student.bday
-        %td= student.country.short_name
-        %td= student.nationality.name
-        %td= student.religion.name
-        %td= student.start_date
-        %td= student.finish_date
-        %td= student.group.name
-        %td= student.room.room_number
+      %tr
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.passport.serial + ' ' + student.passport.number
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.ln
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.fn
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.sn)
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.sex
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.bday
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.country.short_name
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.nationality.name)
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.religion.name)
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.start_date)
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.finish_date)
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.group.name)
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.room.room_number)
         %td= link_to t('button.destroy'), student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 

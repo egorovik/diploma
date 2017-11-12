@@ -10,8 +10,8 @@
 
   %tbody
     - @religion_holidays.each do |religion_holiday|
-      %tr{"onclick" => "location.href='#{params['controller']}/#{religion_holiday.id}'"}
-        %td= religion_holiday.name
-        %td= religion_holiday.date
-        %td= religion_holiday.religion.name
+      %tr
+        %td.religion_holiday_name{'data' => {'info' => ["#{params['controller']}", "#{religion_holiday.id}"]}}= religion_holiday.name
+        %td.religion_holiday_name{'data' => {'info' => ["#{params['controller']}", "#{religion_holiday.id}"]}}= religion_holiday.date
+        %td.religion_holiday_name{'data' => {'info' => ["#{params['controller']}", "#{religion_holiday.id}"]}}= religion_holiday.religion.name
         %td= link_to t('button.destroy'), religion_holiday, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

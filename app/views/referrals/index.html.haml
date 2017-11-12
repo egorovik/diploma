@@ -11,10 +11,10 @@
       %th
   %tbody
     - @referrals.each do |referral|
-      %tr{"onclick" => "location.href='#{params['controller']}/#{referral.id}'"}
-        %td= referral.student.ln + ' ' + referral.student.fn + ' ' + referral.student.sn
-        %td= referral.referral_number
-        %td= referral.date
-        %td= referral.speciality.speciality_code + ' ' + referral.speciality.name
-        %td= referral.payment
+      %tr
+        %td.referral_name{'data' => {'info' => ["#{params['controller']}", "#{referral.id}"]}}= sname_full(referral.student)
+        %td.referral_name{'data' => {'info' => ["#{params['controller']}", "#{referral.id}"]}}= referral.referral_number
+        %td.referral_name{'data' => {'info' => ["#{params['controller']}", "#{referral.id}"]}}= referral.date
+        %td.referral_name{'data' => {'info' => ["#{params['controller']}", "#{referral.id}"]}}= referral.speciality.speciality_code + ' ' + referral.speciality.name
+        %td.referral_name{'data' => {'info' => ["#{params['controller']}", "#{referral.id}"]}}= referral.payment
         %td= link_to t('button.destroy'), referral, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
