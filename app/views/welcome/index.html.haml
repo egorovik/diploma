@@ -76,4 +76,21 @@
         = link_to t('title.educations'), educations_path, class: "btn btn-primary wide"
       %td.home-td
         = "Количество записей: #{Education.all.count}"
-
+        
+%br
+%ul.list-group.w-500
+  %li.to_do_head.list-group-item.list-group-item-warning Сделать
+  %li.to_do_body.list-group-item.list-group-item выбор ссылки для связи во всех представлениях сделать в виде поля с автозаполнением
+  %li.to_do_body.list-group-item.list-group-item пагинация таблиц в index
+  %li.to_do_body.list-group-item.list-group-item exp_date для удостоверения личности
+  %li.to_do_body.list-group-item.list-group-item exp_date для документа об образовании
+%br
+%ul.list-group.w-500
+  %li.questions_head.list-group-item.list-group-item-danger Вопросы
+  %li.questions_body.list-group-item.list-group-item row (?)
+  
+%br
+%ul.list-group.w-500
+  %li.new_head.list-group-item.list-group-item-info Что нового?
+  %li.new_body.list-group-item.list-group-item-warning форма для таблицы Студенты оформлена в виде вкладок
+  %li.new_body.list-group-item.list-group-item-success datepicker

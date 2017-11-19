@@ -242,6 +242,7 @@ ru:
         referral_number: Номер направления
         date: Дата
         speciality: Специальность
+        speciality_id: Специальность
         payment: Оплата
       document:
         student: Студент

@@ -14,7 +14,7 @@
     = f.text_field :referral_number, class: "form-control"
   .form-group.half-wide
     = f.label :date
-    = f.date_select :date, class: "form-control"
+    = f.text_field :date, class: "form-control", id: 'referrals_form_datepicker'
   .form-group.half-wide
     = f.label :speciality_id
     = f.text_field :speciality_id, class: "form-control"

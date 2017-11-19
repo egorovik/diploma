@@ -11,7 +11,7 @@
     = f.text_field :name, class: "form-control"
   .form-group.half-wide
     = f.label :date
-    %input{'type'=>'text', 'class'=>"form-control", 'id'=>'religion_holidays_form_datepicker', 'name'=>'religion_holiday[date]'}
+    = f.text_field :date, class: "form-control", id: 'religion_holidays_form_datepicker'
   .form-group.half-wide
     = f.label :religion_id
     = f.text_field :religion_id, class: "form-control"

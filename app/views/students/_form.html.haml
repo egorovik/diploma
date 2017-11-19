@@ -37,7 +37,7 @@
           = f.text_field :sex, class: "form-control"
         .form-group.half-wide
           = f.label :bday
-          %input{'type'=>'text', 'class'=>"form-control", 'id'=>'students_bday_form_datepicker', 'name'=>'student[bday]'}
+          = f.text_field :bday, class: "form-control", id: 'students_bday_form_datepicker'
         .form-group.half-wide
           = f.label :country_id
           = f.text_field :country_id, class: "form-control"
@@ -51,10 +51,10 @@
       %div{'role'=>"tabpanel", 'class'=>"tab-pane", 'id'=>"docs"}
         .form-group
           = f.label :start_date
-          %input{'type'=>'text', 'class'=>"form-control", 'id'=>'students_start_date_form_datepicker', 'name'=>'student[start_date]'}
+          = f.text_field :start_date, class: "form-control", id: 'students_start_date_form_datepicker'
         .form-group
           = f.label :finish_date
-          %input{'type'=>'text', 'class'=>"form-control", 'id'=>'students_finish_date_form_datepicker', 'name'=>'student[finish_date]'}
+          = f.text_field :finish_date, class: "form-control", id: 'students_finish_date_form_datepicker'
           
         %div
           = hidden_field_tag(:form_id, :documents)
@@ -75,7 +75,6 @@
                 .form-group
                   = fn.label :exp_date
                   = fn.text_field :exp_date, class: "form-control", id: 'documents_form_datepicker'
-                  -#%input{'type'=>'text', 'class'=>"form-control", 'id'=>'documents_form_datepicker', 'name'=>'exp_date', 'data'=>{'value': fn.object.exp_date.nil? ? "" : l(fn.object.exp_date)}}
                 .form-group
                   = fn.label :language
                   = fn.text_field :language, class: "form-control"

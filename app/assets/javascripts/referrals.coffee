@@ -7,6 +7,9 @@ referrals_click = ->
 
 referrals_ready = ->
   $('.referral_name').on 'click', referrals_click
+  $('#referrals_form_datepicker').datepicker 'option', 'dateFormat', "dd.mm.yy"
+  $('#referrals_form_datepicker').datepicker $.datepicker.regional["ru"]
+  $('#referrals_form_datepicker').datepicker()
   
 $(document).ready referrals_ready
 $(document).on 'page:load', referrals_ready
