@@ -18,6 +18,9 @@
     
       %table.show-table.table-bordered
         %tr
+          %td.head= t('activerecord.attributes.student.passport')
+          %td= link_to "#{@student.passport.serial} #{@student.passport.number}", @student.passport
+        %tr
           %td.head= t('activerecord.attributes.student.ln')
           %td= @student.ln
         %tr
@@ -60,9 +63,7 @@
         %tr
           %td.head= t('activerecord.attributes.student.finish_date')
           %td= field(@student.finish_date)
-        %tr
-          %td.head= t('activerecord.attributes.student.passport')
-          %td= link_to "#{@student.passport.serial} #{@student.passport.number}", @student.passport
+        
           
       %div{"style" => "margin-top: 5px", "class" => "list-group block"}
         %ul.list-group

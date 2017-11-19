@@ -12,7 +12,12 @@
 //
 //= require jquery3
 //= require jquery-ui
+//= require jquery-ui/i18n/datepicker-ru
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require moment
+//= require moment/ru
+//= require bootstrap-datetimepicker
+//= require bootstrap-select
 //= require_tree .

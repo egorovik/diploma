@@ -7,6 +7,10 @@ national_holidays_click = ->
 
 national_holidays_ready = ->
   $('.national_holiday_name').on 'click', national_holidays_click
+  $('#national_holidays_form_datepicker').datepicker 'option', 'dateFormat', "dd.mm.yy"
+  $('#national_holidays_form_datepicker').datepicker $.datepicker.regional["ru"]
+  $('#national_holidays_form_datepicker').datepicker()
+  $('.selectpicker').selectpicker()
   
 $(document).ready national_holidays_ready
 $(document).on 'page:load', national_holidays_ready

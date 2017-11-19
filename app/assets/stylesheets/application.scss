@@ -11,7 +11,10 @@
  * file per style scope.
  *= require jquery-ui
  */
+@import 'bootstrap-sprockets';
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
+@import "bootstrap-select";
 @import "theme";
 @import "variables";
 @import "main";

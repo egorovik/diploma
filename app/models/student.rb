@@ -6,12 +6,14 @@ class Student < ActiveRecord::Base
   belongs_to :group
   belongs_to :room
   belongs_to :referral
-  has_many :documents
+  has_many :documents, inverse_of: :student
   has_many :educations
+  
+  accepts_nested_attributes_for :documents, allow_destroy: true
   
   validates :ln, presence: true
   validates :fn, presence: true
-  validates :bday, presence: true, uniqueness: {scope: [:ln, :fn, :sn, :sex]}
+  validates :bday, presence: true, uniqueness: {scope: [:ln, :fn, :sn, :sex, :passport]}
   validates :sex, presence: true, inclusion: {in: [?м, ?ж]}
   validates :country, presence: true
   

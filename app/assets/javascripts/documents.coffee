@@ -7,6 +7,9 @@ documents_click = ->
 
 documents_ready = ->
   $('.document_name').on 'click', documents_click
+  $('#documents_form_datepicker').datepicker 'option', 'dateFormat', "dd.mm.yy"
+  $('#documents_form_datepicker').datepicker $.datepicker.regional["ru"]
+  $('#documents_form_datepicker').datepicker()
   
 $(document).ready documents_ready
 $(document).on 'page:load', documents_ready

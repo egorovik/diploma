@@ -11,9 +11,11 @@
     = f.text_field :name, class: "form-control"
   .form-group.half-wide
     = f.label :date
-    = f.date_select :date, class: "form-control"
+    %input{'type'=>'text', 'class'=>"form-control", 'id'=>'national_holidays_form_datepicker', 'name'=>'national_holiday[date]'}
   .form-group.half-wide
     = f.label :nationality_id
-    = f.text_field :nationality_id, class: "form-control"
+    = f.collection_select :nationality_id, Nationality.all, :id, :name, {include_blank: true}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10s
+        }
+    -#= f.text_field :nationality_id, class: "form-control nationality_field"
   .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

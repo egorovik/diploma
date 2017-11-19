@@ -1,7 +1,7 @@
 class CreateStudents < ActiveRecord::Migration
   def change
     create_table :students do |t|
-      t.references :passport, index: true, foreign_key: true, null: false
+      t.references :passport, foreign_key: true, null: false
       t.string :ln, null: false
       t.string :fn, null: false
       t.string :sn
@@ -15,7 +15,7 @@ class CreateStudents < ActiveRecord::Migration
       t.references :group, index: true, foreign_key: true
       t.references :room, index: true, foreign_key: true
       
-      t.index [:ln, :fn, :sn, :sex, :bday], unique: true
+      t.index [:ln, :fn, :sn, :sex, :bday, :passport_id], unique: true, name: :"index_on_students"
       
       t.timestamps null: false
     end

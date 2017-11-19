@@ -1,0 +1,23 @@
+.half-wide
+  .panel.panel-info
+    .panel-heading
+      Новый документ
+      %span.toright
+        = link_to_remove_document(fn)
+      .clearfix
+    .panel-body
+      .form-group
+        = fn.label :doc_type
+        = fn.text_field :doc_type, class: "form-control"
+      .form-group
+        = fn.label :doc_number
+        = fn.text_field :doc_number, class: "form-control"
+      .form-group
+        = fn.label :exp_date
+        = fn.text_field :exp_date, class: "form-control", id: 'documents_form_datepicker'
+      .form-group
+        = fn.label :language
+        = fn.text_field :language, class: "form-control"
+      .form-group
+        = fn.label :translation
+        = fn.text_field :translation, class: "form-control"

@@ -76,6 +76,7 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:passport_id, :ln, :fn, :sn, :sex, :bday, :country_id, :nationality_id, :religion_id, :start_date, :finish_date, :group_id, :room_id)
+      params.require(:student).permit(:passport_id, :ln, :fn, :sn, :sex, :bday, :country_id, :nationality_id, :religion_id, :start_date, :finish_date, :group_id, :room_id,
+                                      documents_attributes: [:id, :_destroy, :doc_type, :doc_number, :exp_date, :language, :translation])
     end
 end

@@ -32,7 +32,7 @@
         %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.religion.name)
         %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.start_date)
         %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.finish_date)
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.group.name)
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.room.room_number)
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.group.name) if !(student.group.nil?)
+        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.room.room_number) if !(student.room.nil?)
         %td= link_to t('button.destroy'), student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 

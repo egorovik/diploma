@@ -17,7 +17,7 @@
     = f.text_field :doc_number, class: "form-control"
   .form-group.half-wide
     = f.label :exp_date
-    = f.date_select :exp_date, class: "form-control"
+    %input{'type'=>'text', 'class'=>"form-control", 'id'=>'documents_form_datepicker', 'name'=>'document[exp_date]'}
   .form-group.half-wide
     = f.label :language
     = f.text_field :language, class: "form-control"

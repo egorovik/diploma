@@ -192,9 +192,8 @@ ActiveRecord::Schema.define(version: 20171102093642) do
 
   add_index "students", ["country_id"], name: "index_students_on_country_id", using: :btree
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
-  add_index "students", ["ln", "fn", "sn", "sex", "bday"], name: "index_students_on_ln_and_fn_and_sn_and_sex_and_bday", unique: true, using: :btree
+  add_index "students", ["ln", "fn", "sn", "sex", "bday", "passport_id"], name: "index_on_students", unique: true, using: :btree
   add_index "students", ["nationality_id"], name: "index_students_on_nationality_id", using: :btree
-  add_index "students", ["passport_id"], name: "index_students_on_passport_id", using: :btree
   add_index "students", ["religion_id"], name: "index_students_on_religion_id", using: :btree
   add_index "students", ["room_id"], name: "index_students_on_room_id", using: :btree
 

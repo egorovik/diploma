@@ -7,6 +7,9 @@ religion_holidays_click = ->
 
 religion_holidays_ready = ->
   $('.religion_holiday_name').on 'click', religion_holidays_click
+  $('#religion_holidays_form_datepicker').datepicker 'option', 'dateFormat', "dd.mm.yy"
+  $('#religion_holidays_form_datepicker').datepicker $.datepicker.regional["ru"]
+  $('#religion_holidays_form_datepicker').datepicker()
   
 $(document).ready religion_holidays_ready
 $(document).on 'page:load', religion_holidays_ready

@@ -60,4 +60,5 @@ module ApplicationHelper
     str = str + " " + student.sn if student.sn
     return str
   end
+  
 end
