@@ -3,7 +3,7 @@
 %table.show-table.table-bordered
   %tr
     %td.head= t("activerecord.attributes.national_holiday.date")
-    %td= @national_holiday.date
+    %td= ru_day_month(@national_holiday.date)
   %tr
     %td.head= t("activerecord.attributes.national_holiday.nationality")
     %td= link_to @national_holiday.nationality.name, @national_holiday.nationality

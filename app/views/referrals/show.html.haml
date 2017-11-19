@@ -9,7 +9,7 @@
     %td= @referral.date
   %tr
     %td.head= t('activerecord.attributes.referral.speciality')
-    %td= link_to @referral.speciality.speciality_code + ' ' + @referral.speciality.name, @referral.speciality
+    %td= link_to @referral.speciality.name, @referral.speciality
   %tr
     %td.head= t('activerecord.attributes.referral.payment')
     %td= @referral.payment

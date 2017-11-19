@@ -14,6 +14,7 @@
     = f.text_field :date, class: "form-control", id: 'religion_holidays_form_datepicker'
   .form-group.half-wide
     = f.label :religion_id
-    = f.text_field :religion_id, class: "form-control"
+    = f.collection_select :religion_id, Religion.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
+    -#= f.text_field :religion_id, class: "form-control"
   .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

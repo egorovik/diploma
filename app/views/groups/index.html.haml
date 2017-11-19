@@ -12,6 +12,6 @@
     - @groups.each do |group|
       %tr
         %td.group_name{'data' => {'info' => ["#{params['controller']}", "#{group.id}"]}}= group.name
-        %td.group_name{'data' => {'info' => ["#{params['controller']}", "#{group.id}"]}}= group.speciality.speciality_code + " " + group.speciality.name
+        %td.group_name{'data' => {'info' => ["#{params['controller']}", "#{group.id}"]}}= group.speciality.name
         %td.group_name{'data' => {'info' => ["#{params['controller']}", "#{group.id}"]}}= group.students.count
         %td= link_to t('button.destroy'), group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

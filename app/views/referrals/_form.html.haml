@@ -8,7 +8,7 @@
 
   .form-group.half-wide
     = f.label :student_id
-    = f.text_field :student_id, class: "form-control"
+    = f.select :student_id, options_for_select(student_options, f.object.student_id), {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
   .form-group.half-wide
     = f.label :referral_number
     = f.text_field :referral_number, class: "form-control"
@@ -17,7 +17,7 @@
     = f.text_field :date, class: "form-control", id: 'referrals_form_datepicker'
   .form-group.half-wide
     = f.label :speciality_id
-    = f.text_field :speciality_id, class: "form-control"
+    = f.collection_select :speciality_id, Speciality.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
   .form-group.half-wide
     = f.label :payment
     = f.number_field :payment, class: "form-control"

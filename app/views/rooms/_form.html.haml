@@ -14,6 +14,6 @@
     = f.number_field :place_count, class: "form-control"
   .form-group.half-wide
     = f.label :floor_id
-    = f.text_field :floor_id, class: "form-control"
+    = f.collection_select :floor_id, Floor.all, :id, :floor_number, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
   .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

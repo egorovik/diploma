@@ -8,7 +8,7 @@
 
   .form-group.half-wide
     = f.label :student_id
-    = f.text_field :student_id, class: "form-control"
+    = f.select :student_id, options_for_select(student_options, f.object.student_id), {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
   .form-group.half-wide
     = f.label :doc_type
     = f.text_field :doc_type, class: "form-control"

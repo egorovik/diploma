@@ -151,7 +151,7 @@ def seed_rest_db
       Document.create!(
         student_id: i+1,
         doc_type: doc[rand(doc.size)],
-        doc_number: (rand(1000000)+1000).to_s,
+        doc_number: (rand(10000000)+1000).to_s,
         exp_date: rand_date,
         translation: "Перевод #{counter}",
         language: "Язык #{counter}"
@@ -238,7 +238,7 @@ while true
     subgroup_number: subgroup_number,
     subgroup_name: subgroup,
     speciality_code: tmp_arr[0],
-    name: tmp_arr[1],
+    name: "#{tmp_arr[0]} #{tmp_arr[1]}",
     edu_prog_code: tmp_arr[2],
     edu_area_code: tmp_arr[3])
   rescue EOFError

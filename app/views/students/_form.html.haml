@@ -22,7 +22,7 @@
       %div{'role'=>"tabpanel", 'class'=>"tab-pane active", 'id'=>"base"}
         .form-group.half-wide
           = f.label :passport_id
-          = f.text_field :passport_id, class: "form-control"
+          = f.select :passport_id, options_for_select(passport_options, f.object.passport_id), {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
         .form-group.half-wide
           = f.label :ln
           = f.text_field :ln, class: "form-control"
@@ -34,19 +34,19 @@
           = f.text_field :sn, class: "form-control"
         .form-group.half-wide
           = f.label :sex
-          = f.text_field :sex, class: "form-control"
+          = f.select :sex, options_for_select([?ж, ?м], [?ж, ?м]), {include_blank: false}, {class: "form-control selectpicker", 'data-size'=> 10}
         .form-group.half-wide
           = f.label :bday
           = f.text_field :bday, class: "form-control", id: 'students_bday_form_datepicker'
         .form-group.half-wide
           = f.label :country_id
-          = f.text_field :country_id, class: "form-control"
+          = f.collection_select :country_id, Country.all, :id, :short_name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
         .form-group.half-wide
           = f.label :nationality_id
-          = f.text_field :nationality_id, class: "form-control"
+          = f.collection_select :nationality_id, Nationality.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
         .form-group.half-wide
           = f.label :religion_id
-          = f.text_field :religion_id, class: "form-control"
+          = f.collection_select :religion_id, Religion.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
       
       %div{'role'=>"tabpanel", 'class'=>"tab-pane", 'id'=>"docs"}
         .form-group
@@ -85,11 +85,11 @@
       %div{'role'=>"tabpanel", 'class'=>"tab-pane", 'id'=>"study-info"}
         .form-group.half-wide
           = f.label :group_id
-          = f.text_field :group_id, class: "form-control"
+          = f.collection_select :group_id, Group.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
       
       %div{'role'=>"tabpanel", 'class'=>"tab-pane", 'id'=>"living-info"}
         .form-group.half-wide
           = f.label :room_id
-          = f.text_field :room_id, class: "form-control"
+          = f.collection_select :room_id, Room.all, :id, :room_number, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
   .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

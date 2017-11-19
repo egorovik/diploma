@@ -14,6 +14,6 @@
     = f.text_field :date, class: "form-control", id: 'national_holidays_form_datepicker'
   .form-group.half-wide
     = f.label :nationality_id
-    = f.collection_select :nationality_id, Nationality.all, :id, :name, {include_blank: true}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
+    = f.collection_select :nationality_id, Nationality.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
   .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"

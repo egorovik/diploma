@@ -4,7 +4,7 @@
 %table.show-table.table-bordered
   %tr
     %td.head= t('activerecord.attributes.group.speciality')
-    %td= link_to @group.speciality.speciality_code + " " + @group.speciality.name, @group.speciality
+    %td= link_to @group.speciality.name, @group.speciality
 
 %div{"style" => "margin-top: 5px", "class" => "list-group block"}
   %ul.list-group

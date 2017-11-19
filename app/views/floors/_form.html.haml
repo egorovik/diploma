@@ -8,7 +8,7 @@
 
   .form-group.half-wide
     = f.label :hostel_id
-    = f.text_field :hostel_id, class: "form-control"
+    = f.collection_select :hostel_id, Hostel.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
   .form-group.half-wide
     = f.label :floor_number
     = f.number_field :floor_number, class: "form-control"

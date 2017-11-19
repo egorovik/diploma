@@ -11,6 +11,6 @@
     = f.text_field :name, class: "form-control"
   .form-group.half-wide
     = f.label :speciality_id
-    = f.text_field :speciality_id, class: "form-control"
+    = f.collection_select :speciality_id, Speciality.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
   .actions.submit-button
     = f.submit t('button.save'), class: "btn btn-success"
