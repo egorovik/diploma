@@ -19,3 +19,5 @@
         %td.country_name{'data' => {'info' => ["#{params['controller']}", "#{country.id}"]}}= country.alpha3
         %td.country_name{'data' => {'info' => ["#{params['controller']}", "#{country.id}"]}}= country.country_code
         %td= link_to t('button.destroy'), country, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+
+= will_paginate @countries, renderer: BootstrapPagination::Rails, previous_label: "Предыдущая", next_label: "Следующая", inner_window: 1, outer_window: 1

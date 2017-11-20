@@ -21,3 +21,5 @@
         %td.document_name{'data' => {'info' => ["#{params['controller']}", "#{document.id}"]}}= document.language
         %td.document_name{'data' => {'info' => ["#{params['controller']}", "#{document.id}"]}}= field(document.translation)
         %td= link_to t('button.destroy'), document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+
+= will_paginate @documents, renderer: BootstrapPagination::Rails, previous_label: "Предыдущая", next_label: "Следующая", inner_window: 1, outer_window: 1

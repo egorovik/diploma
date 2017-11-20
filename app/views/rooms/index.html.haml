@@ -15,3 +15,5 @@
         %td.room_name{'data' => {'info' => ["#{params['controller']}", "#{room.id}"]}}= room.place_count
         %td.room_name{'data' => {'info' => ["#{params['controller']}", "#{room.id}"]}}= room.floor.hostel.name + ". Этаж " + room.floor.floor_number.to_s
         %td= link_to t('button.destroy'), room, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+
+= will_paginate @rooms, renderer: BootstrapPagination::Rails, previous_label: "Предыдущая", next_label: "Следующая", inner_window: 1, outer_window: 1

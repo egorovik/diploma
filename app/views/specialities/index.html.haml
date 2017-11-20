@@ -30,3 +30,5 @@
         %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.edu_area_code
         %td
           %p= link_to t('button.destroy'), speciality, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+
+= will_paginate @countries, renderer: BootstrapPagination::Rails, previous_label: "Предыдущая", next_label: "Следующая", inner_window: 1, outer_window: 1

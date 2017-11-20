@@ -4,7 +4,7 @@ class ReligionHolidaysController < ApplicationController
   # GET /religion_holidays
   # GET /religion_holidays.json
   def index
-    @religion_holidays = ReligionHoliday.all
+    @religion_holidays = ReligionHoliday.all.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /religion_holidays/1

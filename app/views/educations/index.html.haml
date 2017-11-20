@@ -17,3 +17,5 @@
         %td.education_name{'data' => {'info' => ["#{params['controller']}", "#{education.id}"]}}= education.language
         %td.education_name{'data' => {'info' => ["#{params['controller']}", "#{education.id}"]}}= field(education.translation)
         %td= link_to t('button.destroy'), education, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+
+= will_paginate @educations, renderer: BootstrapPagination::Rails, previous_label: "Предыдущая", next_label: "Следующая", inner_window: 1, outer_window: 1

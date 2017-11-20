@@ -4,7 +4,7 @@ class FloorsController < ApplicationController
   # GET /floors
   # GET /floors.json
   def index
-    @floors = Floor.all
+    @floors = Floor.all.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /floors/1

@@ -4,7 +4,7 @@ class ReferralsController < ApplicationController
   # GET /referrals
   # GET /referrals.json
   def index
-    @referrals = Referral.all
+    @referrals = Referral.all.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /referrals/1

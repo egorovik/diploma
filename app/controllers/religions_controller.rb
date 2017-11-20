@@ -4,7 +4,7 @@ class ReligionsController < ApplicationController
   # GET /religions
   # GET /religions.json
   def index
-    @religions = Religion.all
+    @religions = Religion.all.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /religions/1

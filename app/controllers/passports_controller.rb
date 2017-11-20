@@ -4,7 +4,7 @@ class PassportsController < ApplicationController
   # GET /passports
   # GET /passports.json
   def index
-    @passports = Passport.all
+    @passports = Passport.all.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /passports/1

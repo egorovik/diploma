@@ -4,7 +4,7 @@ class NationalHolidaysController < ApplicationController
   # GET /national_holidays
   # GET /national_holidays.json
   def index
-    @national_holidays = NationalHoliday.all
+    @national_holidays = NationalHoliday.all.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /national_holidays/1

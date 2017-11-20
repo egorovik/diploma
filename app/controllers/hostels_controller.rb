@@ -4,7 +4,7 @@ class HostelsController < ApplicationController
   # GET /hostels
   # GET /hostels.json
   def index
-    @hostels = Hostel.all
+    @hostels = Hostel.all.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /hostels/1

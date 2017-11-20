@@ -4,7 +4,7 @@ class NationalitiesController < ApplicationController
   # GET /nationalities
   # GET /nationalities.json
   def index
-    @nationalities = Nationality.all
+    @nationalities = Nationality.all.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /nationalities/1

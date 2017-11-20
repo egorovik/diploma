@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    @documents = Document.all.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /documents/1

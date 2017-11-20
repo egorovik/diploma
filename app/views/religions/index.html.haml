@@ -12,3 +12,4 @@
         %td.religion_name{'data' => {'info' => ["#{params['controller']}", "#{religion.id}"]}}= religion.name
         %td= link_to t('button.destroy'), religion, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 
+= will_paginate @religions, renderer: BootstrapPagination::Rails, previous_label: "Предыдущая", next_label: "Следующая", inner_window: 1, outer_window: 1
