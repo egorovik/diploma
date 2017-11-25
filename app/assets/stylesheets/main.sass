@@ -46,6 +46,7 @@ body
   width: 400px
   font-size: 16px
   position: fixed
+  top: $top-bar-height
   right: 0
   margin: 5px
 
@@ -70,6 +71,14 @@ body
   border-width: 1px
   border-color: $main-color
   float: right
+  
+.btn-white-my-outline
+  border-color: white
+  color: white
+  &:hover, &:active
+    background: white
+    color: black
+    border-color: black
   
 .btn-dark-my-outline
   border-color: $main-color-dark

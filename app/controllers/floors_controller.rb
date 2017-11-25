@@ -27,11 +27,10 @@ class FloorsController < ApplicationController
     @floor = Floor.new(floor_params)
 
     respond_to do |format|
-      if @floor.save and has_hostel_free_space?
+      if @floor.save
         format.html { redirect_to @floor, notice: 'Floor was successfully created.' }
         format.json { render :show, status: :created, location: @floor }
       else
-        @floor.errors.add(:hostel, :my_error, message: "не имеет свободных мест для нового этажа") if !(has_hostel_free_space?)
         format.html { render :new }
         format.json { render json: @floor.errors, status: :unprocessable_entity }
       end
@@ -63,16 +62,16 @@ class FloorsController < ApplicationController
   end
 
   private
-    def has_hostel_free_space?
-      if @floor.hostel.nil?
-        return false
-      end
-      if @floor.hostel.floors_count > @floor.hostel.floors.count
-        return true
-      else
-        false
-      end
-    end
+    #def has_hostel_free_space?
+    #  if @floor.hostel.nil?
+    #    return false
+    #  end
+    #  if @floor.hostel.floors_count > @floor.hostel.floors.count
+    #    return true
+    #  else
+    #    false
+    #  end
+    #end
     # Use callbacks to share common setup or constraints between actions.
     def set_floor
       @floor = Floor.find(params[:id])

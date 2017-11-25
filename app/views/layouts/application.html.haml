@@ -16,32 +16,42 @@
     
       %div#tb-session
         - if user_signed_in?
-          %span= link_to current_user.email, edit_user_registration_path, class: "btn btn-light-my-outline"
+          %span= link_to current_user.email, edit_user_registration_path, class: "btn btn-white-my-outline"
           -# = link_to t('Сменить пароль'), edit_user_password_path, :method => :get , class: "btn btn-warning"
           = link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn btn-danger submit-button"
         - else
           - if params['controller'] != 'devise/sessions'
             = link_to t('title.devise/sessions'), new_user_session_path, class: "btn btn-success"
           
-    - if notice
-      - if notice.class == Hash
-        - case notice['type']
-        - when 'success'
-          .panel.panel-success.panel-success
-            .panel-heading
-              = "#{notice['content']}"
-        - when 'danger'
-          .panel.my-notice-default.panel-danger
-            .panel-heading
-              = "#{notice['content']}"
-        - when 'warning'
-          .panel.my-notice-default.panel-warning
-            .panel-heading
-              = "#{notice['content']}"
-    - elsif alert
-      %div.alert.my-notice-default= "#{alert} (#{alert.class})"
-    
-    -#%div.notice= notice
+    - if !notice.nil?
+      notice1 = {}
+      - if notice.class == String
+        - notice1 = devise_message(notice)
+      - elsif notice.class == Hash
+        - notice1 = notice
+      - elsif notice.nil?
+        - if !alert.nil?
+          - if alert.class == String
+            - notice1 = devise_message(alert)
+          - elsif alert.class == Hash
+            - notice1 = alert
+      - case notice1['type']
+      - when 'success'
+        .panel.my-notice-default.panel-success
+          .panel-heading
+            = "#{notice1['content']}"
+      - when 'danger'
+        .panel.my-notice-default.panel-danger
+          .panel-heading
+            = "#{notice1['content']}"
+      - when 'warning'
+        .panel.my-notice-default.panel-warning
+          .panel-heading
+            = "#{notice1['content']}"
+      - when 'default'
+        .panel.my-notice-default.panel-default
+          .panel-heading
+            = "#{notice1['content']}"
     .content
       -#%p= params
       %p= yield

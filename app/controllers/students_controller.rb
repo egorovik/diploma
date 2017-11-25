@@ -57,7 +57,7 @@ class StudentsController < ApplicationController
     begin
       @student.destroy
       respond_to do |format|
-        format.html { redirect_to students_url, notice: {content: 'Student was successfully destroyed.', type: "success"} }
+        format.html { redirect_to students_url, notice: {content: 'Студент удалён.', type: "success"} }
         format.json { head :no_content }
       end
     rescue ActiveRecord::InvalidForeignKey

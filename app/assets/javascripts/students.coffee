@@ -27,7 +27,7 @@
     $('#documents_form_datepicker').datepicker()
     panel.find('a.remove_document').on 'click', ->
       window.del_document_body_f($(this))
-      false    
+      false
     false
   
 

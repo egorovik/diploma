@@ -28,7 +28,7 @@ class SpecialitiesController < ApplicationController
 
     respond_to do |format|
       if @speciality.save
-        format.html { redirect_to @speciality, notice: 'Speciality was successfully created.' }
+        format.html { redirect_to @speciality, notice: {content: 'Специальность добавлена.', type: 'success' }}
         format.json { render :show, status: :created, location: @speciality }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SpecialitiesController < ApplicationController
   def update
     respond_to do |format|
       if @speciality.update(speciality_params)
-        format.html { redirect_to @speciality, notice: 'Speciality was successfully updated.' }
+        format.html { redirect_to @speciality, notice: {content: 'Специальность изменена.', type: 'success' }}
         format.json { render :show, status: :ok, location: @speciality }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SpecialitiesController < ApplicationController
   def destroy
     @speciality.destroy
     respond_to do |format|
-      format.html { redirect_to specialities_url, notice: 'Speciality was successfully destroyed.' }
+      format.html { redirect_to specialities_url, notice: {content: 'Специальность удалена.', type: 'success' }}
       format.json { head :no_content }
     end
   end

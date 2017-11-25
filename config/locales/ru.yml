@@ -131,11 +131,13 @@ ru:
       index: Главная
     devise/sessions:
       new: Вход в систему
+      create: Вход в систему
     devise/passwords:
       new: Восстановление пароля
     devise/registrations:
       new: Зарегистрироваться
       edit: Редактирование учётной записи
+      update: Редактирование учётной записи
   activerecord:
     errors:
       models:
@@ -328,6 +330,7 @@ ru:
     failure:
       user:
         invalid: Неправильно указан пароль или электронный адрес
+        not_found_in_database: Пользователь не найден в базе данных
   errors:
     messages:
       not_saved: Не сохранено

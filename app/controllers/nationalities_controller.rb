@@ -28,7 +28,7 @@ class NationalitiesController < ApplicationController
 
     respond_to do |format|
       if @nationality.save
-        format.html { redirect_to @nationality, notice: 'Nationality was successfully created.' }
+        format.html { redirect_to @nationality, notice: {content: 'Nationality was successfully created.', type: 'success'} }
         format.json { render :show, status: :created, location: @nationality }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class NationalitiesController < ApplicationController
   def update
     respond_to do |format|
       if @nationality.update(nationality_params)
-        format.html { redirect_to @nationality, notice: 'Nationality was successfully updated.' }
+        format.html { redirect_to @nationality, notice: {content: 'Nationality was successfully updated.', type: 'success'} }
         format.json { render :show, status: :ok, location: @nationality }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class NationalitiesController < ApplicationController
   def destroy
     @nationality.destroy
     respond_to do |format|
-      format.html { redirect_to nationalities_url, notice: 'Nationality was successfully destroyed.' }
+      format.html { redirect_to nationalities_url, notice: {content: 'Nationality was successfully destroyed.', type: 'success'} }
       format.json { head :no_content }
     end
   end

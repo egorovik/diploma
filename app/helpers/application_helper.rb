@@ -61,4 +61,30 @@ module ApplicationHelper
     return str
   end
   
+  def devise_message(str)
+    case str
+    when t('devise.password.user.send_instructions')
+      hash = {'content' => str, 'type' => warning}
+    when t('devise.password.user.no_token')
+      hash = {'content' => str, 'type' => 'danger'}
+    when t('devise.sessions.user.signed_out')
+      hash = {'content' => str, 'type' => 'success'}
+    when t('devise.sessions.user.signed_in')
+      hash = {'content' => str, 'type' => 'success'}
+    when t('devise.registrations.user.destroyed')
+      hash = {'content' => str, 'type' => 'success'}
+    when t('devise.registrations.user.signed_up')
+      hash = {'content' => str, 'type' => 'success'}
+    when t('devise.registrations.user.updated')
+      hash = {'content' => str, 'type' => 'success'}
+    when t('devise.failure.user.invalid')
+      hash = {'content' => str, 'type' => 'danger'}
+    when t('devise.failure.user.not_found_in_database')
+      hash = {'content' => str, 'type' => 'danger'}
+    else
+      hash = {'content' => str, 'type' => 'default'}
+    end
+    return hash
+  end
+  
 end
