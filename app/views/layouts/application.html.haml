@@ -9,22 +9,23 @@
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
   %body
-    %div#top-bar
-      %div#tb-home
-        - if params['controller'] != 'welcome'
-          = link_to 'На главную', welcome_index_path, class: "btn btn-primary"
+    -#
+      %div#top-bar
+        %div#tb-home
+          - if params['controller'] != 'welcome'
+            = link_to 'На главную', welcome_index_path, class: "btn btn-primary"
     
-      %div#tb-session
-        - if user_signed_in?
-          %span= link_to current_user.email, edit_user_registration_path, class: "btn btn-white-my-outline"
-          -# = link_to t('Сменить пароль'), edit_user_password_path, :method => :get , class: "btn btn-warning"
-          = link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn btn-danger submit-button"
-        - else
-          - if params['controller'] != 'devise/sessions'
-            = link_to t('title.devise/sessions'), new_user_session_path, class: "btn btn-success"
+        %div#tb-session
+          - if user_signed_in?
+            %span= link_to current_user.email, edit_user_registration_path, class: "btn btn-white-my-outline"
+            -# = link_to t('Сменить пароль'), edit_user_password_path, :method => :get , class: "btn btn-warning"
+            = link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn btn-danger submit-button"
+          - else
+            - if params['controller'] != 'devise/sessions'
+              = link_to t('title.devise/sessions'), new_user_session_path, class: "btn btn-success"
           
     - if !notice.nil?
-      notice1 = {}
+      - notice1 = {}
       - if notice.class == String
         - notice1 = devise_message(notice)
       - elsif notice.class == Hash
@@ -52,6 +53,70 @@
         .panel.my-notice-default.panel-default
           .panel-heading
             = "#{notice1['content']}"
+
+
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "На главную", welcome_index_path, class: "navbar-brand"
+        #navbar-collapse.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            - if !params['controller'].include?('devise')
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  Таблицы
+                  %span.caret
+                %ul.dropdown-menu{:role => "menu"}
+                  %li
+                    = link_to t('title.countries'), countries_path
+                  %li
+                    = link_to t('title.specialities'), specialities_path
+                  %li
+                    = link_to t('title.nationalities'), nationalities_path
+                  %li
+                    = link_to t('title.religions'), religions_path
+                  %li
+                    = link_to t('title.passports'), passports_path
+                  %li
+                    = link_to t('title.national_holidays'), national_holidays_path
+                  %li
+                    = link_to t('title.religion_holidays'), religion_holidays_path
+                  %li
+                    = link_to t('title.groups'), groups_path
+                  %li
+                    = link_to t('title.hostels'), hostels_path
+                  %li
+                    = link_to t('title.floors'), floors_path
+                  %li
+                    = link_to t('title.rooms'), rooms_path
+                  %li
+                    = link_to t('title.students'), students_path
+                  %li
+                    = link_to t('title.referrals'), referrals_path
+                  %li
+                    = link_to t('title.documents'), documents_path
+                  %li
+                    = link_to t('title.educations'), educations_path
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  = current_user.email
+                  %span.caret
+                %ul.dropdown-menu{:role => "menu"}
+                  %li
+                    = link_to "Настройки", edit_user_registration_path, :method => :get
+                  %li
+                    = link_to "Выйти", destroy_user_session_path, :method => :delete
+            - else
+              - if params['controller'] != 'devise/sessions'
+                %li
+                  = link_to t('title.devise/sessions'), new_user_session_path
     .content
       -#%p= params
       %p= yield

@@ -6,7 +6,7 @@ body
   margin-left: 5px
   margin-right: 5px
   margin-bottom: 5px
-  margin-top: $top-bar-height
+  margin-top: $navbar-height
 
 .fix
   position: fixed
@@ -46,7 +46,7 @@ body
   width: 400px
   font-size: 16px
   position: fixed
-  top: $top-bar-height
+  top: $navbar-height
   right: 0
   margin: 5px
 
@@ -55,7 +55,7 @@ body
   position: fixed
   background: $main-color
   width: 100%
-  height: $top-bar-height
+  height: $navbar-height
   top: 0px
   padding: 5px
   border-bottom: 3px solid darken($main-color, 25%)
@@ -181,3 +181,77 @@ body
 
 .toright
   float: right
+
+.navbar-inverse
+  background: $main-color
+
+
+.navbar-default
+  background-color: $main-color
+  border-color: $main-color
+  .navbar-brand
+    color: $main-color-navbar-inverse
+    &:hover, &:focus
+      color: $main-color
+      background: $main-color-navbar-inverse
+  .navbar-nav >
+    li > a
+      color: $main-color-navbar-inverse
+      &:hover, &:focus
+        color: $main-color
+        background: $main-color-navbar-inverse
+    .active > a
+      color: $main-color
+      background-color: $main-color-navbar-inverse
+      &:hover, &:focus
+        color: $main-color
+        background-color: $main-color-navbar-inverse
+    .open > a
+      color: $main-color-navbar-inverse
+      background-color: $main-color
+      &:hover, &:focus
+        color: $main-color
+        background-color: $main-color-navbar-inverse
+    .dropdown >
+      a
+        .caret
+          border-top-color: $main-color-navbar-inverse
+          border-bottom-color: $main-color-navbar-inverse
+        &:hover .caret, &:focus .caret
+          border-top-color: $main-color
+          border-bottom-color: $main-color
+      .dropdown-menu
+        background-color: $main-color
+        li
+          a
+            color: $main-color-navbar-inverse
+            &:hover, &:focus
+              background-color: $main-color-navbar-inverse
+              color: $main-color
+    .open > a
+      .caret, &:hover .caret, &:focus .caret
+        border-top-color: $main-color
+        border-bottom-color: $main-color
+  .navbar-toggle
+    border-color: $main-color-navbar-inverse
+    &:hover, &:focus
+      background-color: $main-color-navbar-inverse
+      color: $main-color
+      .icon-bar
+        background-color: $main-color-navbar-inverse
+        color: $main-color
+    .icon-bar
+      background-color: $main-color-navbar-inverse
+      color: $main-color
+      &:hover, &:focus
+        background-color: $main-color-navbar-inverse
+        color: $main-color
+
+@media (max-width: 768px)
+
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a
+    color: $main-color-navbar-inverse
+    &:hover, &:focus
+      color: $main-color
+      background-color: $main-color-navbar-inverse
+
