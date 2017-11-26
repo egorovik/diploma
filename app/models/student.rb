@@ -16,5 +16,14 @@ class Student < ActiveRecord::Base
   validates :bday, presence: true, uniqueness: {scope: [:ln, :fn, :sn, :sex, :passport]}
   validates :sex, presence: true, inclusion: {in: [?м, ?ж]}
   validates :country, presence: true
+  validate :check_room_free_space
+  
+  def check_room_free_space
+    if !self.room.nil?
+      if !(self.room.place_count > self.room.students.count)
+        self.errors["room"] = "не имеет свободных мест для нового студента"
+      end
+    end
+  end
   
 end
