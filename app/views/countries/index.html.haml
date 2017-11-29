@@ -2,13 +2,29 @@
 = link_to t('button.new.country'), new_country_path, class: "btn btn-success"
 %table.table.table-striped.table-condensed.my-table-hover
   %thead
-    %tr
-      %th= t('activerecord.attributes.country.short_name')
-      %th= t('activerecord.attributes.country.long_name')
-      %th= t('activerecord.attributes.country.alpha2')
-      %th= t('activerecord.attributes.country.alpha3')
-      %th= t('activerecord.attributes.country.country_code')
-      %th
+    = form_tag countries_path(), method: :get do
+      %tr
+        %th
+          = t('activerecord.attributes.country.short_name')
+          %br
+          = text_field_tag "search[country.short_name]", nil, class: 'form-control', value: value_for_form_text_field("country.short_name")
+        %th
+          = t('activerecord.attributes.country.long_name')
+          %br
+          = text_field_tag "search[country.long_name]", nil, class: 'form-control', value: value_for_form_text_field("country.long_name")
+        %th
+          = t('activerecord.attributes.country.alpha2')
+          %br
+          = text_field_tag "search[country.alpha2]", nil, class: 'form-control', value: value_for_form_text_field("country.alpha2")
+        %th
+          = t('activerecord.attributes.country.alpha3')
+          %br
+          = text_field_tag "search[country.alpha3]", nil, class: 'form-control', value: value_for_form_text_field("country.alpha3")
+        %th
+          = t('activerecord.attributes.country.country_code')
+          %br
+          = text_field_tag "search[country.country_code]", nil, class: 'form-control', value: value_for_form_text_field("country.country_code")
+        %th= submit_tag "Фильтровать", class: 'btn btn-primary wide'
 
   %tbody
     - @countries.each do |country|

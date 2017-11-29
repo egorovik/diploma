@@ -87,4 +87,13 @@ module ApplicationHelper
     return hash
   end
   
+  def value_for_form_text_field(str)
+    if !(params['search'].nil?)
+      if !(params['search'][str].nil?)
+        return params['search'][str]
+      end
+    end
+    return nil
+  end
+  
 end

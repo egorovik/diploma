@@ -4,7 +4,7 @@ class CountriesController < ApplicationController
   # GET /countries
   # GET /countries.json
   def index
-    @countries = Country.all.paginate(page: params[:page], per_page: 30)
+    @countries = Country.search(params).paginate(page: params[:page], per_page: 30)
   end
 
   # GET /countries/1

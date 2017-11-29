@@ -13,6 +13,18 @@ class Country < ActiveRecord::Base
       if !(params['search']['country.short_name'].nil?) and !(params['search']['country.short_name'].empty?)
         result = result.where("short_name ilike ?", "%#{params['search']['country.short_name']}%")
       end
+      if !(params['search']['country.long_name'].nil?) and !(params['search']['country.long_name'].empty?)
+        result = result.where("long_name ilike ?", "%#{params['search']['country.long_name']}%")
+      end
+      if !(params['search']['country.alpha2'].nil?) and !(params['search']['country.alpha2'].empty?)
+        result = result.where("alpha2 ilike ?", "%#{params['search']['country.alpha2']}%")
+      end
+      if !(params['search']['country.alpha3'].nil?) and !(params['search']['country.alpha3'].empty?)
+        result = result.where("alpha3 ilike ?", "%#{params['search']['country.alpha3']}%")
+      end
+      if !(params['search']['country.country_code'].nil?) and !(params['search']['country.country_code'].empty?)
+        result = result.where("country_code ilike ?", "%#{params['search']['country.country_code']}%")
+      end
     end
     return result
   end
