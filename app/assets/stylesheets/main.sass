@@ -254,3 +254,39 @@ body
     &:hover, &:focus
       color: $main-color
       background-color: $main-color-navbar-inverse
+
+
+.cl
+  border: 1px solid black
+  padding: 15px
+  text-align: center
+  -ms-user-select: none
+  -moz-user-select: none
+  -khtml-user-select: none
+  -webkit-user-select: none
+  thead
+    tr
+      td
+        border: 1px solid black
+        margin: 15px
+        padding: 15px
+  tbody
+    tr
+      td
+        border: 1px solid black
+        margin: 15px
+        padding: 15px
+  .cl-wd-0
+    color: $cl-week-end
+  .passive-week-day
+    color: lighten($cl-week-day, 50%)
+  .passive-week-end
+    color: lighten($cl-week-end, 25%)
+  .today
+    color: $cl-week-today
+  #cl-year-curr-input
+    text-align: center
+  #cl-month-curr-select
+    text-align: center
+  .select-option
+    color: red

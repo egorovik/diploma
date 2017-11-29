@@ -1,2 +1,38 @@
 %h1 Домашняя страница
-
+%table.cl
+  %thead.cl-head
+    %tr.cl-year
+      %td.cl-year-prev
+        <
+      %td.cl-year-curr{:colspan => "5"}
+        %input{:type => "number", :id => 'cl-year-curr-input', :class => "form-control"}
+      %td.cl-year-next
+        >
+    %tr.cl-month
+      %td.cl-month-prev
+        <
+      %td.cl-month-curr{:colspan => "5"}
+        %select{:id => "cl-month-curr-select", :class => "form-control"}
+          %option{:value => 0} Январь
+          %option{:value => 1} Февраль
+          %option{:value => 2} Март
+          %option{:value => 3} Апрель
+          %option{:value => 4} Май
+          %option{:value => 5} Июнь
+          %option{:value => 6} Июль
+          %option{:value => 7} Август
+          %option{:value => 8} Сентябрь
+          %option{:value => 9} Октябрь
+          %option{:value => 10} Ноябрь
+          %option{:value => 11} Декабрь
+      %td.cl-month-next
+        >
+    %tr.cl-week-head
+      %td.cl-wd-1 Пн
+      %td.cl-wd-2 Вт
+      %td.cl-wd-3 Ср
+      %td.cl-wd-4 Чт
+      %td.cl-wd-5 Пт
+      %td.cl-wd-6 Сб
+      %td.cl-wd-0 Вс
+  %tbody.cl-body
