@@ -185,7 +185,6 @@ body
 .navbar-inverse
   background: $main-color
 
-
 .navbar-default
   background-color: $main-color
   border-color: $main-color
@@ -232,13 +231,15 @@ body
       .caret, &:hover .caret, &:focus .caret
         border-top-color: $main-color
         border-bottom-color: $main-color
+  
+  
   .navbar-toggle
     border-color: $main-color-navbar-inverse
     &:hover, &:focus
       background-color: $main-color-navbar-inverse
       color: $main-color
       .icon-bar
-        background-color: $main-color-navbar-inverse
+        background-color: $main-color
         color: $main-color
     .icon-bar
       background-color: $main-color-navbar-inverse
@@ -276,14 +277,20 @@ body
         border: 1px solid black
         margin: 15px
         padding: 15px
+        font-weight: bold
   .cl-wd-0
     color: $cl-week-end
+    background: lighten($cl-week-end, 40%)
   .passive-week-day
     color: lighten($cl-week-day, 50%)
+    background: lighten($cl-week-day, 90%)
+    font-weight: normal
   .passive-week-end
     color: lighten($cl-week-end, 25%)
+    background: lighten($cl-week-end, 45%)
+    font-weight: normal
   .today
-    color: $cl-week-today
+    border: 1px dotted $cl-week-today
   #cl-year-curr-input
     text-align: center
   #cl-month-curr-select
