@@ -5,7 +5,7 @@
 @del_document_body_f = (link)->
   if confirm("Вы уверены?")
     link.parent().find("input[type=hidden].remove_fields").first().val("1")
-    link.parent().parent().parent().parent().hide()
+    link.parent().parent().parent().hide()
   false
   
 @del_document_f = ->
@@ -50,6 +50,6 @@ students_ready = ->
   window.add_document_f()
   window.del_document_f()
   
-$(document).ready students_ready
+#$(document).ready students_ready
 $(document).on 'page:load', students_ready
 $(document).on 'turbolinks:load', students_ready
