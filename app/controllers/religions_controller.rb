@@ -28,7 +28,7 @@ class ReligionsController < ApplicationController
 
     respond_to do |format|
       if @religion.save
-        format.html { redirect_to @religion, notice: {content: 'Religion was successfully created.', type: 'success' }
+        format.html { redirect_to @religion, notice: {content: 'Religion was successfully created.', type: 'success' }}
         format.json { render :show, status: :created, location: @religion }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ReligionsController < ApplicationController
   def update
     respond_to do |format|
       if @religion.update(religion_params)
-        format.html { redirect_to @religion, notice: {content: 'Religion was successfully updated.', type: 'success' }
+        format.html { redirect_to @religion, notice: {content: 'Religion was successfully updated.', type: 'success' }}
         format.json { render :show, status: :ok, location: @religion }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ReligionsController < ApplicationController
   def destroy
     @religion.destroy
     respond_to do |format|
-      format.html { redirect_to religions_url, notice: {content: 'Religion was successfully destroyed.', type: 'success' }
+      format.html { redirect_to religions_url, notice: {content: 'Religion was successfully destroyed.', type: 'success' }}
       format.json { head :no_content }
     end
   end
