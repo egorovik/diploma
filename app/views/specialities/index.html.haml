@@ -14,7 +14,29 @@
       %th= t('activerecord.attributes.speciality.edu_prog_code')
       %th= t('activerecord.attributes.speciality.edu_area_code')
       %th
-
+        %button{class: "btn btn-success wide filter-button"} Фильтр
+      %tr.filter-row.hide
+        = form_tag specialities_path(), method: :get do
+          %th
+            С
+            = text_field_tag "search[speciality.section_number0]", nil, class: "form-control", value: value_for_form_text_field("speciality.section_number0")
+            По
+            = text_field_tag "search[speciality.section_number1]", nil, class: "form-control", value: value_for_form_text_field("speciality.section_number1")
+          %th.top= text_field_tag "search[speciality.section_name]", nil, class: "form-control", value: value_for_form_text_field("speciality.section_name")
+          %th
+            С
+            = text_field_tag "search[speciality.group_number0]", nil, class: "form-control", value: value_for_form_text_field("speciality.group_number")
+            По
+            = text_field_tag "search[speciality.group_number1]", nil, class: "form-control", value: value_for_form_text_field("speciality.group_number")
+          %th.top= text_field_tag "search[speciality.group_name]", nil, class: "form-control", value: value_for_form_text_field("speciality.group_name")
+          %th.top= text_field_tag "search[speciality.subgroup_number]", nil, class: "form-control", value: value_for_form_text_field("speciality.subgroup_number")
+          %th.top= text_field_tag "search[speciality.subgroup_name]", nil, class: "form-control", value: value_for_form_text_field("speciality.subgroup_name")
+          %th.top= text_field_tag "search[speciality.speciality_code]", nil, class: "form-control", value: value_for_form_text_field("speciality.speciality_code")
+          %th.top= text_field_tag "search[speciality.name]", nil, class: "form-control", value: value_for_form_text_field("speciality.name")
+          %th.top= text_field_tag "search[speciality.edu_prog_code]", nil, class: "form-control", value: value_for_form_text_field("speciality.edu_prog_code")
+          %th.top= text_field_tag "search[speciality.edu_area_code]", nil, class: "form-control", value: value_for_form_text_field("speciality.edu_area_code")
+          %th.top= submit_tag "Фильтровать", class: 'btn btn-primary wide'
+        
   %tbody
     - @specialities.each do |speciality|
       %tr
@@ -29,6 +51,6 @@
         %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.edu_prog_code
         %td.speciality_name{'data' => {'info' => ["#{params['controller']}", "#{speciality.id}"]}}= speciality.edu_area_code
         %td
-          %p= link_to t('button.destroy'), speciality, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+          %p= link_to t('button.destroy'), speciality, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger wide"
 
 = will_paginate @countries, renderer: BootstrapPagination::Rails, previous_label: "Предыдущая", next_label: "Следующая", inner_window: 1, outer_window: 1

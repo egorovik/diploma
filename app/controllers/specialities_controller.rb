@@ -4,7 +4,7 @@ class SpecialitiesController < ApplicationController
   # GET /specialities
   # GET /specialities.json
   def index
-    @specialities = Speciality.all.paginate(page: params[:page], per_page: 30)
+    @specialities = Speciality.search(params).paginate(page: params[:page], per_page: 30)
   end
 
   # GET /specialities/1
