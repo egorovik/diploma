@@ -13,7 +13,7 @@ calendar = (time) ->
   i = timeprev.getDay()
   while i > 0
     str1 = "<td class=\"cl-wd-" + parseInt(i) + " passive-week-day\">"
-    str1 = str1 + parseInt(timeprev.getDate()) + "</td>"
+    str1 = str1 + "<span>" + parseInt(timeprev.getDate()) + "</span>" + "</td>"
     str = str1 + str
     timeprev.setDate(timeprev.getDate() - 1)
     i--
@@ -24,7 +24,7 @@ calendar = (time) ->
       str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + " today\">"
     else
       str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + "\">"
-    str1 = str1 + parseInt(timecurr.getDate()) + "</td>"
+    str1 = str1 + "<span>" + parseInt(timecurr.getDate()) + "</span>" + "</td>"
     str = str + str1
     if timecurr.getDay() == 0
       str = str + "</tr><tr>"
@@ -35,7 +35,7 @@ calendar = (time) ->
         str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + " passive-week-day\">"
       else
         str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + " passive-week-end\">"
-      str1 = str1 + parseInt(timecurr.getDate()) + "</td>"
+      str1 = str1 + "<span>" + parseInt(timecurr.getDate()) + "</span>" + "</td>"
       str = str + str1
       timecurr.setDate(timecurr.getDate() + 1)
       if timecurr.getDay() == 1

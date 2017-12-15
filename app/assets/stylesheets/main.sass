@@ -290,7 +290,16 @@ body
     background: lighten($cl-week-end, 45%)
     font-weight: normal
   .today
-    border: 1px double $cl-week-today
+    span
+      border: 2px solid $cl-week-today
+      padding-top: 9px
+      margin-top: -9px
+      padding-bottom: 10px
+      margin-bottom: -10px
+      padding-left: 14px
+      margin-left: -14px
+      padding-right: 14px
+      margin-right: -14px
   #cl-year-curr-input
     text-align: center
   #cl-month-curr-select
