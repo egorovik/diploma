@@ -53,23 +53,23 @@ body
 #top-bar
   z-index: 20
   position: fixed
-  background: $main-color
+  background: $topbar-text
+  color: $topbar-text
   width: 100%
   height: $navbar-height
   top: 0px
   padding: 5px
-  border-bottom: 3px solid darken($main-color, 25%)
 
 #tb-home
   border: solid
   border-width: 1px
-  border-color: $main-color
+  border-color: $topbar-text
   float: left
 
 #tb-session
   border: solid
   border-width: 1px
-  border-color: $main-color
+  border-color: $topbar-text
   float: right
   
 .btn-white-my-outline
@@ -186,75 +186,75 @@ body
   background: $main-color
 
 .navbar-default
-  background-color: $main-color
-  border-color: $main-color
+  background-color: $topbar-bg
+  border-color: $topbar-bg
   .navbar-brand
-    color: $main-color-navbar-inverse
+    color: $topbar-text
     &:hover, &:focus
-      color: $main-color
-      background: $main-color-navbar-inverse
+      color: $topbar-hover-text
+      background: $topbar-hover-bg
   .navbar-nav >
     li > a
-      color: $main-color-navbar-inverse
+      color: $topbar-text
       &:hover, &:focus
-        color: $main-color
-        background: $main-color-navbar-inverse
+        color: $topbar-hover-text
+        background: $topbar-hover-bg
     .active > a
-      color: $main-color
-      background-color: $main-color-navbar-inverse
+      color: $topbar-bg
+      background-color: $topbar-text
       &:hover, &:focus
-        color: $main-color
-        background-color: $main-color-navbar-inverse
+        color: $topbar-hover-text
+        background-color: $topbar-hover-bg
     .open > a
-      color: $main-color-navbar-inverse
-      background-color: $main-color
+      color: $topbar-text
+      background-color: $topbar-bg
       &:hover, &:focus
-        color: $main-color
-        background-color: $main-color-navbar-inverse
+        color: $topbar-hover-text
+        background-color: $topbar-hover-bg
     .dropdown >
       a
         .caret
-          border-top-color: $main-color-navbar-inverse
-          border-bottom-color: $main-color-navbar-inverse
+          border-top-color: $topbar-text
+          border-bottom-color: $topbar-text
         &:hover .caret, &:focus .caret
-          border-top-color: $main-color
-          border-bottom-color: $main-color
+          border-top-color: $topbar-hover-text
+          border-bottom-color: $topbar-hover-text
       .dropdown-menu
-        background-color: $main-color
+        background-color: $topbar-bg
         li
           a
-            color: $main-color-navbar-inverse
+            color: $topbar-text
             &:hover, &:focus
-              background-color: $main-color-navbar-inverse
-              color: $main-color
+              background-color: $topbar-hover-bg
+              color: $topbar-hover-text
     .open > a
       .caret, &:hover .caret, &:focus .caret
-        border-top-color: $main-color
-        border-bottom-color: $main-color
+        border-top-color: $topbar-hover-text
+        border-bottom-color: $topbar-hover-text
   
   
   .navbar-toggle
-    border-color: $main-color-navbar-inverse
+    border-color: $topbar-text
     &:hover, &:focus
-      background-color: $main-color-navbar-inverse
-      color: $main-color
+      background-color: $topbar-hover-bg
+      color: $topbar-hover-text
       .icon-bar
-        background-color: $main-color
-        color: $main-color
+        background-color: $topbar-bg
+        color: $topbar-bg
     .icon-bar
-      background-color: $main-color-navbar-inverse
-      color: $main-color
+      background-color: $topbar-text
+      color: $topbar-bg
       &:hover, &:focus
-        background-color: $main-color-navbar-inverse
-        color: $main-color
+        background-color: $topbar-hover-bg
+        color: $topbar-hover-text
 
 @media (max-width: 768px)
 
   .navbar-default .navbar-nav .open .dropdown-menu > li > a
     color: $main-color-navbar-inverse
     &:hover, &:focus
-      color: $main-color
-      background-color: $main-color-navbar-inverse
+      color: $topbar-hover-text
+      background-color: $topbar-hover-bg
 
 
 .cl
