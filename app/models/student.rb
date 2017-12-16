@@ -10,6 +10,7 @@ class Student < ActiveRecord::Base
   has_many :educations
   
   accepts_nested_attributes_for :documents, allow_destroy: true
+  accepts_nested_attributes_for :passport
   
   validates :ln, presence: true
   validates :fn, presence: true

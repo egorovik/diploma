@@ -20,31 +20,51 @@
     
     %div{'class'=>"tab-content"}
       %div{'role'=>"tabpanel", 'class'=>"tab-pane active", 'id'=>"base"}
-        .form-group.half-wide
-          = f.label :passport_id
-          = f.select :passport_id, options_for_select(passport_options, f.object.passport_id), {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
-        .form-group.half-wide
+        .panel.panel-info
+          .panel-heading
+            Удостоверение личности
+          .panel-body
+            .form-group.wide
+              -#= f.label :passport_id
+              -#= f.select :passport_id, options_for_select(passport_options, f.object.passport_id), {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
+              = f.fields_for(:passport) do |pf|
+                .form-group.wide
+                  = pf.label :serial
+                  = pf.text_field :serial, class: "form-control"
+                .form-group.wide
+                  = pf.label :number
+                  = pf.text_field :number, class: "form-control"
+                .form-group.wide
+                  = pf.label :passport_type
+                  = pf.text_field :passport_type, class: "form-control"
+                .form-group.wide
+                  = pf.label :language
+                  = pf.text_field :language, class: "form-control"
+                .form-group.wide
+                  = pf.label :translation
+                  = pf.text_field :translation, class: "form-control"
+        .form-group
           = f.label :ln
           = f.text_field :ln, class: "form-control"
-        .form-group.half-wide
+        .form-group
           = f.label :fn
           = f.text_field :fn, class: "form-control"
-        .form-group.half-wide
+        .form-group
           = f.label :sn
           = f.text_field :sn, class: "form-control"
-        .form-group.half-wide
+        .form-group
           = f.label :sex
           = f.select :sex, options_for_select([?ж, ?м], [?ж, ?м]), {include_blank: false}, {class: "form-control selectpicker", 'data-size'=> 10}
-        .form-group.half-wide
+        .form-group
           = f.label :bday
           = f.text_field :bday, class: "form-control", id: 'students_bday_form_datepicker'
-        .form-group.half-wide
+        .form-group
           = f.label :country_id
           = f.collection_select :country_id, Country.all, :id, :short_name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
-        .form-group.half-wide
+        .form-group
           = f.label :nationality_id
           = f.collection_select :nationality_id, Nationality.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
-        .form-group.half-wide
+        .form-group
           = f.label :religion_id
           = f.collection_select :religion_id, Religion.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
       
@@ -83,12 +103,12 @@
                   = fn.text_field :translation, class: "form-control"
       
       %div{'role'=>"tabpanel", 'class'=>"tab-pane", 'id'=>"study-info"}
-        .form-group.half-wide
+        .form-group
           = f.label :group_id
           = f.collection_select :group_id, Group.all, :id, :name, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
       
       %div{'role'=>"tabpanel", 'class'=>"tab-pane", 'id'=>"living-info"}
-        .form-group.half-wide
+        .form-group
           = f.label :room_id
           = f.collection_select :room_id, Room.all, :id, :room_number, {include_blank: false}, {class: "form-control selectpicker", 'data-live-search'=> "true", 'data-size'=> 10}
   .actions.submit-button
