@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :specialities
   resources :countries
   get 'welcome/index'
-  
+  get 'welcome/get_holidays'
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

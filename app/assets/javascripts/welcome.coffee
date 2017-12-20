@@ -13,18 +13,34 @@ calendar = (time) ->
   i = timeprev.getDay()
   while i > 0
     str1 = "<td class=\"cl-wd-" + parseInt(i) + " passive-week-day\">"
-    str1 = str1 + "<span>" + parseInt(timeprev.getDate()) + "</span>" + "</td>"
+    str1 = str1 + "<div>"
+    str1 = str1 + "<div>"
+    str1 = str1 + "<div>"
+    str1 = str1 + parseInt(timeprev.getDate())
+    str1 = str1 + "</div>"
+    str1 = str1 + "</div>"
+    str1 = str1 + "</div>"
+    str1 = str1 + "</td>"
     str = str1 + str
     timeprev.setDate(timeprev.getDate() - 1)
     i--
   curr_month = time.getMonth()
   str = "<tr>" + str
   while timecurr.getMonth() == curr_month
+    str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + "\">"
     if timecurr.getFullYear() == today.getFullYear() && timecurr.getMonth() == today.getMonth() && timecurr.getDate() == today.getDate()
-      str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + " today\">"
+      str1 = str1 + "<div>"
+      str1 = str1 + "<div>"
+      str1 = str1 + "<div class=\"today\">"
     else
-      str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + "\">"
-    str1 = str1 + "<span>" + parseInt(timecurr.getDate()) + "</span>" + "</td>"
+      str1 = str1 + "<div>"
+      str1 = str1 + "<div>"
+      str1 = str1 + "<div>"
+    str1 = str1 + parseInt(timecurr.getDate())
+    str1 = str1 + "</div>"
+    str1 = str1 + "</div>"
+    str1 = str1 + "</div>"
+    str1 = str1 + "</td>"
     str = str + str1
     if timecurr.getDay() == 0
       str = str + "</tr><tr>"
@@ -35,23 +51,35 @@ calendar = (time) ->
         str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + " passive-week-day\">"
       else
         str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + " passive-week-end\">"
-      str1 = str1 + "<span>" + parseInt(timecurr.getDate()) + "</span>" + "</td>"
+      str1 = str1 + "<div>"
+      str1 = str1 + "<div>"
+      str1 = str1 + "<div>"
+      str1 = str1 + parseInt(timecurr.getDate())
+      str1 = str1 + "</div>"
+      str1 = str1 + "</div>"
+      str1 = str1 + "</div>"
+      str1 = str1 + "</td>"
       str = str + str1
       timecurr.setDate(timecurr.getDate() + 1)
       if timecurr.getDay() == 1
         break
   str = str + "</tr>"
   $('.cl-body').html(str)
+  
 
 welcome_ready= ->
   $(".my-notice-default").fadeOut(5000)
+  path = $(".cl").data('info')
   timenow = new Date()
+  $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } )
   calendar(timenow)
   $(".cl-year-prev").on 'click', ->
     timenow.setFullYear(timenow.getFullYear() - 1)
+    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } )
     calendar(timenow)
   $(".cl-year-next").on 'click', ->
     timenow.setFullYear(timenow.getFullYear() + 1)
+    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } )
     calendar(timenow)
   $(".cl-month-prev").on 'click', ->
     if timenow.getMonth() == 0
@@ -59,6 +87,7 @@ welcome_ready= ->
       timenow.setMonth(11)
     else
       timenow.setMonth(timenow.getMonth() - 1)
+    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } )
     calendar(timenow)
   $(".cl-month-next").on 'click', ->
     if timenow.getMonth() == 11
@@ -66,12 +95,15 @@ welcome_ready= ->
       timenow.setMonth(0)
     else
       timenow.setMonth(timenow.getMonth() + 1)
+    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } )
     calendar(timenow)
   $("#cl-year-curr-input").on 'change', ->
     timenow.setFullYear($(this).val())
+    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } )
     calendar(timenow)
   $("#cl-month-curr-select").on 'change', ->
     timenow.setMonth($(this).val())
+    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } )
     calendar(timenow)
 
 
