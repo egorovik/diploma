@@ -96,4 +96,19 @@ module ApplicationHelper
     return nil
   end
   
+  def is_search_params_empty?
+    if !(params['search'].nil?)
+      flag = true
+      params['search'].each do |p|
+        if !(p[1].empty?)
+          flag = false
+          break
+        end
+      end
+      return flag
+    else
+      return true
+    end
+  end
+  
 end
