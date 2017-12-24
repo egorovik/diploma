@@ -1,2 +1,2 @@
-$("#nholidays").html('<%= @n.inspect %>');
-$("#rholidays").html('<%= @r.inspect %>');
+$("#nholidays").attr("data-info",'<%= escape_javascript(@n.inspect) %>');
+$("#rholidays").attr("data-info",'<%= escape_javascript(@r.inspect) %>');
