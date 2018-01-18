@@ -4,8 +4,16 @@
 calendar = (time) ->
   nholidays = $("#nholidays").attr('data-info')
   rholidays = $("#rholidays").attr('data-info')
-  console.log("nholidays", nholidays)
-  console.log("rholidays", rholidays)
+  console.log(nholidays)
+  console.log(rholidays)
+  if(nholidays)
+    n11 = nholidays
+    n11 = n11.replace("&quot;","").replace("&quot;","").split(",")
+    console.log("n11", n11)
+  if(rholidays)
+    r11 = rholidays
+    r11 = r11.replace("&quot;","").replace("&quot;","").split(",")
+    console.log("r11",r11)
   month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
            "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
   $("#cl-year-curr-input").val(time.getFullYear())
@@ -32,14 +40,32 @@ calendar = (time) ->
   str = "<tr>" + str
   while timecurr.getMonth() == curr_month
     str1 = "<td class=\"cl-wd-" + parseInt(timecurr.getDay()) + "\">"
+    if n11
+      if $.inArray(timecurr.getDate().toString(), n11) != -1
+        str1 = str1 + "<div class=\"nh\">"
+      else
+        str1 = str1 + "<div>"
+    else
+      str1 = str1 + "<div>"
+    if r11
+      if $.inArray(timecurr.getDate().toString(), r11) != -1
+        str1 = str1 + "<div class=\"rh\">"
+      else
+        str1 = str1 + "<div>"
+    else
+      str1 = str1 + "<div>"
     if timecurr.getFullYear() == today.getFullYear() && timecurr.getMonth() == today.getMonth() && timecurr.getDate() == today.getDate()
-      str1 = str1 + "<div>"
-      str1 = str1 + "<div>"
       str1 = str1 + "<div class=\"today\">"
     else
       str1 = str1 + "<div>"
-      str1 = str1 + "<div>"
-      str1 = str1 + "<div>"
+    #if timecurr.getFullYear() == today.getFullYear() && timecurr.getMonth() == today.getMonth() && timecurr.getDate() == today.getDate()
+    #  str1 = str1 + "<div>" #n
+    #  str1 = str1 + "<div>" #r
+    #  str1 = str1 + "<div class=\"today\">"
+    #else
+    #  str1 = str1 + "<div>"
+    #  str1 = str1 + "<div>"
+    #  str1 = str1 + "<div>"
     str1 = str1 + parseInt(timecurr.getDate())
     str1 = str1 + "</div>"
     str1 = str1 + "</div>"

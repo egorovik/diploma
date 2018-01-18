@@ -13,5 +13,7 @@ class WelcomeController < ApplicationController
     rh.each do |r|
       @r << r.day if r.month == params['month'].to_i + 1
     end
+    @n = @n.join(',')
+    @r = @r.join(',')
   end
 end
