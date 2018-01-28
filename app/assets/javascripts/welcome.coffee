@@ -101,8 +101,9 @@ welcome_ready= ->
   $(".my-notice-default").fadeOut(5000)
   path = $(".cl").data('info')
   timenow = new Date()
-  $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } )
-  calendar(timenow)
+  $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
+    calendar(timenow)
+  
   $(".cl-year-prev").on 'click', ->
     timenow.setFullYear(timenow.getFullYear() - 1)
     $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } )
@@ -137,6 +138,6 @@ welcome_ready= ->
     calendar(timenow)
 
 
-$(document).on 'page:load', welcome_ready
+#$(document).on 'page:load', welcome_ready
 $(document).on 'turbolinks:load', welcome_ready
 #$(document).ready welcome_ready
