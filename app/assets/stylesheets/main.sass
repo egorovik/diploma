@@ -269,8 +269,8 @@ body
     tr
       td
         border: 1px solid black
-        margin: 15px
-        padding: 15px
+        margin: 10px
+        padding: 10px
   tbody
     tr
       td
@@ -278,30 +278,38 @@ body
         margin: 30px
         padding: 30px
         font-weight: bold
+        &:hover
+          background: #bbbbbb
   .cl-wd-0
     color: $cl-week-end
     background: lighten($cl-week-end, 40%)
+    &:hover
+      background: lighten($cl-week-end, 20%)
   .passive-week-day
     color: lighten($cl-week-day, 50%)
     background: lighten($cl-week-day, 90%)
     font-weight: normal
+    &:hover
+      background: lighten($cl-week-day, 70%)
   .passive-week-end
     color: lighten($cl-week-end, 25%)
     background: lighten($cl-week-end, 45%)
     font-weight: normal
+    &:hover
+      background: lighten($cl-week-end, 35%)
   .today
     z-index: 11
-    border: 1px solid $cl-week-today
+    border: 3px solid $cl-week-today
     border-radius: 5px
     background: $cl-week-today
     padding-top: 22px
-    margin-top: -23px
+    margin-top: -25px
     padding-bottom: 22px
-    margin-bottom: -23px
+    margin-bottom: -25px
     padding-left: 23px
-    margin-left: -24px
+    margin-left: -26px
     padding-right: 24px
-    margin-right: -25px
+    margin-right: -26px
   .rh
     z-index: 15
     border: 3px solid $cl-week-rh
