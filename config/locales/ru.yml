@@ -327,10 +327,14 @@ ru:
         destroyed: Пользователь удален
         signed_up: Пользователь создан
         updated: Пароль изменен
+        signed_up_but_unconfirmed: Пользователь добавлен, инструкция по активации отправлена на указанный электронный адрес
     failure:
       user:
         invalid: Неправильно указан пароль или электронный адрес
         not_found_in_database: Пользователь не найден в базе данных
+    confirmations:
+      user:
+        confirmed: Пользователь успешно активирован
   errors:
     messages:
       not_saved: Не сохранено

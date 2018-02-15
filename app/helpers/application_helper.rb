@@ -77,10 +77,14 @@ module ApplicationHelper
       hash = {'content' => str, 'type' => 'success'}
     when t('devise.registrations.user.updated')
       hash = {'content' => str, 'type' => 'success'}
+    when t('devise.registrations.user.signed_up_but_unconfirmed')
+      hash = {'content' => str, 'type' => 'success'}
     when t('devise.failure.user.invalid')
       hash = {'content' => str, 'type' => 'danger'}
     when t('devise.failure.user.not_found_in_database')
       hash = {'content' => str, 'type' => 'danger'}
+    when t('devise.confirmations.user.confirmed')
+      hash = {'content' => str, 'type' => 'success'}
     else
       hash = {'content' => str, 'type' => 'default'}
     end
