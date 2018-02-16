@@ -97,6 +97,10 @@ calendar = (time) ->
   
 
 welcome_ready= ->
+  $("#login").on 'click', ->
+    $("#login-modal").show()
+  $("#login-modal-close").on 'click', ->
+    $("#login-modal").hide()
   $(".my-notice-default").fadeOut(5000)
   path = $(".cl").data('info')
   timenow = new Date()
