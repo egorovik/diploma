@@ -119,7 +119,7 @@
                   =#= link_to t('title.devise/sessions'), new_user_session_path
                   %a#login= t('title.devise/sessions')
     #login-modal.my-modal
-      .my-modal-content.container-fluid
+      .my-modal-content
         %span#login-modal-close.my-close
           &times;
         .my-content-body
@@ -127,21 +127,21 @@
           - resource = User.new
           - resource_name = "user"
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-            .field.half-wide
+            .field
               = f.label :email
               %br
               = f.email_field :email, autofocus: true, class: "form-control"
-          
-            .field.half-wide
+            
+            .field
               = f.label :password
               %br
               = f.password_field :password, autocomplete: "off", class: "form-control"
-          
+            
             - if Devise.mappings[:user].rememberable?
-              .field.half-wide
+              .field
                 = f.check_box :remember_me
                 = f.label :remember_me
-          
+            
             .actions
               = f.submit t("button.log_in"), class: "btn btn-success"
           
