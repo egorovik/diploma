@@ -1,0 +1,15 @@
+.devise_form
+  %h2= t('title.resend_confirmation_instructions')
+  %p
+    = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
+    
+      .field
+        =# f.label :email
+        -#%br
+        = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-control", placeholder: "Email"
+    
+      .actions.submit-button
+        = f.submit t("button.resend_confirmation_instructions"), class: "btn btn-success"
+  %p
+    = link_to t("button.back"), :back, class: "btn btn-danger-my-outline"

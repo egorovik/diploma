@@ -116,39 +116,7 @@
             - else
               - if params['controller'] != 'devise/sessions'
                 %li
-                  =#= link_to t('title.devise/sessions'), new_user_session_path
-                  %a#login= t('title.devise/sessions')
-    #login-modal.my-modal
-      .my-modal-content
-        %span#login-modal-close.my-close
-          &times;
-        .my-content-body
-          %h2= t('title.log_in')
-          - resource = User.new
-          - resource_name = "user"
-          %p
-            = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-              .field
-                = f.label :email
-                %br
-                = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"
-              
-              .field
-                = f.label :password
-                %br
-                = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Пароль"
-              
-              - if Devise.mappings[:user].rememberable?
-                .field
-                  = f.check_box :remember_me
-                  = f.label :remember_me
-              
-              .actions
-                = f.submit t("button.log_in"), class: "btn btn-success"
-                
-          
-          %p= link_to t("button.sign_up"), new_registration_path(resource_name), class: "btn btn-info"
-          %p= link_to t("button.didn't_receive_confirmation_instructions?"), new_confirmation_path(resource_name), class: "btn btn-warning"
+                  = link_to t('title.devise/sessions'), new_user_session_path
     .content
       -#%p= params
       %p= yield

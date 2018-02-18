@@ -21,6 +21,7 @@ ru:
     sign_up: Регистрация в системе
     edit_user: Редактирование учётной записи
     cancel_my_account: Удалить учётную запись
+    resend_confirmation_instructions: Повторная отправка письма о подтверждении электронного адреса
   controller:
     countries:
       new: Добавить страну
@@ -138,6 +139,8 @@ ru:
       new: Зарегистрироваться
       edit: Редактирование учётной записи
       update: Редактирование учётной записи
+    devise/confirmations:
+      new: Подтверждение электронного адреса
   activerecord:
     errors:
       models:
@@ -145,6 +148,7 @@ ru:
           attributes:
             email:
               not_found: Электронный адрес не найден
+              already_confirmed: Электронный адрес уже подтвержден
     models:
       country: Страна
       speciality: Специальность
@@ -277,10 +281,11 @@ ru:
     sign_up: Зарегистрироваться
     forgot_your_password?: Забыли пароль?
     send_me_reset_password_instructions: Отправить инструкцию по восстановлению пароля
-    didn't_receive_confirmation_instructions?: Не получили письмо о восстановлении пароля?
+    didn't_receive_confirmation_instructions?: Не получили письмо о подтверждении электронного адреса?
     didn't_receive_unlock_instructions?: Не получили письмо о восстановлении доступа?
     update: Применить изменения
     cancel_my_account: Удалить учётную запись
+    resend_confirmation_instructions: Отправить инструкцию по активации
     new:
       country: Добавить страну
       speciality: Добавить специальность
@@ -335,6 +340,7 @@ ru:
     confirmations:
       user:
         confirmed: Пользователь успешно активирован
+        send_instructions: Инструкция по активацию электронного адреса отправлена еще раз
   errors:
     messages:
       not_saved: Не сохранено

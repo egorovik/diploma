@@ -85,6 +85,8 @@ module ApplicationHelper
       hash = {'content' => str, 'type' => 'danger'}
     when t('devise.confirmations.user.confirmed')
       hash = {'content' => str, 'type' => 'success'}
+    when t('devise.confirmations.user.send_instructions')
+      hash = {'content' => str, 'type' => 'success'}
     else
       hash = {'content' => str, 'type' => 'default'}
     end
