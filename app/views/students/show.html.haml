@@ -130,7 +130,9 @@
           - b.each do |s|
             - next if s.id == @student.id
             %li.list-group-item= link_to sname(s), s
-            
+
+- @student.check_restrictions.each do |a|
+  %p= a
 .buttons
   .item= link_to t('button.edit'), edit_student_path(@student), class: "btn btn-warning"
   .item= link_to t("button.to.#{params['controller']}"), students_path, class: "btn btn-danger"

@@ -31,7 +31,7 @@ class Student < ActiveRecord::Base
     arr = []
     if self.room
       self.room.students.each do |s|
-        arr << s if s.id != self.id
+        arr << s.id if s.id != self.id
       end
     end
     return arr
@@ -42,7 +42,7 @@ class Student < ActiveRecord::Base
     if self.room
       self.room.floor.rooms.each do |r|
         r.students.each do |s|
-          arr << s if s.id != self.id
+          arr << s.id if s.id != self.id
         end
       end
     end
@@ -55,7 +55,7 @@ class Student < ActiveRecord::Base
       self.room.floor.hostel.floors.each do |f|
         f.rooms.each do |r|
           r.students.each do |s|
-            arr << s if s.id != self.id
+            arr << s.id if s.id != self.id
           end
         end
       end
@@ -67,7 +67,7 @@ class Student < ActiveRecord::Base
     arr = []
     if self.group
       self.group.students.each do |s|
-        arr << s if s.id != self.id
+        arr << s.id if s.id != self.id
       end
     end
     return arr
@@ -81,7 +81,7 @@ class Student < ActiveRecord::Base
         if f.floor_number > floor
           f.rooms.each do |r|
             r.students.each do |s|
-              arr << s if s.id != self.id
+              arr << s.id if s.id != self.id
             end
           end
         end
@@ -89,7 +89,6 @@ class Student < ActiveRecord::Base
     end
     return arr
   end
-  
     
   def lower_floor
     arr = []
@@ -99,11 +98,19 @@ class Student < ActiveRecord::Base
         if f.floor_number < floor
           f.rooms.each do |r|
             r.students.each do |s|
-              arr << s if s.id != self.id
+              arr << s.id if s.id != self.id
             end
           end
         end
       end
+    end
+    return arr
+  end
+  
+  def check_restrictions
+    arr = []
+    Restriction.all.each do |r|
+      arr << [r.inspect, r.check(self)]
     end
     return arr
   end
