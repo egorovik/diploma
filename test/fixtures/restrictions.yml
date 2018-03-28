@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_left_id: 
+  student_right_id: 
+  restriction: MyString
+  restriction_type: MyString
+
+two:
+  student_left_id: 
+  student_right_id: 
+  restriction: MyString
+  restriction_type: MyString

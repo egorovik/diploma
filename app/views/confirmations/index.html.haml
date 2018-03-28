@@ -1,0 +1,49 @@
+%h1 Listing confirmations
+
+%table
+  %thead
+    %tr
+      %th Document
+      %th Express rating
+      %th Expert conclusion
+      %th Confirmation
+      %th Document type
+      %th Serial
+      %th Number
+      %th Issue date
+      %th Country
+      %th Education organization
+      %th Issue orgenization
+      %th Foreign level
+      %th Rf level
+      %th Reason
+      %th Person
+      %th
+      %th
+      %th
+
+  %tbody
+    - @confirmations.each do |confirmation|
+      %tr
+        %td= confirmation.document
+        %td= confirmation.express_rating
+        %td= confirmation.expert_conclusion
+        %td= confirmation.confirmation
+        %td= confirmation.document_type
+        %td= confirmation.serial
+        %td= confirmation.number
+        %td= confirmation.issue_date
+        %td= confirmation.country
+        %td= confirmation.education_organization
+        %td= confirmation.issue_orgenization
+        %td= confirmation.foreign_level
+        %td= confirmation.rf_level
+        %td= confirmation.reason
+        %td= confirmation.person
+        %td= link_to 'Show', confirmation
+        %td= link_to 'Edit', edit_confirmation_path(confirmation)
+        %td= link_to 'Destroy', confirmation, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Confirmation', new_confirmation_path

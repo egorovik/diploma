@@ -7,11 +7,9 @@ calendar = (time) ->
   if(nholidays)
     n11 = nholidays
     n11 = n11.replace("&quot;","").replace("&quot;","").split(",")
-    console.log(n11)
   if(rholidays)
     r11 = rholidays
     r11 = r11.replace("&quot;","").replace("&quot;","").split(",")
-    console.log(n11)
   month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
            "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
   $("#cl-year-curr-input").val(time.getFullYear())
@@ -45,26 +43,14 @@ calendar = (time) ->
       str1 = str1 + "<div>"
 
     if $.inArray(timecurr.getDate().toString(), n11) >= 0
-      console.log(timecurr.getDate(), "true")
       str1 = str1 + "<div class=\"nh\">"
     else
-      console.log(timecurr.getDate(), "false")
       str1 = str1 + "<div>"
 
     if $.inArray(timecurr.getDate().toString(), r11) >= 0
-      console.log(timecurr.getDate(), "true")
       str1 = str1 + "<div class=\"rh\">"
     else
-      console.log(timecurr.getDate(), "false")
       str1 = str1 + "<div>"
-    #if timecurr.getFullYear() == today.getFullYear() && timecurr.getMonth() == today.getMonth() && timecurr.getDate() == today.getDate()
-    #  str1 = str1 + "<div>" #n
-    #  str1 = str1 + "<div>" #r
-    #  str1 = str1 + "<div class=\"today\">"
-    #else
-    #  str1 = str1 + "<div>"
-    #  str1 = str1 + "<div>"
-    #  str1 = str1 + "<div>"
     str1 = str1 + parseInt(timecurr.getDate())
     str1 = str1 + "</div>"
     str1 = str1 + "</div>"
@@ -94,13 +80,46 @@ calendar = (time) ->
         break
   str = str + "</tr>"
   $('.cl-body').html(str)
-  
 
-welcome_ready= ->
-  $("#login").on 'click', ->
-    $("#login-modal").show()
-  $("#login-modal-close").on 'click', ->
-    $("#login-modal").hide()
+decr_year = (timenow, path) ->
+  timenow.setFullYear(timenow.getFullYear() - 1)
+  $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
+    calendar(timenow)
+
+incr_year = (timenow, path) ->
+  timenow.setFullYear(timenow.getFullYear() + 1)
+  $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
+    calendar(timenow)
+
+decr_month = (timenow, path) ->
+  if timenow.getMonth() == 0
+    timenow.setFullYear(timenow.getFullYear() - 1)
+    timenow.setMonth(11)
+  else
+    timenow.setMonth(timenow.getMonth() - 1)
+  $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
+    calendar(timenow)
+
+incr_month = (timenow, path) ->
+  if timenow.getMonth() == 11
+    timenow.setFullYear(timenow.getFullYear() + 1)
+    timenow.setMonth(0)
+  else
+    timenow.setMonth(timenow.getMonth() + 1)
+  $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
+    calendar(timenow)
+
+select_year = (timenow, path) ->
+  timenow.setFullYear($("#cl-year-curr-input").val())
+  $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
+    calendar(timenow)
+
+select_month = (timenow, path) ->
+  timenow.setMonth($("#cl-month-curr-select").val())
+  $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
+    calendar(timenow)
+
+welcome_ready = ->
   $(".my-notice-default").fadeOut(5000)
   path = $(".cl").data('info')
   timenow = new Date()
@@ -108,37 +127,17 @@ welcome_ready= ->
     calendar(timenow)
   
   $(".cl-year-prev").on 'click', ->
-    timenow.setFullYear(timenow.getFullYear() - 1)
-    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
-      calendar(timenow)
+    decr_year(timenow, path)
   $(".cl-year-next").on 'click', ->
-    timenow.setFullYear(timenow.getFullYear() + 1)
-    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
-      calendar(timenow)
+    incr_year(timenow, path)
   $(".cl-month-prev").on 'click', ->
-    if timenow.getMonth() == 0
-      timenow.setFullYear(timenow.getFullYear() - 1)
-      timenow.setMonth(11)
-    else
-      timenow.setMonth(timenow.getMonth() - 1)
-    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
-      calendar(timenow)
+    decr_month(timenow, path)
   $(".cl-month-next").on 'click', ->
-    if timenow.getMonth() == 11
-      timenow.setFullYear(timenow.getFullYear() + 1)
-      timenow.setMonth(0)
-    else
-      timenow.setMonth(timenow.getMonth() + 1)
-    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
-      calendar(timenow)
+    incr_month(timenow, path)
   $("#cl-year-curr-input").on 'change', ->
-    timenow.setFullYear($(this).val())
-    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
-      calendar(timenow)
+    select_year(timenow, path)
   $("#cl-month-curr-select").on 'change', ->
-    timenow.setMonth($(this).val())
-    $.get( path, { year: timenow.getFullYear(), month: timenow.getMonth() } ).done ->
-      calendar(timenow)
+    select_month(timenow, path)
 
 
 $(document).on 'page:load', welcome_ready

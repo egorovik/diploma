@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Student left:
+  = @restriction.student_left
+%p
+  %b Student right:
+  = @restriction.student_right
+%p
+  %b Restriction:
+  = @restriction.restriction
+%p
+  %b Restriction type:
+  = @restriction.restriction_type
+
+= link_to 'Edit', edit_restriction_path(@restriction)
+\|
+= link_to 'Back', restrictions_path

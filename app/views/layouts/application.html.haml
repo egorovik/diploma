@@ -102,6 +102,14 @@
                     = link_to t('title.documents'), documents_path
                   %li
                     = link_to t('title.educations'), educations_path
+                  %li
+                    = link_to t('Confirmations'), confirmations_path
+                  %li
+                    = link_to t('StudentLeft'), student_lefts_path
+                  %li
+                    = link_to t('StudentRight'), student_rights_path
+                  %li
+                    = link_to t('Restriction'), restrictions_path
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %li.dropdown

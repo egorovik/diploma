@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102093642) do
+ActiveRecord::Schema.define(version: 20180327035351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "confirmations", force: :cascade do |t|
+    t.integer  "document_id"
+    t.string   "express_rating"
+    t.string   "expert_conclusion"
+    t.string   "confirmation"
+    t.string   "document_type"
+    t.string   "serial"
+    t.string   "number"
+    t.date     "issue_date"
+    t.integer  "country_id"
+    t.string   "education_organization"
+    t.string   "issue_orgenization"
+    t.string   "foreign_level"
+    t.string   "rf_level"
+    t.string   "reason"
+    t.string   "person"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "confirmations", ["country_id"], name: "index_confirmations_on_country_id", using: :btree
+  add_index "confirmations", ["document_id"], name: "index_confirmations_on_document_id", using: :btree
 
   create_table "countries", force: :cascade do |t|
     t.string   "short_name",   null: false
@@ -146,6 +169,18 @@ ActiveRecord::Schema.define(version: 20171102093642) do
 
   add_index "religions", ["name"], name: "index_religions_on_name", unique: true, using: :btree
 
+  create_table "restrictions", force: :cascade do |t|
+    t.integer  "student_left_id"
+    t.integer  "student_right_id"
+    t.string   "restriction"
+    t.string   "restriction_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "restrictions", ["student_left_id"], name: "index_restrictions_on_student_left_id", using: :btree
+  add_index "restrictions", ["student_right_id"], name: "index_restrictions_on_student_right_id", using: :btree
+
   create_table "rooms", force: :cascade do |t|
     t.string   "room_number", null: false
     t.integer  "place_count", null: false
@@ -171,6 +206,42 @@ ActiveRecord::Schema.define(version: 20171102093642) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "student_lefts", force: :cascade do |t|
+    t.integer  "nationality_id"
+    t.integer  "religion_id"
+    t.integer  "country_id"
+    t.integer  "age"
+    t.integer  "speciality_id"
+    t.string   "edu_level"
+    t.float    "payment"
+    t.string   "sex"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "student_lefts", ["country_id"], name: "index_student_lefts_on_country_id", using: :btree
+  add_index "student_lefts", ["nationality_id"], name: "index_student_lefts_on_nationality_id", using: :btree
+  add_index "student_lefts", ["religion_id"], name: "index_student_lefts_on_religion_id", using: :btree
+  add_index "student_lefts", ["speciality_id"], name: "index_student_lefts_on_speciality_id", using: :btree
+
+  create_table "student_rights", force: :cascade do |t|
+    t.integer  "nationality_id"
+    t.integer  "religion_id"
+    t.integer  "country_id"
+    t.integer  "age"
+    t.integer  "speciality_id"
+    t.string   "edu_level"
+    t.float    "payment"
+    t.string   "sex"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "student_rights", ["country_id"], name: "index_student_rights_on_country_id", using: :btree
+  add_index "student_rights", ["nationality_id"], name: "index_student_rights_on_nationality_id", using: :btree
+  add_index "student_rights", ["religion_id"], name: "index_student_rights_on_religion_id", using: :btree
+  add_index "student_rights", ["speciality_id"], name: "index_student_rights_on_speciality_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.integer  "passport_id",    null: false
@@ -219,6 +290,8 @@ ActiveRecord::Schema.define(version: 20171102093642) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "confirmations", "countries"
+  add_foreign_key "confirmations", "documents"
   add_foreign_key "documents", "students"
   add_foreign_key "educations", "students"
   add_foreign_key "floors", "hostels"
@@ -227,7 +300,17 @@ ActiveRecord::Schema.define(version: 20171102093642) do
   add_foreign_key "referrals", "specialities"
   add_foreign_key "referrals", "students"
   add_foreign_key "religion_holidays", "religions"
+  add_foreign_key "restrictions", "student_lefts"
+  add_foreign_key "restrictions", "student_rights"
   add_foreign_key "rooms", "floors"
+  add_foreign_key "student_lefts", "countries"
+  add_foreign_key "student_lefts", "nationalities"
+  add_foreign_key "student_lefts", "religions"
+  add_foreign_key "student_lefts", "specialities"
+  add_foreign_key "student_rights", "countries"
+  add_foreign_key "student_rights", "nationalities"
+  add_foreign_key "student_rights", "religions"
+  add_foreign_key "student_rights", "specialities"
   add_foreign_key "students", "countries"
   add_foreign_key "students", "groups"
   add_foreign_key "students", "nationalities"

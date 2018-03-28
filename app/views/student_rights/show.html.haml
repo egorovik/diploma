@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Nationality:
+  = @student_right.nationality
+%p
+  %b Religion:
+  = @student_right.religion
+%p
+  %b Country:
+  = @student_right.country
+%p
+  %b Age:
+  = @student_right.age
+%p
+  %b Speciality:
+  = @student_right.speciality
+%p
+  %b Edu level:
+  = @student_right.edu_level
+%p
+  %b Payment:
+  = @student_right.payment
+%p
+  %b Sex:
+  = @student_right.sex
+
+= link_to 'Edit', edit_student_right_path(@student_right)
+\|
+= link_to 'Back', student_rights_path

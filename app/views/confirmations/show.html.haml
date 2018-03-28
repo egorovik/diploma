@@ -1,0 +1,51 @@
+%p#notice= notice
+
+%p
+  %b Document:
+  = @confirmation.document
+%p
+  %b Express rating:
+  = @confirmation.express_rating
+%p
+  %b Expert conclusion:
+  = @confirmation.expert_conclusion
+%p
+  %b Confirmation:
+  = @confirmation.confirmation
+%p
+  %b Document type:
+  = @confirmation.document_type
+%p
+  %b Serial:
+  = @confirmation.serial
+%p
+  %b Number:
+  = @confirmation.number
+%p
+  %b Issue date:
+  = @confirmation.issue_date
+%p
+  %b Country:
+  = @confirmation.country
+%p
+  %b Education organization:
+  = @confirmation.education_organization
+%p
+  %b Issue orgenization:
+  = @confirmation.issue_orgenization
+%p
+  %b Foreign level:
+  = @confirmation.foreign_level
+%p
+  %b Rf level:
+  = @confirmation.rf_level
+%p
+  %b Reason:
+  = @confirmation.reason
+%p
+  %b Person:
+  = @confirmation.person
+
+= link_to 'Edit', edit_confirmation_path(@confirmation)
+\|
+= link_to 'Back', confirmations_path

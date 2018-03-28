@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  document_id: 
+  express_rating: MyString
+  expert_conclusion: MyString
+  confirmation: MyString
+  document_type: MyString
+  serial: MyString
+  number: MyString
+  issue_date: 2018-03-27
+  country_id: 
+  education_organization: MyString
+  issue_orgenization: MyString
+  foreign_level: MyString
+  rf_level: MyString
+  reason: MyString
+  person: MyString
+
+two:
+  document_id: 
+  express_rating: MyString
+  expert_conclusion: MyString
+  confirmation: MyString
+  document_type: MyString
+  serial: MyString
+  number: MyString
+  issue_date: 2018-03-27
+  country_id: 
+  education_organization: MyString
+  issue_orgenization: MyString
+  foreign_level: MyString
+  rf_level: MyString
+  reason: MyString
+  person: MyString

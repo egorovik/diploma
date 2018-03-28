@@ -1,0 +1,22 @@
+= form_for @restriction do |f|
+  - if @restriction.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@restriction.errors.count, "error")} prohibited this restriction from being saved:"
+      %ul
+        - @restriction.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :student_left
+    = f.text_field :student_left
+  .field
+    = f.label :student_right
+    = f.text_field :student_right
+  .field
+    = f.label :restriction
+    = f.text_field :restriction
+  .field
+    = f.label :restriction_type
+    = f.text_field :restriction_type
+  .actions
+    = f.submit 'Save'

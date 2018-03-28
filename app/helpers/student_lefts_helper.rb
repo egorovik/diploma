@@ -1,0 +1,2 @@
+module StudentLeftsHelper
+end

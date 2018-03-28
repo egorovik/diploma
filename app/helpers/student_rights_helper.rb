@@ -1,0 +1,2 @@
+module StudentRightsHelper
+end

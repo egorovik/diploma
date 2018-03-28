@@ -1,0 +1,27 @@
+%h1 Listing restrictions
+
+%table
+  %thead
+    %tr
+      %th Student left
+      %th Student right
+      %th Restriction
+      %th Restriction type
+      %th
+      %th
+      %th
+
+  %tbody
+    - @restrictions.each do |restriction|
+      %tr
+        %td= restriction.student_left
+        %td= restriction.student_right
+        %td= restriction.restriction
+        %td= restriction.restriction_type
+        %td= link_to 'Show', restriction
+        %td= link_to 'Edit', edit_restriction_path(restriction)
+        %td= link_to 'Destroy', restriction, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Restriction', new_restriction_path

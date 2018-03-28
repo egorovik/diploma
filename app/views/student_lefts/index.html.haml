@@ -1,0 +1,35 @@
+%h1 Listing student_lefts
+
+%table
+  %thead
+    %tr
+      %th Nationality
+      %th Religion
+      %th Country
+      %th Age
+      %th Speciality
+      %th Edu level
+      %th Payment
+      %th Sex
+      %th
+      %th
+      %th
+
+  %tbody
+    - @student_lefts.each do |student_left|
+      %tr
+        %td= student_left.nationality
+        %td= student_left.religion
+        %td= student_left.country
+        %td= student_left.age
+        %td= student_left.speciality
+        %td= student_left.edu_level
+        %td= student_left.payment
+        %td= student_left.sex
+        %td= link_to 'Show', student_left
+        %td= link_to 'Edit', edit_student_left_path(student_left)
+        %td= link_to 'Destroy', student_left, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Student left', new_student_left_path

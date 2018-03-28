@@ -1,0 +1,55 @@
+= form_for @confirmation do |f|
+  - if @confirmation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@confirmation.errors.count, "error")} prohibited this confirmation from being saved:"
+      %ul
+        - @confirmation.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :document
+    = f.text_field :document
+  .field
+    = f.label :express_rating
+    = f.text_field :express_rating
+  .field
+    = f.label :expert_conclusion
+    = f.text_field :expert_conclusion
+  .field
+    = f.label :confirmation
+    = f.text_field :confirmation
+  .field
+    = f.label :document_type
+    = f.text_field :document_type
+  .field
+    = f.label :serial
+    = f.text_field :serial
+  .field
+    = f.label :number
+    = f.text_field :number
+  .field
+    = f.label :issue_date
+    = f.date_select :issue_date
+  .field
+    = f.label :country
+    = f.text_field :country
+  .field
+    = f.label :education_organization
+    = f.text_field :education_organization
+  .field
+    = f.label :issue_orgenization
+    = f.text_field :issue_orgenization
+  .field
+    = f.label :foreign_level
+    = f.text_field :foreign_level
+  .field
+    = f.label :rf_level
+    = f.text_field :rf_level
+  .field
+    = f.label :reason
+    = f.text_field :reason
+  .field
+    = f.label :person
+    = f.text_field :person
+  .actions
+    = f.submit 'Save'

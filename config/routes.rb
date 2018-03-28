@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :restrictions
+  resources :student_rights
+  resources :student_lefts
+  resources :confirmations
   resources :educations
   devise_for :users
   resources :documents
