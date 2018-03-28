@@ -27,4 +27,85 @@ class Student < ActiveRecord::Base
     end
   end
   
+  def same_room
+    arr = []
+    if self.room
+      self.room.students.each do |s|
+        arr << s if s.id != self.id
+      end
+    end
+    return arr
+  end
+  
+  def same_floor
+    arr = []
+    if self.room
+      self.room.floor.rooms.each do |r|
+        r.students.each do |s|
+          arr << s if s.id != self.id
+        end
+      end
+    end
+    return arr
+  end
+  
+  def same_hostel
+    arr = []
+    if self.room
+      self.room.floor.hostel.floors.each do |f|
+        f.rooms.each do |r|
+          r.students.each do |s|
+            arr << s if s.id != self.id
+          end
+        end
+      end
+    end
+    return arr
+  end
+  
+  def same_group
+    arr = []
+    if self.group
+      self.group.students.each do |s|
+        arr << s if s.id != self.id
+      end
+    end
+    return arr
+  end
+  
+  def higher_floor
+    arr = []
+    if self.room
+      floor = self.room.floor.floor_number
+      self.room.floor.hostel.floors.each do |f|
+        if f.floor_number > floor
+          f.rooms.each do |r|
+            r.students.each do |s|
+              arr << s if s.id != self.id
+            end
+          end
+        end
+      end
+    end
+    return arr
+  end
+  
+    
+  def lower_floor
+    arr = []
+    if self.room
+      floor = self.room.floor.floor_number
+      self.room.floor.hostel.floors.each do |f|
+        if f.floor_number < floor
+          f.rooms.each do |r|
+            r.students.each do |s|
+              arr << s if s.id != self.id
+            end
+          end
+        end
+      end
+    end
+    return arr
+  end
+  
 end
