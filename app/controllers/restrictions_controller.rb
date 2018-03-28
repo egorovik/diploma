@@ -15,6 +15,8 @@ class RestrictionsController < ApplicationController
   # GET /restrictions/new
   def new
     @restriction = Restriction.new
+    @restriction.build_student_left
+    @restriction.build_student_right
   end
 
   # GET /restrictions/1/edit
@@ -54,7 +56,11 @@ class RestrictionsController < ApplicationController
   # DELETE /restrictions/1
   # DELETE /restrictions/1.json
   def destroy
+    sl = @restriction.student_left
+    sr = @restriction.student_right
     @restriction.destroy
+    sl.destroy
+    sr.destroy
     respond_to do |format|
       format.html { redirect_to restrictions_url, notice: 'Restriction was successfully destroyed.' }
       format.json { head :no_content }
@@ -69,6 +75,8 @@ class RestrictionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restriction_params
-      params.require(:restriction).permit(:student_left_id, :student_right_id, :restriction, :restriction_type)
+      params.require(:restriction).permit(:student_left_id, :student_right_id, :restriction, :restriction_type,
+      student_left_attributes: [:id, :nationality_id, :religion_id, :country_id, :age, :speciality_id, :edu_level, :payment, :sex],
+      student_right_attributes: [:id, :nationality_id, :religion_id, :country_id, :age, :speciality_id, :edu_level, :payment, :sex])
     end
 end

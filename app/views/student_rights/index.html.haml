@@ -18,11 +18,11 @@
   %tbody
     - @student_rights.each do |student_right|
       %tr
-        %td= student_right.nationality
-        %td= student_right.religion
-        %td= student_right.country
+        %td= student_right.nationality.name
+        %td= student_right.religion.name
+        %td= student_right.country.short_name
         %td= student_right.age
-        %td= student_right.speciality
+        %td= student_right.speciality.name
         %td= student_right.edu_level
         %td= student_right.payment
         %td= student_right.sex

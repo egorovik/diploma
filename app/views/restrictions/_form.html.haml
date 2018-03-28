@@ -5,13 +5,62 @@
       %ul
         - @restriction.errors.full_messages.each do |message|
           %li= message
-
-  .field
-    = f.label :student_left
-    = f.text_field :student_left
-  .field
-    = f.label :student_right
-    = f.text_field :student_right
+  %p
+    StudentLeft
+    .field
+      = f.fields_for(:student_left) do |slf|
+        .field
+          = slf.label :nationality_id
+          = slf.text_field :nationality_id
+        .field
+          = slf.label :religion_id
+          = slf.text_field :religion_id
+        .field
+          = slf.label :country_id
+          = slf.text_field :country_id
+        .field
+          = slf.label :age
+          = slf.number_field :age
+        .field
+          = slf.label :speciality_id
+          = slf.text_field :speciality_id
+        .field
+          = slf.label :edu_level
+          = slf.text_field :edu_level
+        .field
+          = slf.label :payment
+          = slf.text_field :payment
+        .field
+          = slf.label :sex
+          = slf.text_field :sex
+  %p
+    StudentRight
+    .field
+      = f.fields_for(:student_right) do |srf|
+        .field
+          = srf.label :nationality_id
+          = srf.text_field :nationality_id
+        .field
+          = srf.label :religion_id
+          = srf.text_field :religion_id
+        .field
+          = srf.label :country_id
+          = srf.text_field :country_id
+        .field
+          = srf.label :age
+          = srf.number_field :age
+        .field
+          = srf.label :speciality_id
+          = srf.text_field :speciality_id
+        .field
+          = srf.label :edu_level
+          = srf.text_field :edu_level
+        .field
+          = srf.label :payment
+          = srf.text_field :payment
+        .field
+          = srf.label :sex
+          = srf.text_field :sex
   .field
     = f.label :restriction
     = f.text_field :restriction
