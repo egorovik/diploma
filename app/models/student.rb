@@ -110,7 +110,8 @@ class Student < ActiveRecord::Base
   def check_restrictions
     arr = []
     Restriction.all.each do |r|
-      arr << [r.inspect, r.check(self)]
+      res = r.check(self)
+      arr << [r, res] if res.size > 0
     end
     return arr
   end

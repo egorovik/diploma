@@ -131,8 +131,24 @@
             - next if s.id == @student.id
             %li.list-group-item= link_to sname(s), s
 
-- @student.check_restrictions.each do |a|
-  %p= a
+- result = @student.check_restrictions
+- if result.length > 0
+  %div
+    %p
+      Студент попадает под ограничения:
+      - result.each do |a|
+        %ul
+        - a[0].restriction.split.each do |r|
+          %li= restriction_name(r)
+    %p
+      со следующими студентами:
+      - result.each do |a|
+        %ul
+        - a[1].each do |sid|
+          - st = Student.find(sid)
+          %li= link_to sname_full(st), st
+- else
+  %p Студент не попадает под ограничения.
 .buttons
   .item= link_to t('button.edit'), edit_student_path(@student), class: "btn btn-warning"
   .item= link_to t("button.to.#{params['controller']}"), students_path, class: "btn btn-danger"

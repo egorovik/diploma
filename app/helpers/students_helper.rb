@@ -8,4 +8,13 @@ module StudentsHelper
     return arr
   end
   
+  def restriction_name(str)
+    case str
+    when "same_hostel"
+      return "заселение в одном общежитии"
+    when "same_group"
+      return "зачисление в одну группу"
+    end
+  end
+  
 end

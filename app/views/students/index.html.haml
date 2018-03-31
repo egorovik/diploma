@@ -20,20 +20,37 @@
 
   %tbody
     - @students.each do |student|
-      %tr
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.passport.serial + ' ' + student.passport.number
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.ln
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.fn
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.sn)
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.sex
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.bday
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.country.short_name
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.nationality.name)
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.religion.name)
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.start_date)
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.finish_date)
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.group.name) if !(student.group.nil?)
-        %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.room.room_number) if !(student.room.nil?)
-        %td= link_to t('button.destroy'), student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+      - if student.check_restrictions.length > 0
+        %tr.student_restricted
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.passport.serial + ' ' + student.passport.number
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.ln
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.fn
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.sn)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.sex
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.bday
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.country.short_name
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.nationality.name)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.religion.name)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.start_date)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.finish_date)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.group.name) if !(student.group.nil?)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.room.room_number) if !(student.room.nil?)
+          %td= link_to t('button.destroy'), student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+      - else
+        %tr
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.passport.serial + ' ' + student.passport.number
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.ln
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.fn
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.sn)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.sex
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.bday
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= student.country.short_name
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.nationality.name)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.religion.name)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.start_date)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.finish_date)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.group.name) if !(student.group.nil?)
+          %td.student_name{'data' => {'info' => ["#{params['controller']}", "#{student.id}"]}}= field(student.room.room_number) if !(student.room.nil?)
+          %td= link_to t('button.destroy'), student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 
 = will_paginate @students, renderer: BootstrapPagination::Rails, previous_label: "Предыдущая", next_label: "Следующая", inner_window: 1, outer_window: 1
