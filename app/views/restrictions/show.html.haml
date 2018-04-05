@@ -7,11 +7,26 @@
   %b Student right:
   = @restriction.student_right
 %p
-  %b Restriction:
-  = @restriction.restriction
-%p
   %b Restriction type:
   = @restriction.restriction_type
+%p
+  %b Same room:
+  = @restriction.same_room
+%p
+  %b Same floor:
+  = @restriction.same_floor
+%p
+  %b Same hostel:
+  = @restriction.same_hostel
+%p
+  %b Same group:
+  = @restriction.same_group
+%p
+  %b Higher floor:
+  = @restriction.higher_floor
+%p
+  %b Lower floor:
+  = @restriction.lower_floor
 
 = link_to 'Edit', edit_restriction_path(@restriction)
 \|

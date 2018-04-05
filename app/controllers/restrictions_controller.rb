@@ -75,7 +75,7 @@ class RestrictionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restriction_params
-      params.require(:restriction).permit(:student_left_id, :student_right_id, :restriction, :restriction_type,
+      params.require(:restriction).permit(:student_left_id, :student_right_id, :restriction_type, :same_room, :same_floor, :same_hostel, :same_group, :higher_floor, :lower_floor,
       student_left_attributes: [:id, :nationality_id, :religion_id, :country_id, :age, :speciality_id, :edu_level, :payment, :sex],
       student_right_attributes: [:id, :nationality_id, :religion_id, :country_id, :age, :speciality_id, :edu_level, :payment, :sex])
     end

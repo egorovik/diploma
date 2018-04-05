@@ -46,12 +46,19 @@ class Restriction < ActiveRecord::Base
   end
   
   def check_ltr(student)
-    arr = self.restriction.split
+    hash = Hash.new
+    hash["same_room"] = self.same_room
+    hash["same_floor"] = self.same_floor
+    hash["same_hostel"] = self.same_hostel
+    hash["same_group"] = self.same_group
+    hash["higher_floor"] = self.higher_floor
+    hash["lower_floor"] = self.lower_floor
+    arr = hash.keys
     ids = find_left_student
     if ids.include?(student.id)
       result = []
       arr.each do |a|
-        result = result | eval("student." + a)
+        result = result | eval("student." + a) if hash[a]
       end
       right = self.find_right_student
       return result & right
@@ -59,12 +66,19 @@ class Restriction < ActiveRecord::Base
   end
   
   def check_rtl(student)
-    arr = self.restriction.split
+    hash = Hash.new
+    hash["same_room"] = self.same_room
+    hash["same_floor"] = self.same_floor
+    hash["same_hostel"] = self.same_hostel
+    hash["same_group"] = self.same_group
+    hash["higher_floor"] = self.higher_floor
+    hash["lower_floor"] = self.lower_floor
+    arr = hash.keys
     ids = find_right_student
     if ids.include?(student.id)
       result = []
       arr.each do |a|
-        result = result | eval("student." + a)
+        result = result | eval("student." + a) if hash[a]
       end
       left = self.find_left_student
       return result & left

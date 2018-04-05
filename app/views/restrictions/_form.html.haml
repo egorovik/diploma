@@ -62,10 +62,25 @@
           = srf.label :sex
           = srf.text_field :sex
   .field
-    = f.label :restriction
-    = f.text_field :restriction
-  .field
     = f.label :restriction_type
     = f.text_field :restriction_type
+  .field
+    = f.label :same_room
+    = f.check_box :same_room
+  .field
+    = f.label :same_floor
+    = f.check_box :same_floor
+  .field
+    = f.label :same_hostel
+    = f.check_box :same_hostel
+  .field
+    = f.label :same_group
+    = f.check_box :same_group
+  .field
+    = f.label :higher_floor
+    = f.check_box :higher_floor
+  .field
+    = f.label :lower_floor
+    = f.check_box :lower_floor
   .actions
     = f.submit 'Save'

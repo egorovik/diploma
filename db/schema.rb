@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327035351) do
+ActiveRecord::Schema.define(version: 20180405123736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,10 +172,15 @@ ActiveRecord::Schema.define(version: 20180327035351) do
   create_table "restrictions", force: :cascade do |t|
     t.integer  "student_left_id"
     t.integer  "student_right_id"
-    t.string   "restriction"
     t.string   "restriction_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.boolean  "same_room"
+    t.boolean  "same_floor"
+    t.boolean  "same_hostel"
+    t.boolean  "same_group"
+    t.boolean  "higher_floor"
+    t.boolean  "lower_floor"
   end
 
   add_index "restrictions", ["student_left_id"], name: "index_restrictions_on_student_left_id", using: :btree

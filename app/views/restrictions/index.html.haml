@@ -5,8 +5,13 @@
     %tr
       %th Student left
       %th Student right
-      %th Restriction
       %th Restriction type
+      %th Same room
+      %th Same floor
+      %th Same hostel
+      %th Same group
+      %th Higher floor
+      %th Lower floor
       %th
       %th
       %th
@@ -16,8 +21,13 @@
       %tr
         %td= restriction.student_left
         %td= restriction.student_right
-        %td= restriction.restriction
         %td= restriction.restriction_type
+        %td= restriction.same_room
+        %td= restriction.same_floor
+        %td= restriction.same_hostel
+        %td= restriction.same_group
+        %td= restriction.higher_floor
+        %td= restriction.lower_floor
         %td= link_to 'Show', restriction
         %td= link_to 'Edit', edit_restriction_path(restriction)
         %td= link_to 'Destroy', restriction, method: :delete, data: { confirm: 'Are you sure?' }

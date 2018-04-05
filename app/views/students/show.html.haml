@@ -138,8 +138,17 @@
       Студент попадает под ограничения:
       - result.each do |a|
         %ul
-        - a[0].restriction.split.each do |r|
-          %li= restriction_name(r)
+        - hash = Hash.new()
+        - hash["same_room"] = a[0].same_room
+        - hash["same_floor"] = a[0].same_floor
+        - hash["same_hostel"] = a[0].same_hostel
+        - hash["same_group"] = a[0].same_group
+        - hash["higher_floor"] = a[0].higher_floor
+        - hash["lower_floor"] = a[0].lower_floor
+        - arr = hash.keys
+        - arr.each do |r|
+          - if hash[r]
+            %li= restriction_name(r) 
     %p
       со следующими студентами:
       - result.each do |a|
